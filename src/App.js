@@ -5,12 +5,12 @@ import './App.css';
 const NUM_ROWS = 15;
 const NUM_COLS = 16;
 
-const create2DArray = (numRows, numCols) => {
+const create2DArray = (numRows, numCols, initCell) => {
   const array = [];
   for (let i = 0; i < numRows; i++) {
     const row = [];
     for (let j = 0; j < numCols; j++) {
-      row.push(undefined);
+      row.push(initCell);
     }
     array.push(row);
   }
@@ -22,7 +22,7 @@ class App extends Component {
     super(props);
     this.state = {
       grids: {
-        terrain: create2DArray(NUM_ROWS, NUM_COLS),
+        terrain: create2DArray(NUM_ROWS, NUM_COLS, 'grass'),
         structures: create2DArray(NUM_ROWS, NUM_COLS),
         nonPlayableCharacters: create2DArray(NUM_ROWS, NUM_COLS),
         playableCharacters: create2DArray(NUM_ROWS, NUM_COLS),
@@ -32,14 +32,13 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
-        <div className="grass" />
+      {
+        this.state.grids.terrain.map((row) => (
+          row.map((cell) => {
+            return <div className={cell} />;
+          })
+        ))
+      }
       </div>
     );
   }
