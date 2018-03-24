@@ -22,23 +22,37 @@ const createBoard = () => {
 
 const createPieces = () => {
   const array = [];
-  // for (let i = 0; i < NUM_ROWS; i++) {
-  //   const row = [];
-  //   if (i === 0) {
-  //     row = [
-  //       {
-  //         color: 'black',
-  //         type: 'rook',
-  //       }
-  //     ]
-  //     for (let j = 0; j < NUM_COLS; j++) {
-
-  //       const cellColor = (i + j) % 2 ? 'black' : 'white';
-  //       row.push(cellColor);
-  //     }
-  //   }
-  //   array.push(row);
-  // }
+  for (let i = 0; i < NUM_ROWS; i++) {
+    let row;
+    if (i === 0) {
+      row = [
+        `${Color.BLACK} ${Type.ROOK}`,
+        `${Color.BLACK} ${Type.KNIGHT}`,
+        `${Color.BLACK} ${Type.BISHOP}`,
+        `${Color.BLACK} ${Type.QUEEN}`,
+        `${Color.BLACK} ${Type.KING}`,
+        `${Color.BLACK} ${Type.BISHOP}`,
+        `${Color.BLACK} ${Type.KNIGHT}`,
+        `${Color.BLACK} ${Type.ROOK}`,
+      ];
+    }
+    if (i === 1) {
+      row = [
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN}`,
+      ];
+    }
+    if (i !== 0 && i !== 1) {
+      row = (new Array()).fill('');
+    }
+    array.push(row);
+  }
   return array;
 }
 
@@ -48,7 +62,7 @@ class App extends Component {
     this.state = {
       grids: {
         board: createBoard(),
-        pieces: createPieces(NUM_ROWS, NUM_COLS),
+        pieces: createPieces(),
       }
     };
   }
