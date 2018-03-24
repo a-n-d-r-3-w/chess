@@ -6,10 +6,10 @@
   width: 100vw;
 }
 
-.white {
+.WHITE.SQUARE {
   background: white;
 }
 
-.black {
+.BLACK.SQUARE {
   background: black;
 }
