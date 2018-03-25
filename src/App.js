@@ -48,8 +48,32 @@ const createPieces = () => {
         `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
       ];
     }
-    if (i !== 0 && i !== 1) {
-      row = (new Array()).fill('');
+    if (i === 7) {
+      row = [
+        `${Color.WHITE} ${Type.ROOK} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.KNIGHT} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.BISHOP} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.QUEEN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.KING} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.BISHOP} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.KNIGHT} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.ROOK} ${Type.PIECE}`,
+      ];
+    }
+    if (i === 6) {
+      row = [
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+      ];
+    }
+    if (i !== 0 && i !== 1 && i !== 6 && i !== 7) {
+      row = (new Array(8)).fill('');
     }
     array.push(row);
   }
