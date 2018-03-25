@@ -82,12 +82,14 @@ class App extends Component {
       grids: {
         board: createBoard(),
         pieces: createPieces(),
-      }
+      },
+      selection: {},
     };
+    this.select = this.select.bind(this);
   }
 
-  selectPiece(selectInfo) {
-    console.log(`${selectInfo.piece.color} ${selectInfo.piece.type} @ (${selectInfo.position.row}, ${selectInfo.position.column})`);
+  select(selection) {
+    this.setState({ selection });
   }
 
   render() {
@@ -106,7 +108,7 @@ class App extends Component {
         {
           this.state.grids.pieces.map((row, rowIndex) => (
             row.map((piece, columnIndex) => {
-              const selectInfo = {
+              const selection = {
                 piece,
                 position: {
                   row: rowIndex,
@@ -115,7 +117,7 @@ class App extends Component {
               };
               return <div 
                 className={`${piece.color} ${piece.type} PIECE`}
-                onClick={() => { this.selectPiece(selectInfo); }} 
+                onClick={() => { this.select(selection); }} 
               />;
             })
           ))
