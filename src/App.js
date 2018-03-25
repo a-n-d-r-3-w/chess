@@ -86,8 +86,8 @@ class App extends Component {
     };
   }
 
-  handleSelectPiece(coordinates) {
-    alert(`(${coordinates.row}, ${coordinates.column})`);
+  selectPiece(selectInfo) {
+    console.log(`${selectInfo.piece.color} ${selectInfo.piece.type} @ (${selectInfo.position.row}, ${selectInfo.position.column})`);
   }
 
   render() {
@@ -106,13 +106,16 @@ class App extends Component {
         {
           this.state.grids.pieces.map((row, rowIndex) => (
             row.map((piece, columnIndex) => {
-              const coordinates = {
-                row: rowIndex,
-                column: columnIndex,
+              const selectInfo = {
+                piece,
+                position: {
+                  row: rowIndex,
+                  column: columnIndex,
+                },
               };
               return <div 
                 className={`${piece.color} ${piece.type} PIECE`}
-                onClick={() => { this.handleSelectPiece(coordinates); }} 
+                onClick={() => { this.selectPiece(selectInfo); }} 
               />;
             })
           ))
