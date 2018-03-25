@@ -90,6 +90,11 @@ class App extends Component {
       }
     };
   }
+
+  handleSelectPiece(className) {
+    alert(className);
+  }
+
   render() {
     return (
       <Fragment>
@@ -106,7 +111,12 @@ class App extends Component {
         {
           this.state.grids.pieces.map((row) => (
             row.map((className) => {
-              return <div className={className} />;
+              return <div 
+                className={className}
+                onClick={() => {
+                  this.handleSelectPiece(className);
+                }} 
+              />;
             })
           ))
         }
