@@ -29,8 +29,8 @@ const createHighlights = () => {
   return array;
 }
 
-const createPieces = () => {
-  const array = [];
+const initializePieces = () => {
+  const pieces = [];
   for (let i = 0; i < NUM_ROWS; i++) {
     let row;
     if (i === 0) {
@@ -63,9 +63,9 @@ const createPieces = () => {
     } else {
       row = (new Array(NUM_COLS)).fill({});
     }
-    array.push(row);
+    pieces.push(row);
   }
-  return array;
+  return pieces;
 }
 
 class App extends Component {
@@ -74,7 +74,7 @@ class App extends Component {
     this.state = {
       grids: {
         board: createBoard(),
-        pieces: createPieces(),
+        pieces: initializePieces(),
         highlights: createHighlights(),
       },
       selection: {},
