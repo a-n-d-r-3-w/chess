@@ -19,6 +19,15 @@ const createBoard = () => {
   return array;
 }
 
+const createHighlights = () => {
+  const array = [];
+  for (let i = 0; i < NUM_ROWS; i++) {
+    const row = (new Array(NUM_COLS)).fill({ isHighlighted: false });
+    array.push(row);
+  }
+  return array;
+}
+
 const createPieces = () => {
   const array = [];
   for (let i = 0; i < NUM_ROWS; i++) {
@@ -68,7 +77,7 @@ const createPieces = () => {
         { color: Color.WHITE, type: Type.ROOK },
       ];
     } else {
-      row = (new Array(8)).fill({});
+      row = (new Array(NUM_COLS)).fill({});
     }
     array.push(row);
   }
@@ -82,6 +91,7 @@ class App extends Component {
       grids: {
         board: createBoard(),
         pieces: createPieces(),
+        highlights: createHighlights(),
       },
       selection: {},
       player: Color.WHITE,
@@ -90,8 +100,13 @@ class App extends Component {
   }
 
   select(selection) {
-    console.log(selection);
-    this.setState({ selection });
+    this.setState((prevState) => {
+      const nextState = prevState;
+      nextState.grids.highlights[selection.position.row][selection.position.column] = {
+        isHighlighted: true,
+      };
+      return nextState;
+    });
   }
 
   render() {
@@ -129,6 +144,15 @@ class App extends Component {
                 className={`${piece.color} ${piece.type} PIECE ${selectable ? 'selectable' : ''}`}
                 onClick={onClick} 
               />;
+            })
+          ))
+        }
+        </div>
+        <div className="highlights">
+        {
+          this.state.grids.highlights.map((row) => (
+            row.map((square) => {              
+              return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''}/>;
             })
           ))
         }

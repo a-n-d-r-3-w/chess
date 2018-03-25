@@ -1,5 +1,6 @@
 .board,
-.pieces {
+.pieces,
+.highlights {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
@@ -15,8 +16,13 @@
   opacity: 0.25;
 }
 
-.pieces {
+.highlights {
   z-index: 1;
+  opacity: 0.25;
+}
+
+.pieces {
+  z-index: 2;
 }
 
 .WHITE.SQUARE {
@@ -25,6 +31,10 @@
 
 .BLACK.SQUARE {
   background: black;
+}
+
+.HIGHLIGHT {
+  background: red;
 }
 
 .PIECE {
