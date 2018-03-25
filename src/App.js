@@ -31,40 +31,32 @@ const createHighlights = () => {
 
 const initializePieces = () => {
   const pieces = [];
-  for (let i = 0; i < NUM_ROWS; i++) {
-    let row;
-    if (i === 0) {
-      row = [
-        PieceFactory.createBlackRook(),
-        PieceFactory.createBlackKnight(),
-        PieceFactory.createBlackBishop(),
-        PieceFactory.createBlackQueen(),
-        PieceFactory.createBlackKing(),
-        PieceFactory.createBlackBishop(),
-        PieceFactory.createBlackKnight(),
-        PieceFactory.createBlackRook(),
-      ];
-    } else if (i === 1) {
-      row = (new Array(NUM_COLS)).fill(PieceFactory.createBlackPawn());
-    } else if (i === 6) {
-      row = (new Array(NUM_COLS)).fill(PieceFactory.createWhitePawn());
-
-    } else if (i === 7) {
-      row = [
-        PieceFactory.createWhiteRook(),
-        PieceFactory.createWhiteKnight(),
-        PieceFactory.createWhiteBishop(),
-        PieceFactory.createWhiteQueen(),
-        PieceFactory.createWhiteKing(),
-        PieceFactory.createWhiteBishop(),
-        PieceFactory.createWhiteKnight(),
-        PieceFactory.createWhiteRook(),
-      ];
-    } else {
-      row = (new Array(NUM_COLS)).fill({});
-    }
-    pieces.push(row);
-  }
+  pieces.push([
+    PieceFactory.createBlackRook(),
+    PieceFactory.createBlackKnight(),
+    PieceFactory.createBlackBishop(),
+    PieceFactory.createBlackQueen(),
+    PieceFactory.createBlackKing(),
+    PieceFactory.createBlackBishop(),
+    PieceFactory.createBlackKnight(),
+    PieceFactory.createBlackRook(),
+  ]);
+  pieces.push((new Array(NUM_COLS)).fill(PieceFactory.createBlackPawn()));
+  pieces.push((new Array(NUM_COLS)).fill({}));
+  pieces.push((new Array(NUM_COLS)).fill({}));
+  pieces.push((new Array(NUM_COLS)).fill({}));
+  pieces.push((new Array(NUM_COLS)).fill({}));
+  pieces.push((new Array(NUM_COLS)).fill(PieceFactory.createWhitePawn()));
+  pieces.push([
+    PieceFactory.createWhiteRook(),
+    PieceFactory.createWhiteKnight(),
+    PieceFactory.createWhiteBishop(),
+    PieceFactory.createWhiteQueen(),
+    PieceFactory.createWhiteKing(),
+    PieceFactory.createWhiteBishop(),
+    PieceFactory.createWhiteKnight(),
+    PieceFactory.createWhiteRook(),
+  ]);
   return pieces;
 }
 
