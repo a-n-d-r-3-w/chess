@@ -110,22 +110,23 @@ class App extends Component {
         {
           this.state.grids.pieces.map((row, rowIndex) => (
             row.map((piece, columnIndex) => {
-              const selection = {
-                piece,
-                position: {
-                  row: rowIndex,
-                  column: columnIndex,
-                },
-              };
+              const selectable = piece.color === this.state.player;
               const onClick = () => {
-                if (piece.color === this.state.player) {
+                if (selectable) {
+                  const selection = {
+                    piece,
+                    position: {
+                      row: rowIndex,
+                      column: columnIndex,
+                    },
+                  };
                   this.select(selection);
                 } else {
                   return; // Do nothing.
                 }
               }
               return <div 
-                className={`${piece.color} ${piece.type} PIECE ${piece.color === this.state.player ? 'selectable' : ''}`}
+                className={`${piece.color} ${piece.type} PIECE ${selectable ? 'selectable' : ''}`}
                 onClick={onClick} 
               />;
             })
