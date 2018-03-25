@@ -34,8 +34,7 @@ const createPieces = () => {
         { color: Color.BLACK, type: Type.KNIGHT },
         { color: Color.BLACK, type: Type.ROOK },
       ];
-    }
-    if (i === 1) {
+    } else if (i === 1) {
       row = [
         { color: Color.BLACK, type: Type.PAWN },
         { color: Color.BLACK, type: Type.PAWN },
@@ -46,8 +45,7 @@ const createPieces = () => {
         { color: Color.BLACK, type: Type.PAWN },
         { color: Color.BLACK, type: Type.PAWN },
       ];
-    }
-    if (i === 6) {
+    } else if (i === 6) {
       row = [
         { color: Color.WHITE, type: Type.PAWN },
         { color: Color.WHITE, type: Type.PAWN },
@@ -58,8 +56,7 @@ const createPieces = () => {
         { color: Color.WHITE, type: Type.PAWN },
         { color: Color.WHITE, type: Type.PAWN },
       ];
-    }
-    if (i === 7) {
+    } else if (i === 7) {
       row = [
         { color: Color.WHITE, type: Type.ROOK },
         { color: Color.WHITE, type: Type.KNIGHT },
@@ -70,9 +67,8 @@ const createPieces = () => {
         { color: Color.WHITE, type: Type.KNIGHT },
         { color: Color.WHITE, type: Type.ROOK },
       ];
-    }
-    if (i !== 0 && i !== 1 && i !== 6 && i !== 7) {
-      row = (new Array(8)).fill('');
+    } else {
+      row = (new Array(8)).fill({});
     }
     array.push(row);
   }
@@ -90,7 +86,8 @@ class App extends Component {
     };
   }
 
-  handleSelectPiece(className) {
+  handleSelectPiece(coordinates) {
+    alert(`(${coordinates.row}, ${coordinates.column})`);
   }
 
   render() {
@@ -107,13 +104,15 @@ class App extends Component {
         </div>
         <div className="pieces">
         {
-          this.state.grids.pieces.map((row) => (
-            row.map((piece) => {
+          this.state.grids.pieces.map((row, rowIndex) => (
+            row.map((piece, columnIndex) => {
+              const coordinates = {
+                row: rowIndex,
+                column: columnIndex,
+              };
               return <div 
                 className={`${piece.color} ${piece.type} PIECE`}
-                onClick={() => {
-                  this.handleSelectPiece();
-                }} 
+                onClick={() => { this.handleSelectPiece(coordinates); }} 
               />;
             })
           ))
