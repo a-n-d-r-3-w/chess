@@ -11,9 +11,8 @@ const createBoard = () => {
   for (let i = 0; i < NUM_ROWS; i++) {
     const row = [];
     for (let j = 0; j < NUM_COLS; j++) {
-      let className = (i + j) % 2 ? Color.BLACK : Color.WHITE;
-      className += ` ${Type.SQUARE}`;
-      row.push(className);
+      const color = (i + j) % 2 ? Color.BLACK : Color.WHITE;
+      row.push({ color });
     }
     array.push(row);
   }
@@ -26,50 +25,50 @@ const createPieces = () => {
     let row;
     if (i === 0) {
       row = [
-        `${Color.BLACK} ${Type.ROOK} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.KNIGHT} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.BISHOP} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.QUEEN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.KING} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.BISHOP} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.KNIGHT} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.ROOK} ${Type.PIECE}`,
+        { color: Color.BLACK, type: Type.ROOK },
+        { color: Color.BLACK, type: Type.KNIGHT },
+        { color: Color.BLACK, type: Type.BISHOP },
+        { color: Color.BLACK, type: Type.QUEEN },
+        { color: Color.BLACK, type: Type.KING },
+        { color: Color.BLACK, type: Type.BISHOP },
+        { color: Color.BLACK, type: Type.KNIGHT },
+        { color: Color.BLACK, type: Type.ROOK },
       ];
     }
     if (i === 1) {
       row = [
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
-      ];
-    }
-    if (i === 7) {
-      row = [
-        `${Color.WHITE} ${Type.ROOK} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.KNIGHT} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.BISHOP} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.QUEEN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.KING} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.BISHOP} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.KNIGHT} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.ROOK} ${Type.PIECE}`,
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
+        { color: Color.BLACK, type: Type.PAWN },
       ];
     }
     if (i === 6) {
       row = [
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
-        `${Color.WHITE} ${Type.PAWN} ${Type.PIECE}`,
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+        { color: Color.WHITE, type: Type.PAWN },
+      ];
+    }
+    if (i === 7) {
+      row = [
+        { color: Color.WHITE, type: Type.ROOK },
+        { color: Color.WHITE, type: Type.KNIGHT },
+        { color: Color.WHITE, type: Type.BISHOP },
+        { color: Color.WHITE, type: Type.QUEEN },
+        { color: Color.WHITE, type: Type.KING },
+        { color: Color.WHITE, type: Type.BISHOP },
+        { color: Color.WHITE, type: Type.KNIGHT },
+        { color: Color.WHITE, type: Type.ROOK },
       ];
     }
     if (i !== 0 && i !== 1 && i !== 6 && i !== 7) {
@@ -92,7 +91,6 @@ class App extends Component {
   }
 
   handleSelectPiece(className) {
-    alert(className);
   }
 
   render() {
@@ -101,8 +99,8 @@ class App extends Component {
         <div className="board">
         {
           this.state.grids.board.map((row) => (
-            row.map((className) => {
-              return <div className={className} />;
+            row.map((cell) => {
+              return <div className={`${cell.color} SQUARE`} />;
             })
           ))
         }
@@ -110,11 +108,11 @@ class App extends Component {
         <div className="pieces">
         {
           this.state.grids.pieces.map((row) => (
-            row.map((className) => {
+            row.map((piece) => {
               return <div 
-                className={className}
+                className={`${piece.color} ${piece.type} PIECE`}
                 onClick={() => {
-                  this.handleSelectPiece(className);
+                  this.handleSelectPiece();
                 }} 
               />;
             })
