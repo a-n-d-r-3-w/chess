@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import Color from './Color';
 import Type from './Type';
@@ -68,15 +68,26 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="wrapper">
-      {
-        this.state.grids.board.map((row) => (
-          row.map((className) => {
-            return <div className={className} />;
-          })
-        ))
-      }
-      </div>
+      <Fragment>
+        <div className="board">
+        {
+          this.state.grids.board.map((row) => (
+            row.map((className) => {
+              return <div className={className} />;
+            })
+          ))
+        }
+        </div>
+        <div className="pieces">
+        {
+          this.state.grids.pieces.map((row) => (
+            row.map((className) => {
+              return <div className={className} />;
+            })
+          ))
+        }
+        </div>
+      </Fragment>
     );
   }
 }
