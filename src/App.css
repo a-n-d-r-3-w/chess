@@ -33,7 +33,7 @@
   background-size: 70%;
 }
 
-.PIECE:hover {
+.selectable:hover {
   background-color: lightgreen;
 }
 

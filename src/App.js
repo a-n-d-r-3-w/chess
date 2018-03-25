@@ -84,11 +84,13 @@ class App extends Component {
         pieces: createPieces(),
       },
       selection: {},
+      player: Color.WHITE,
     };
     this.select = this.select.bind(this);
   }
 
   select(selection) {
+    console.log(selection);
     this.setState({ selection });
   }
 
@@ -115,9 +117,16 @@ class App extends Component {
                   column: columnIndex,
                 },
               };
+              const onClick = () => {
+                if (piece.color === this.state.player) {
+                  this.select(selection);
+                } else {
+                  return; // Do nothing.
+                }
+              }
               return <div 
-                className={`${piece.color} ${piece.type} PIECE`}
-                onClick={() => { this.select(selection); }} 
+                className={`${piece.color} ${piece.type} PIECE ${piece.color === this.state.player ? 'selectable' : ''}`}
+                onClick={onClick} 
               />;
             })
           ))
