@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import Color from './Color';
 import Type from './Type';
+import PieceFactory from './PieceFactory';
 
 const NUM_ROWS = 8;
 const NUM_COLS = 8;
@@ -34,47 +35,30 @@ const createPieces = () => {
     let row;
     if (i === 0) {
       row = [
-        { color: Color.BLACK, type: Type.ROOK },
-        { color: Color.BLACK, type: Type.KNIGHT },
-        { color: Color.BLACK, type: Type.BISHOP },
-        { color: Color.BLACK, type: Type.QUEEN },
-        { color: Color.BLACK, type: Type.KING },
-        { color: Color.BLACK, type: Type.BISHOP },
-        { color: Color.BLACK, type: Type.KNIGHT },
-        { color: Color.BLACK, type: Type.ROOK },
+        PieceFactory.createBlackRook(),
+        PieceFactory.createBlackKnight(),
+        PieceFactory.createBlackBishop(),
+        PieceFactory.createBlackQueen(),
+        PieceFactory.createBlackKing(),
+        PieceFactory.createBlackBishop(),
+        PieceFactory.createBlackKnight(),
+        PieceFactory.createBlackRook(),
       ];
     } else if (i === 1) {
-      row = [
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-        { color: Color.BLACK, type: Type.PAWN },
-      ];
+      row = (new Array(NUM_COLS)).fill(PieceFactory.createBlackPawn());
     } else if (i === 6) {
-      row = [
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-        { color: Color.WHITE, type: Type.PAWN },
-      ];
+      row = (new Array(NUM_COLS)).fill(PieceFactory.createWhitePawn());
+
     } else if (i === 7) {
       row = [
-        { color: Color.WHITE, type: Type.ROOK },
-        { color: Color.WHITE, type: Type.KNIGHT },
-        { color: Color.WHITE, type: Type.BISHOP },
-        { color: Color.WHITE, type: Type.QUEEN },
-        { color: Color.WHITE, type: Type.KING },
-        { color: Color.WHITE, type: Type.BISHOP },
-        { color: Color.WHITE, type: Type.KNIGHT },
-        { color: Color.WHITE, type: Type.ROOK },
+        PieceFactory.createWhiteRook(),
+        PieceFactory.createWhiteKnight(),
+        PieceFactory.createWhiteBishop(),
+        PieceFactory.createWhiteQueen(),
+        PieceFactory.createWhiteKing(),
+        PieceFactory.createWhiteBishop(),
+        PieceFactory.createWhiteKnight(),
+        PieceFactory.createWhiteRook(),
       ];
     } else {
       row = (new Array(NUM_COLS)).fill({});
