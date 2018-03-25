@@ -26,26 +26,26 @@ const createPieces = () => {
     let row;
     if (i === 0) {
       row = [
-        `${Color.BLACK} ${Type.ROOK}`,
-        `${Color.BLACK} ${Type.KNIGHT}`,
-        `${Color.BLACK} ${Type.BISHOP}`,
-        `${Color.BLACK} ${Type.QUEEN}`,
-        `${Color.BLACK} ${Type.KING}`,
-        `${Color.BLACK} ${Type.BISHOP}`,
-        `${Color.BLACK} ${Type.KNIGHT}`,
-        `${Color.BLACK} ${Type.ROOK}`,
+        `${Color.BLACK} ${Type.ROOK} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.KNIGHT} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.BISHOP} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.QUEEN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.KING} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.BISHOP} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.KNIGHT} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.ROOK} ${Type.PIECE}`,
       ];
     }
     if (i === 1) {
       row = [
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
-        `${Color.BLACK} ${Type.PAWN}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
+        `${Color.BLACK} ${Type.PAWN} ${Type.PIECE}`,
       ];
     }
     if (i !== 0 && i !== 1) {

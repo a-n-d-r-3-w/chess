@@ -5,5 +5,6 @@ export default Object.freeze({
     BISHOP: 'BISHOP',
     QUEEN: 'QUEEN',
     KING: 'KING',
-    PAWN: 'PAWN,',
+    PAWN: 'PAWN',
+    PIECE: 'PIECE',
 });
