@@ -1,15 +1,8 @@
 import Color from './Color';
 import Type from './Type';
 
-class Piece {
-    constructor(color, type) {
-        this.color = color;
-        this.type = type;
-    }
-}
-
 const createPiece = (color, type) => {
-    return new Piece(color, type);
+    return { color, type };
 }
 
 export default {
