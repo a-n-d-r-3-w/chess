@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Color from './Color';
-import Type from './Type';
 import PieceFactory from './PieceFactory';
 
 const NUM_ROWS = 8;
@@ -18,7 +17,7 @@ const createBoard = () => {
     array.push(row);
   }
   return array;
-}
+};
 
 const createHighlights = () => {
   const array = [];
@@ -27,9 +26,9 @@ const createHighlights = () => {
     array.push(row);
   }
   return array;
-}
+};
 
-const initializePieces = () => {
+const initializePiecesMatrix = () => {
   const pieces = [];
   pieces.push([
     PieceFactory.createBlackRook(),
@@ -58,17 +57,15 @@ const initializePieces = () => {
     PieceFactory.createWhiteRook(),
   ]);
   return pieces;
-}
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grids: {
-        board: createBoard(),
-        pieces: initializePieces(),
-        highlights: createHighlights(),
-      },
+      squaresMatrix: createBoard(),
+      piecesMatrix: initializePiecesMatrix(),
+      highlightsMatrix: createHighlights(),
       selection: {},
       player: Color.WHITE,
     };
@@ -78,7 +75,7 @@ class App extends Component {
   select(selection) {
     this.setState((prevState) => {
       const nextState = prevState;
-      nextState.grids.highlights[selection.position.row][selection.position.column] = {
+      nextState.highlightsMatrix[selection.position.row][selection.position.column] = {
         isHighlighted: true,
       };
       return nextState;
@@ -90,7 +87,7 @@ class App extends Component {
       <Fragment>
         <div className="board">
         {
-          this.state.grids.board.map((row) => (
+          this.state.squaresMatrix.map((row) => (
             row.map((cell) => {
               return <div className={`${cell.color} SQUARE`} />;
             })
@@ -99,23 +96,22 @@ class App extends Component {
         </div>
         <div className="pieces">
         {
-          this.state.grids.pieces.map((row, rowIndex) => (
+          this.state.piecesMatrix.map((row, rowIndex) => (
             row.map((piece, columnIndex) => {
               const selectable = piece.color === this.state.player;
               const onClick = () => {
-                if (selectable) {
-                  const selection = {
-                    piece,
-                    position: {
-                      row: rowIndex,
-                      column: columnIndex,
-                    },
-                  };
-                  this.select(selection);
-                } else {
-                  return; // Do nothing.
+                if (!selectable) {
+                  return;
                 }
-              }
+                const selection = {
+                  piece,
+                  position: {
+                    row: rowIndex,
+                    column: columnIndex,
+                  },
+                };
+                this.select(selection);
+              };
               return <div 
                 className={`${piece.color} ${piece.type} PIECE ${selectable ? 'selectable' : ''}`}
                 onClick={onClick} 
@@ -126,7 +122,7 @@ class App extends Component {
         </div>
         <div className="highlights">
         {
-          this.state.grids.highlights.map((row) => (
+          this.state.highlightsMatrix.map((row) => (
             row.map((square) => {              
               return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''}/>;
             })

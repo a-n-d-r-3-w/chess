@@ -3,7 +3,7 @@ import Type from './Type';
 
 const createPiece = (color, type) => {
     return { color, type };
-}
+};
 
 export default {
     createWhitePawn: () => createPiece(Color.WHITE, Type.PAWN),
