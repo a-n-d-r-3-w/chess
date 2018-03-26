@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Color from './Color';
-import PieceFactory from './PieceFactory';
+import Piece from './Piece';
 
 const NUM_ROWS = 8;
 const NUM_COLS = 8;
@@ -31,30 +31,30 @@ const createHighlights = () => {
 const initializePiecesMatrix = () => {
   const pieces = [];
   pieces.push([
-    PieceFactory.createBlackRook(),
-    PieceFactory.createBlackKnight(),
-    PieceFactory.createBlackBishop(),
-    PieceFactory.createBlackQueen(),
-    PieceFactory.createBlackKing(),
-    PieceFactory.createBlackBishop(),
-    PieceFactory.createBlackKnight(),
-    PieceFactory.createBlackRook(),
+    Piece.BLACK_ROOK,
+    Piece.BLACK_KNIGHT,
+    Piece.BLACK_BISHOP,
+    Piece.BLACK_QUEEN,
+    Piece.BLACK_KING,
+    Piece.BLACK_BISHOP,
+    Piece.BLACK_KNIGHT,
+    Piece.BLACK_ROOK,
   ]);
-  pieces.push((new Array(NUM_COLS)).fill(PieceFactory.createBlackPawn()));
+  pieces.push((new Array(NUM_COLS)).fill(Piece.BLACK_PAWN));
   pieces.push((new Array(NUM_COLS)).fill({}));
   pieces.push((new Array(NUM_COLS)).fill({}));
   pieces.push((new Array(NUM_COLS)).fill({}));
   pieces.push((new Array(NUM_COLS)).fill({}));
-  pieces.push((new Array(NUM_COLS)).fill(PieceFactory.createWhitePawn()));
+  pieces.push((new Array(NUM_COLS)).fill(Piece.WHITE_PAWN));
   pieces.push([
-    PieceFactory.createWhiteRook(),
-    PieceFactory.createWhiteKnight(),
-    PieceFactory.createWhiteBishop(),
-    PieceFactory.createWhiteQueen(),
-    PieceFactory.createWhiteKing(),
-    PieceFactory.createWhiteBishop(),
-    PieceFactory.createWhiteKnight(),
-    PieceFactory.createWhiteRook(),
+    Piece.WHITE_ROOK,
+    Piece.WHITE_KNIGHT,
+    Piece.WHITE_BISHOP,
+    Piece.WHITE_QUEEN,
+    Piece.WHITE_KING,
+    Piece.WHITE_BISHOP,
+    Piece.WHITE_KNIGHT,
+    Piece.WHITE_ROOK,
   ]);
   return pieces;
 };
