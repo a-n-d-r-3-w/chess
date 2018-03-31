@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Color from './Color';
 import Piece from './Piece';
@@ -84,12 +84,12 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="game-container">
         <div className="board">
         {
-          this.state.squaresMatrix.map((row) => (
-            row.map((cell) => {
-              return <div className={`${cell.color} SQUARE`} />;
+          this.state.squaresMatrix.map((row, rowIndex) => (
+            row.map((cell, columnIndex) => {
+              return <div className={`${cell.color} SQUARE`} key={`${rowIndex},${columnIndex}`} />;
             })
           ))
         }
@@ -114,7 +114,8 @@ class App extends Component {
               };
               return <div 
                 className={`${piece.color} ${piece.type} PIECE ${selectable ? 'selectable' : ''}`}
-                onClick={onClick} 
+                onClick={onClick}
+                key={`${rowIndex},${columnIndex}`}
               />;
             })
           ))
@@ -122,14 +123,14 @@ class App extends Component {
         </div>
         <div className="highlights">
         {
-          this.state.highlightsMatrix.map((row) => (
-            row.map((square) => {              
-              return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''}/>;
+          this.state.highlightsMatrix.map((row, rowIndex) => (
+            row.map((square, columnIndex) => {
+              return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''} key={`${rowIndex},${columnIndex}`} />;
             })
           ))
         }
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
