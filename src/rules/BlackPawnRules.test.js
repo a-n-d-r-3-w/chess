@@ -1,4 +1,4 @@
-import pawn from './pawn';
+import pawn from './BlackPawnRules';
 import Piece from '../Piece';
 
 let emptyMatrix;
