@@ -38,7 +38,8 @@ const getTwoStepsForward = function (selection) {
 
 const canCaptureEnemy1 = function (pieces, selection) {
   const { row, column } = selection.position;
-  const target = pieces[row + 1][column + 1];
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  const target = pieces[row + addend][column + 1];
   if (!isPiece(target)) {
     return false;
   }
@@ -47,7 +48,8 @@ const canCaptureEnemy1 = function (pieces, selection) {
 
 const canCaptureEnemy2 = function (pieces, selection) {
   const { row, column } = selection.position;
-  const target = pieces[row + 1][column - 1];
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  const target = pieces[row + addend][column - 1];
   if (!isPiece(target)) {
     return false;
   }
@@ -56,12 +58,14 @@ const canCaptureEnemy2 = function (pieces, selection) {
 
 const getEnemy1Position = function (selection) {
   const { row, column } = selection.position;
-  return { row: row + 1, column: column + 1 };
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  return { row: row + addend, column: column + 1 };
 };
 
 const getEnemy2Position = function (selection) {
   const { row, column } = selection.position;
-  return { row: row + 1, column: column - 1 };
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  return { row: row + addend, column: column - 1 };
 };
 
 const getMoves = (pieces, selection) => {
