@@ -1,5 +1,5 @@
 import Type from '../Type';
-import { get } from 'lodash';
+import { get, isEmpty } from 'lodash';
 
 const getValidMoves = (piecesMatrix, selection) => {
   const type = get(selection, 'piece.type');
@@ -8,6 +8,9 @@ const getValidMoves = (piecesMatrix, selection) => {
   }
   const { row, column } = selection.position;
   const validMoves = [];
+  if (!isEmpty(piecesMatrix[row + 1][column])) {
+    return [];
+  }
   validMoves.push({ row: row + 1, column: column });
   if (row === 1) {
     validMoves.push({ row: row + 2, column: column });
