@@ -1,27 +1,25 @@
 import { get, isEmpty } from 'lodash';
 import { isPiece } from '../Piece';
 
-const canTakeAStepForward = (pieces, selection) => {
-  const { row, column } = selection.position;
+const canTakeAStepForward = (pieces, { row, column }) => {
   return isEmpty(pieces[row + 1][column]);
 };
 
-const isAtStartingRow = (selection) => {
-  return selection.position.row === 1;
+const isAtStartingRow = (row) => {
+  return row === 1;
 };
 
-const canTakeTwoStepsForward = (pieces, selection) => {
-  const { row, column } = selection.position;
-  return isAtStartingRow(selection) &&
+const canTakeTwoStepsForward = (pieces, { row, column }) => {
+  return isAtStartingRow(row) &&
     isEmpty(pieces[row + 1][column]) &&
     isEmpty(pieces[row + 2][column]);
 };
 
-const getOneStepForward = function (row, column) {
+const getOneStepForward = function ({ row, column }) {
   return { row: row + 1, column };
 };
 
-const getTwoStepsForward = function (row, column) {
+const getTwoStepsForward = function ({ row, column }) {
   return { row: row + 2, column };
 };
 
@@ -43,27 +41,34 @@ const canCaptureEnemy2 = function (pieces, selection) {
   return target.color !== selection.piece.color;
 };
 
-const getMoves = (pieces, selection) => {
-  const validMoves = [];
-  const { row, column } = selection.position;
+const getEnemy1Position = function ({ row, column }) {
+  return { row: row + 1, column: column + 1 };
+};
 
-  if (canTakeAStepForward(pieces, selection)) {
-    validMoves.push(getOneStepForward(row, column));
+const getEnemy2Position = function ({ row, column }) {
+  return { row: row + 1, column: column - 1 };
+};
+
+const getMoves = (pieces, selection) => {
+  const moves = [];
+
+  if (canTakeAStepForward(pieces, selection.position)) {
+    moves.push(getOneStepForward(selection.position));
   }
 
-  if (canTakeTwoStepsForward(pieces, selection)) {
-    validMoves.push(getTwoStepsForward(row, column));
+  if (canTakeTwoStepsForward(pieces, selection.position)) {
+    moves.push(getTwoStepsForward(selection.position));
   }
 
   if (canCaptureEnemy1(pieces, selection)) {
-    validMoves.push({ row: row + 1, column: column + 1 });
+    moves.push(getEnemy1Position(selection.position));
   }
 
   if (canCaptureEnemy2(pieces, selection)) {
-    validMoves.push({ row: row + 1, column: column - 1 });
+    moves.push(getEnemy2Position(selection.position));
   }
 
-  return validMoves;
+  return moves;
 };
 
 export default {
