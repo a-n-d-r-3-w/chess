@@ -46,4 +46,14 @@ describe('black pawn', () => {
       position: { row: 1, column: 0 }
     })).toEqual([{ row: 2, column: 1 }]);
   });
+
+  it('can go diagonally left to capture a piece of the opposite color', () => {
+    const pieces = emptyMatrix.slice();
+    pieces[2][7] = Piece.BLACK_ROOK;
+    pieces[2][6] = Piece.WHITE_PAWN;
+    expect(pawn.getValidMoves(pieces, {
+      piece: Piece.BLACK_PAWN,
+      position: { row: 1, column: 7 }
+    })).toEqual([{ row: 2, column: 6 }]);
+  });
 });

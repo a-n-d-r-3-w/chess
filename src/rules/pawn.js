@@ -26,6 +26,13 @@ const getValidMoves = (pieces, selection) => {
     }
   }
 
+  if (!isEmpty(pieces[row + 1][column - 1])) {
+    const temp = pieces[row + 1][column - 1];
+    if (temp.color !== color) {
+      validMoves.push({ row: row + 1, column: column - 1 });
+    }
+  }
+
   return validMoves;
 };
 
