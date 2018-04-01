@@ -1,30 +1,40 @@
 import { get, isEmpty } from 'lodash';
 import { isPiece } from '../Piece';
+import { isBlack, isWhite } from "../Color";
+
+const isBlackPieceSelected = (selection) => isBlack(selection.piece.color);
 
 const canTakeAStepForward = (pieces, selection) => {
   const { row, column } = selection.position;
-  return isEmpty(pieces[row + 1][column]);
+  const forwardRowIndex = isBlackPieceSelected(selection) ? row + 1 : row - 1;
+  return isEmpty(pieces[forwardRowIndex][column]);
 };
 
-const isAtStartingRow = (row) => {
-  return row === 1;
+const isAtStartingRow = (selection) => {
+  const STARTING_ROW = isBlackPieceSelected(selection) ? 1 : 6;
+  const { row } = selection.position;
+  return row === STARTING_ROW;
 };
 
 const canTakeTwoStepsForward = (pieces, selection) => {
   const { row, column } = selection.position;
-  return isAtStartingRow(row) &&
-    isEmpty(pieces[row + 1][column]) &&
-    isEmpty(pieces[row + 2][column]);
+  const forwardRowIndex1 = isBlackPieceSelected(selection) ? row + 1 : row - 1;
+  const forwardRowIndex2 = isBlackPieceSelected(selection) ? row + 2 : row - 2;
+  return isAtStartingRow(selection) &&
+    isEmpty(pieces[forwardRowIndex1][column]) &&
+    isEmpty(pieces[forwardRowIndex2][column]);
 };
 
 const getOneStepForward = function (selection) {
   const { row, column } = selection.position;
-  return { row: row + 1, column };
+  const forwardRowIndex = isBlackPieceSelected(selection) ? row + 1 : row - 1;
+  return { row: forwardRowIndex, column };
 };
 
 const getTwoStepsForward = function (selection) {
   const { row, column } = selection.position;
-  return { row: row + 2, column };
+  const rowIndex = isBlackPieceSelected(selection) ? row + 2 : row - 2;
+  return { row: rowIndex, column };
 };
 
 const canCaptureEnemy1 = function (pieces, selection) {

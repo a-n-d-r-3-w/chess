@@ -1,4 +1,4 @@
-import pawn from './BlackPawnRules';
+import pawn from './PawnRules';
 import Piece from '../Piece';
 
 let emptyMatrix;
@@ -29,7 +29,7 @@ describe('black pawn', () => {
   });
 
   it('cannot go forward if it is blocked by any piece', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[2][0] = Piece.BLACK_ROOK;
     expect(pawn.getValidMoves(pieces, {
       piece: Piece.BLACK_PAWN,
@@ -38,7 +38,7 @@ describe('black pawn', () => {
   });
 
   it('can go diagonally right to capture a piece of the opposite color', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[2][0] = Piece.BLACK_ROOK;
     pieces[2][1] = Piece.WHITE_PAWN;
     expect(pawn.getValidMoves(pieces, {
@@ -48,7 +48,7 @@ describe('black pawn', () => {
   });
 
   it('can go diagonally left to capture a piece of the opposite color', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[2][7] = Piece.BLACK_ROOK;
     pieces[2][6] = Piece.WHITE_PAWN;
     expect(pawn.getValidMoves(pieces, {
@@ -79,7 +79,7 @@ describe('white pawn', () => {
   });
 
   it('cannot go forward if it is blocked by any piece', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[5][0] = Piece.WHITE_ROOK;
     expect(pawn.getValidMoves(pieces, {
       piece: Piece.WHITE_PAWN,
@@ -88,7 +88,7 @@ describe('white pawn', () => {
   });
 
   it('can go diagonally right to capture a piece of the opposite color', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[5][0] = Piece.WHITE_ROOK;
     pieces[5][1] = Piece.BLACK_PAWN;
     expect(pawn.getValidMoves(pieces, {
@@ -98,7 +98,7 @@ describe('white pawn', () => {
   });
 
   it('can go diagonally left to capture a piece of the opposite color', () => {
-    const pieces = emptyMatrix.slice();
+    const pieces = emptyMatrix;
     pieces[5][7] = Piece.WHITE_ROOK;
     pieces[5][6] = Piece.BLACK_PAWN;
     expect(pawn.getValidMoves(pieces, {
