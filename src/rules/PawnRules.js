@@ -1,6 +1,6 @@
 import { get, isEmpty } from 'lodash';
 import { isPiece } from '../Piece';
-import { isBlack, isWhite } from "../Color";
+import { isBlack } from "../Color";
 
 const isBlackPieceSelected = (selection) => isBlack(selection.piece.color);
 
