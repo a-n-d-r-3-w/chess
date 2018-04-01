@@ -6,35 +6,34 @@ const isBlackPieceSelected = (selection) => isBlack(selection.piece.color);
 
 const canTakeAStepForward = (pieces, selection) => {
   const { row, column } = selection.position;
-  const forwardRowIndex = isBlackPieceSelected(selection) ? row + 1 : row - 1;
-  return isEmpty(pieces[forwardRowIndex][column]);
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  return isEmpty(pieces[row + addend][column]);
 };
 
 const isAtStartingRow = (selection) => {
   const STARTING_ROW = isBlackPieceSelected(selection) ? 1 : 6;
-  const { row } = selection.position;
-  return row === STARTING_ROW;
+  return selection.position.row === STARTING_ROW;
 };
 
 const canTakeTwoStepsForward = (pieces, selection) => {
   const { row, column } = selection.position;
-  const forwardRowIndex1 = isBlackPieceSelected(selection) ? row + 1 : row - 1;
-  const forwardRowIndex2 = isBlackPieceSelected(selection) ? row + 2 : row - 2;
+  const addend1 = isBlackPieceSelected(selection) ? 1 : -1;
+  const addend2 = isBlackPieceSelected(selection) ? 2 : -2;
   return isAtStartingRow(selection) &&
-    isEmpty(pieces[forwardRowIndex1][column]) &&
-    isEmpty(pieces[forwardRowIndex2][column]);
+    isEmpty(pieces[row + addend1][column]) &&
+    isEmpty(pieces[row + addend2][column]);
 };
 
 const getOneStepForward = function (selection) {
   const { row, column } = selection.position;
-  const forwardRowIndex = isBlackPieceSelected(selection) ? row + 1 : row - 1;
-  return { row: forwardRowIndex, column };
+  const addend = isBlackPieceSelected(selection) ? 1 : -1;
+  return { row: row + addend, column };
 };
 
 const getTwoStepsForward = function (selection) {
   const { row, column } = selection.position;
-  const rowIndex = isBlackPieceSelected(selection) ? row + 2 : row - 2;
-  return { row: rowIndex, column };
+  const addend = isBlackPieceSelected(selection) ? 2 : -2;
+  return { row: row + addend, column };
 };
 
 const canCaptureEnemy1 = function (pieces, selection) {
