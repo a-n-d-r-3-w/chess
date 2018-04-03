@@ -24,7 +24,9 @@ describe('Board', () => {
     beforeEach(() => {
         board = new Board();
     });
+
     it('Black pieces are in their correct starting positions', () => {
+        board.initialize();
         expect(board.get({ row: 0, column: 0 })).toEqual({ color: 'black', type: 'rook'});
         expect(board.get({ row: 0, column: 1 })).toEqual({ color: 'black', type: 'knight'});
         expect(board.get({ row: 0, column: 2 })).toEqual({ color: 'black', type: 'bishop'});
@@ -44,6 +46,7 @@ describe('Board', () => {
     });
 
     it('White pieces are in their correct starting positions', () => {
+        board.initialize();
         expect(board.get({ row: 7, column: 0 })).toEqual({ color: 'white', type: 'rook'});
         expect(board.get({ row: 7, column: 1 })).toEqual({ color: 'white', type: 'knight'});
         expect(board.get({ row: 7, column: 2 })).toEqual({ color: 'white', type: 'bishop'});
@@ -102,6 +105,7 @@ describe('Board', () => {
         });
 
         it('returns false for a non-empty position', () => {
+            board.put({ color: 'black', type: 'queen' }, { row: 6, column: 0 });
             expect(board.isEmpty({ row: 6, column: 0 })).toBe(false);
         });
     })

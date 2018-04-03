@@ -9,6 +9,9 @@ export const indexToRowColumn = index => {
 class Board {
     constructor() {
         this.state = (new Array(64)).fill(null);
+    }
+
+    initialize() {
         this.initializeBlackPieces();
         this.initializeWhitePieces();
     }
