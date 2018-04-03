@@ -51,8 +51,12 @@ class Board {
         this.state[rowColumnToIndex({ row: 6, column: 7 })] = { color: 'white', type: 'pawn' };
     }
 
-    get(index) {
-        return this.state[index];
+    get(rowColumn) {
+        return this.state[rowColumnToIndex(rowColumn)];
+    }
+
+    put(piece, rowColumn) {
+        this.state[rowColumnToIndex(rowColumn)] = piece;
     }
 }
 
