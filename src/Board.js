@@ -62,6 +62,12 @@ class Board {
     remove(rowColumn) {
         this.put(null, rowColumn);
     }
+
+    move(startRowColumn, endRowColumn) {
+        const piece = this.get(startRowColumn);
+        this.put(piece, endRowColumn);
+        this.remove(startRowColumn);
+    }
 }
 
 export default Board;

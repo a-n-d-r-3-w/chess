@@ -82,4 +82,16 @@ describe('Board', () => {
             expect(board.get({ row: 3, column: 3 })).toEqual(null);
         });
     });
+
+    describe('move', () => {
+        it('moves a piece from the starting position to the ending position', () => {
+            // Set up
+            board.put({ color: 'black', type: 'queen' }, { row: 3, column: 3 });
+            expect(board.get({ row: 5, column: 5 })).toEqual(null);
+            // Exercise
+            board.move({ row: 3, column: 3 }, { row: 5, column: 5 });
+            expect(board.get({ row: 5, column: 5 })).toEqual({ color: 'black', type: 'queen' });
+            expect(board.get({ row: 3, column: 3 })).toEqual(null);
+        });
+    });
 });
