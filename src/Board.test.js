@@ -35,14 +35,14 @@ describe('Board', () => {
         expect(board.get({ row: 0, column: 5 })).toEqual({ color: 'black', type: 'bishop'});
         expect(board.get({ row: 0, column: 6 })).toEqual({ color: 'black', type: 'knight'});
         expect(board.get({ row: 0, column: 7 })).toEqual({ color: 'black', type: 'rook'});
-        expect(board.get({ row: 1, column: 0 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 1 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 2 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 3 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 4 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 5 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 6 })).toEqual({ color: 'black', type: 'pawn'});
-        expect(board.get({ row: 1, column: 7 })).toEqual({ color: 'black', type: 'pawn'});
+        expect(board.get({ row: 1, column: 0 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 1 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 2 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 3 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 4 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 5 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 6 })).toEqual({ color: 'black', type: 'Pawn'});
+        expect(board.get({ row: 1, column: 7 })).toEqual({ color: 'black', type: 'Pawn'});
     });
 
     it('White pieces are in their correct starting positions', () => {
@@ -55,14 +55,14 @@ describe('Board', () => {
         expect(board.get({ row: 7, column: 5 })).toEqual({ color: 'white', type: 'bishop'});
         expect(board.get({ row: 7, column: 6 })).toEqual({ color: 'white', type: 'knight'});
         expect(board.get({ row: 7, column: 7 })).toEqual({ color: 'white', type: 'rook'});
-        expect(board.get({ row: 6, column: 0 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 1 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 2 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 3 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 4 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 5 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 6 })).toEqual({ color: 'white', type: 'pawn'});
-        expect(board.get({ row: 6, column: 7 })).toEqual({ color: 'white', type: 'pawn'});
+        expect(board.get({ row: 6, column: 0 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 1 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 2 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 3 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 4 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 5 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 6 })).toEqual({ color: 'white', type: 'Pawn'});
+        expect(board.get({ row: 6, column: 7 })).toEqual({ color: 'white', type: 'Pawn'});
     });
 
     describe('put', () => {

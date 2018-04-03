@@ -1,4 +1,4 @@
-import pawn from './Pawn';
+import getPawnMoves from './Pawn';
 import Piece from '../Piece';
 import Board from '../Board';
 
@@ -8,9 +8,9 @@ beforeEach(() => {
     board = new Board();
 });
 
-describe('black pawn', () => {
+describe('black Pawn', () => {
     it('can take 1 or 2 steps from its starting point', () => {
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.BLACK_PAWN,
             position: {row: 1, column: 0}
         })).toEqual([
@@ -20,7 +20,7 @@ describe('black pawn', () => {
     });
 
     it('can take only 1 step if it\'s not at its starting point', () => {
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.BLACK_PAWN,
             position: {row: 3, column: 0}
         })).toEqual([
@@ -30,7 +30,7 @@ describe('black pawn', () => {
 
     it('cannot go forward if it is blocked by any piece', () => {
         board.put(Piece.BLACK_ROOK, {row: 2, column: 0});
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.BLACK_PAWN,
             position: {row: 1, column: 0}
         })).toEqual([]);
@@ -39,7 +39,7 @@ describe('black pawn', () => {
     it('can go diagonally right to capture a piece of the opposite color', () => {
         board.put(Piece.BLACK_ROOK, {row: 2, column: 0});
         board.put(Piece.WHITE_PAWN, {row: 2, column: 1});
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.BLACK_PAWN,
             position: {row: 1, column: 0}
         })).toEqual([{row: 2, column: 1}]);
@@ -48,16 +48,16 @@ describe('black pawn', () => {
     it('can go diagonally left to capture a piece of the opposite color', () => {
         board.put(Piece.BLACK_ROOK, {row: 2, column: 7});
         board.put(Piece.WHITE_PAWN, {row: 2, column: 6});
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.BLACK_PAWN,
             position: {row: 1, column: 7}
         })).toEqual([{row: 2, column: 6}]);
     });
 });
 
-describe('white pawn', () => {
+describe('white Pawn', () => {
     it('can take 1 or 2 steps from its starting point', () => {
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.WHITE_PAWN,
             position: {row: 6, column: 0}
         })).toEqual([
@@ -67,7 +67,7 @@ describe('white pawn', () => {
     });
 
     it('can take only 1 step if it\'s not at its starting point', () => {
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.WHITE_PAWN,
             position: {row: 4, column: 0}
         })).toEqual([
@@ -77,7 +77,7 @@ describe('white pawn', () => {
 
     it('cannot go forward if it is blocked by any piece', () => {
         board.put(Piece.WHITE_ROOK, { row: 5, column: 0 });
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.WHITE_PAWN,
             position: {row: 6, column: 0}
         })).toEqual([]);
@@ -86,7 +86,7 @@ describe('white pawn', () => {
     it('can go diagonally right to capture a piece of the opposite color', () => {
         board.put(Piece.WHITE_ROOK, { row: 5, column: 0 });
         board.put(Piece.BLACK_PAWN, { row: 5, column: 1 });
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.WHITE_PAWN,
             position: {row: 6, column: 0}
         })).toEqual([{row: 5, column: 1}]);
@@ -95,7 +95,7 @@ describe('white pawn', () => {
     it('can go diagonally left to capture a piece of the opposite color', () => {
         board.put(Piece.WHITE_ROOK, { row: 5, column: 7 });
         board.put(Piece.BLACK_PAWN, { row: 5, column: 6 });
-        expect(pawn.getMoves(board, {
+        expect(getPawnMoves(board, {
             piece: Piece.WHITE_PAWN,
             position: {row: 6, column: 7}
         })).toEqual([{row: 5, column: 6}]);
