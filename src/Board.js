@@ -8,24 +8,47 @@ export const indexToRowColumn = index => {
 
 class Board {
     constructor() {
-        const state = (new Array(64)).fill(null);
-        state[rowColumnToIndex({ row: 0, column: 0 })] = { color: 'black', type: 'rook' };
-        state[rowColumnToIndex({ row: 0, column: 1 })] = { color: 'black', type: 'knight' };
-        state[rowColumnToIndex({ row: 0, column: 2 })] = { color: 'black', type: 'bishop' };
-        state[rowColumnToIndex({ row: 0, column: 3 })] = { color: 'black', type: 'queen' };
-        state[rowColumnToIndex({ row: 0, column: 4 })] = { color: 'black', type: 'king' };
-        state[rowColumnToIndex({ row: 0, column: 5 })] = { color: 'black', type: 'bishop' };
-        state[rowColumnToIndex({ row: 0, column: 6 })] = { color: 'black', type: 'knight' };
-        state[rowColumnToIndex({ row: 0, column: 7 })] = { color: 'black', type: 'rook' };
-        state[rowColumnToIndex({ row: 1, column: 0 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 1 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 2 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 3 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 4 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 5 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 6 })] = { color: 'black', type: 'pawn' };
-        state[rowColumnToIndex({ row: 1, column: 7 })] = { color: 'black', type: 'pawn' };
-        this.state = state;
+        this.state = (new Array(64)).fill(null);
+        this.initializeBlackPieces();
+        this.initializeWhitePieces();
+    }
+
+    initializeBlackPieces() {
+        this.state[rowColumnToIndex({ row: 0, column: 0 })] = { color: 'black', type: 'rook' };
+        this.state[rowColumnToIndex({ row: 0, column: 1 })] = { color: 'black', type: 'knight' };
+        this.state[rowColumnToIndex({ row: 0, column: 2 })] = { color: 'black', type: 'bishop' };
+        this.state[rowColumnToIndex({ row: 0, column: 3 })] = { color: 'black', type: 'queen' };
+        this.state[rowColumnToIndex({ row: 0, column: 4 })] = { color: 'black', type: 'king' };
+        this.state[rowColumnToIndex({ row: 0, column: 5 })] = { color: 'black', type: 'bishop' };
+        this.state[rowColumnToIndex({ row: 0, column: 6 })] = { color: 'black', type: 'knight' };
+        this.state[rowColumnToIndex({ row: 0, column: 7 })] = { color: 'black', type: 'rook' };
+        this.state[rowColumnToIndex({ row: 1, column: 0 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 1 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 2 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 3 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 4 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 5 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 6 })] = { color: 'black', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 1, column: 7 })] = { color: 'black', type: 'pawn' };
+    }
+
+    initializeWhitePieces() {
+        this.state[rowColumnToIndex({ row: 7, column: 0 })] = { color: 'white', type: 'rook' };
+        this.state[rowColumnToIndex({ row: 7, column: 1 })] = { color: 'white', type: 'knight' };
+        this.state[rowColumnToIndex({ row: 7, column: 2 })] = { color: 'white', type: 'bishop' };
+        this.state[rowColumnToIndex({ row: 7, column: 3 })] = { color: 'white', type: 'queen' };
+        this.state[rowColumnToIndex({ row: 7, column: 4 })] = { color: 'white', type: 'king' };
+        this.state[rowColumnToIndex({ row: 7, column: 5 })] = { color: 'white', type: 'bishop' };
+        this.state[rowColumnToIndex({ row: 7, column: 6 })] = { color: 'white', type: 'knight' };
+        this.state[rowColumnToIndex({ row: 7, column: 7 })] = { color: 'white', type: 'rook' };
+        this.state[rowColumnToIndex({ row: 6, column: 0 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 1 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 2 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 3 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 4 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 5 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 6 })] = { color: 'white', type: 'pawn' };
+        this.state[rowColumnToIndex({ row: 6, column: 7 })] = { color: 'white', type: 'pawn' };
     }
 
     get(index) {
