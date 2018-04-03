@@ -95,4 +95,14 @@ describe('Board', () => {
             expect(board.get({ row: 3, column: 3 })).toEqual(null);
         });
     });
+
+    describe('isEmpty', () => {
+        it('returns true for an empty position', () => {
+            expect(board.isEmpty({ row: 2, column: 0 })).toBe(true);
+        });
+
+        it('returns false for a non-empty position', () => {
+            expect(board.isEmpty({ row: 6, column: 0 })).toBe(false);
+        });
+    })
 });

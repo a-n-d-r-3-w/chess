@@ -68,6 +68,10 @@ class Board {
         this.put(piece, endRowColumn);
         this.remove(startRowColumn);
     }
+
+    isEmpty(rowColumn) {
+        return this.get(rowColumn) === null;
+    }
 }
 
 export default Board;
