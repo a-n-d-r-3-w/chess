@@ -75,6 +75,10 @@ class Board {
     isEmpty(rowColumn) {
         return this.get(rowColumn) === null;
     }
+
+    isOccupied(rowColumn) {
+        return !this.isEmpty(rowColumn);
+    }
 }
 
 export default Board;

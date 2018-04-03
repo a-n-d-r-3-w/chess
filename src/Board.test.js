@@ -104,9 +104,20 @@ describe('Board', () => {
             expect(board.isEmpty({ row: 2, column: 0 })).toBe(true);
         });
 
-        it('returns false for a non-empty position', () => {
+        it('returns false for an occupied position', () => {
             board.put({ color: 'black', type: 'queen' }, { row: 6, column: 0 });
             expect(board.isEmpty({ row: 6, column: 0 })).toBe(false);
         });
-    })
+    });
+
+    describe('isOccupied', () => {
+        it('returns true for an occupied position', () => {
+            board.put({ color: 'black', type: 'queen' }, { row: 2, column: 0 });
+            expect(board.isOccupied({ row: 2, column: 0 })).toBe(true);
+        });
+
+        it('returns false for an empty position', () => {
+            expect(board.isOccupied({ row: 6, column: 0 })).toBe(false);
+        });
+    });
 });
