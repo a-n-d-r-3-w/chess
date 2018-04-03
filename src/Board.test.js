@@ -73,7 +73,7 @@ describe('Board', () => {
 
     describe('remove', () => {
         it('remove a piece at the specified position', () => {
-            // Set up
+            // Setup
             board.put({ color: 'black', type: 'knight' }, { row: 3, column: 3 });
             expect(board.get({ row: 3, column: 3 })).toEqual({ color: 'black', type: 'knight' });
             // Exercise
@@ -85,11 +85,12 @@ describe('Board', () => {
 
     describe('move', () => {
         it('moves a piece from the starting position to the ending position', () => {
-            // Set up
+            // Setup
             board.put({ color: 'black', type: 'queen' }, { row: 3, column: 3 });
             expect(board.get({ row: 5, column: 5 })).toEqual(null);
             // Exercise
             board.move({ row: 3, column: 3 }, { row: 5, column: 5 });
+            // Verify
             expect(board.get({ row: 5, column: 5 })).toEqual({ color: 'black', type: 'queen' });
             expect(board.get({ row: 3, column: 3 })).toEqual(null);
         });
