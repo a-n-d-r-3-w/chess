@@ -99,25 +99,57 @@ describe('Board', () => {
         });
     });
 
-    describe('isEmpty', () => {
+    describe('isEmptyAt', () => {
         it('returns true for an empty position', () => {
-            expect(board.isEmpty({ row: 2, column: 0 })).toBe(true);
+            expect(board.isEmptyAt({ row: 2, column: 0 })).toBe(true);
         });
 
         it('returns false for an occupied position', () => {
             board.put({ color: 'black', type: 'queen' }, { row: 6, column: 0 });
-            expect(board.isEmpty({ row: 6, column: 0 })).toBe(false);
+            expect(board.isEmptyAt({ row: 6, column: 0 })).toBe(false);
         });
     });
 
-    describe('isOccupied', () => {
+    describe('isOccupiedAt', () => {
         it('returns true for an occupied position', () => {
             board.put({ color: 'black', type: 'queen' }, { row: 2, column: 0 });
-            expect(board.isOccupied({ row: 2, column: 0 })).toBe(true);
+            expect(board.isOccupiedAt({ row: 2, column: 0 })).toBe(true);
         });
 
         it('returns false for an empty position', () => {
-            expect(board.isOccupied({ row: 6, column: 0 })).toBe(false);
+            expect(board.isOccupiedAt({ row: 6, column: 0 })).toBe(false);
+        });
+    });
+
+    describe('isBlackAt', () => {
+        it('returns true for a position occupied by a black piece', () => {
+            board.put({ color: 'black', type: 'queen' }, { row: 2, column: 0 });
+            expect(board.isBlackAt({ row: 2, column: 0 })).toBe(true);
+        });
+
+        it('returns false for a position occupied by a white piece', () => {
+            board.put({ color: 'white', type: 'queen' }, { row: 2, column: 0 });
+            expect(board.isBlackAt({ row: 2, column: 0 })).toBe(false);
+        });
+
+        it('returns false for an empty position', () => {
+            expect(board.isBlackAt({ row: 2, column: 0 })).toBe(false);
+        });
+    });
+
+    describe('isWhiteAt', () => {
+        it('returns true for a position occupied by a black piece', () => {
+            board.put({ color: 'white', type: 'queen' }, { row: 2, column: 0 });
+            expect(board.isWhiteAt({ row: 2, column: 0 })).toBe(true);
+        });
+
+        it('returns false for a position occupied by a white piece', () => {
+            board.put({ color: 'black', type: 'queen' }, { row: 2, column: 0 });
+            expect(board.isWhiteAt({ row: 2, column: 0 })).toBe(false);
+        });
+
+        it('returns false for an empty position', () => {
+            expect(board.isWhiteAt({ row: 2, column: 0 })).toBe(false);
         });
     });
 });

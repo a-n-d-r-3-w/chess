@@ -72,12 +72,20 @@ class Board {
         this.remove(startRowColumn);
     }
 
-    isEmpty(rowColumn) {
+    isEmptyAt(rowColumn) {
         return this.get(rowColumn) === null;
     }
 
-    isOccupied(rowColumn) {
-        return !this.isEmpty(rowColumn);
+    isOccupiedAt(rowColumn) {
+        return !this.isEmptyAt(rowColumn);
+    }
+
+    isBlackAt(rowColumn) {
+        return this.isOccupiedAt(rowColumn) && this.get(rowColumn).color === 'black';
+    }
+
+    isWhiteAt(rowColumn) {
+        return this.isOccupiedAt(rowColumn) && this.get(rowColumn).color === 'white';
     }
 }
 
