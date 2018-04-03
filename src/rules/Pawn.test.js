@@ -1,4 +1,4 @@
-import pawn from './PawnRules';
+import pawn from './Pawn';
 import Piece from '../Piece';
 import Board from '../Board';
 
