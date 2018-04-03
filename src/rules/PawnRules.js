@@ -4,10 +4,10 @@ import { isBlack } from "../Color";
 
 const isBlackPieceSelected = (selection) => isBlack(selection.piece.color);
 
-const canTakeAStepForward = (pieces, selection) => {
+const canTakeAStepForward = (board, selection) => {
   const { row, column } = selection.position;
   const addend = isBlackPieceSelected(selection) ? 1 : -1;
-  return isEmpty(pieces[row + addend][column]);
+  return isEmpty(board.get({ row: row + addend, column }));
 };
 
 const isAtStartingRow = (selection) => {
@@ -15,13 +15,13 @@ const isAtStartingRow = (selection) => {
   return selection.position.row === STARTING_ROW;
 };
 
-const canTakeTwoStepsForward = (pieces, selection) => {
+const canTakeTwoStepsForward = (board, selection) => {
   const { row, column } = selection.position;
   const addend1 = isBlackPieceSelected(selection) ? 1 : -1;
   const addend2 = isBlackPieceSelected(selection) ? 2 : -2;
   return isAtStartingRow(selection) &&
-    isEmpty(pieces[row + addend1][column]) &&
-    isEmpty(pieces[row + addend2][column]);
+    isEmpty(board.get({ row: row + addend1, column })) &&
+    isEmpty(board.get({ row: row + addend2, column }));
 };
 
 const getOneStepForward = function (selection) {
@@ -36,20 +36,20 @@ const getTwoStepsForward = function (selection) {
   return { row: row + addend, column };
 };
 
-const canCaptureEnemy1 = function (pieces, selection) {
+const canCaptureEnemy1 = function (board, selection) {
   const { row, column } = selection.position;
   const addend = isBlackPieceSelected(selection) ? 1 : -1;
-  const target = pieces[row + addend][column + 1];
+  const target = board.get({ row: row + addend, column: column + 1 });
   if (!isPiece(target)) {
     return false;
   }
   return target.color !== selection.piece.color;
 };
 
-const canCaptureEnemy2 = function (pieces, selection) {
+const canCaptureEnemy2 = function (board, selection) {
   const { row, column } = selection.position;
   const addend = isBlackPieceSelected(selection) ? 1 : -1;
-  const target = pieces[row + addend][column - 1];
+  const target = board.get({ row: row + addend, column: column - 1 });
   if (!isPiece(target)) {
     return false;
   }
@@ -90,6 +90,4 @@ const getMoves = (pieces, selection) => {
   return moves;
 };
 
-export default {
-  getValidMoves: getMoves,
-};
+export default { getMoves };
