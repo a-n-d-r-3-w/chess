@@ -19,8 +19,12 @@ describe('indexToRowColumn', () => {
 });
 
 describe('Board', () => {
+    let board;
+
+    beforeEach(() => {
+        board = new Board();
+    });
     it('Black pieces are in their correct starting positions', () => {
-        const board = new Board();
         expect(board.get({ row: 0, column: 0 })).toEqual({ color: 'black', type: 'rook'});
         expect(board.get({ row: 0, column: 1 })).toEqual({ color: 'black', type: 'knight'});
         expect(board.get({ row: 0, column: 2 })).toEqual({ color: 'black', type: 'bishop'});
@@ -40,7 +44,6 @@ describe('Board', () => {
     });
 
     it('White pieces are in their correct starting positions', () => {
-        const board = new Board();
         expect(board.get({ row: 7, column: 0 })).toEqual({ color: 'white', type: 'rook'});
         expect(board.get({ row: 7, column: 1 })).toEqual({ color: 'white', type: 'knight'});
         expect(board.get({ row: 7, column: 2 })).toEqual({ color: 'white', type: 'bishop'});
@@ -57,5 +60,26 @@ describe('Board', () => {
         expect(board.get({ row: 6, column: 5 })).toEqual({ color: 'white', type: 'pawn'});
         expect(board.get({ row: 6, column: 6 })).toEqual({ color: 'white', type: 'pawn'});
         expect(board.get({ row: 6, column: 7 })).toEqual({ color: 'white', type: 'pawn'});
+    });
+
+    describe('put', () => {
+        it('puts a piece at the specified position', () => {
+            board.put({ color: 'black', type: 'knight' }, { row: 3, column: 3 });
+            expect(board.get({ row: 3, column: 3 })).toEqual({ color: 'black', type: 'knight' });
+            board.put({ color: 'white', type: 'bishop' }, { row: 3, column: 3 });
+            expect(board.get({ row: 3, column: 3 })).toEqual({ color: 'white', type: 'bishop' });
+        });
+    });
+
+    describe('remove', () => {
+        it('remove a piece at the specified position', () => {
+            // Set up
+            board.put({ color: 'black', type: 'knight' }, { row: 3, column: 3 });
+            expect(board.get({ row: 3, column: 3 })).toEqual({ color: 'black', type: 'knight' });
+            // Exercise
+            board.remove({ row: 3, column: 3 });
+            // Verify
+            expect(board.get({ row: 3, column: 3 })).toEqual(null);
+        });
     });
 });

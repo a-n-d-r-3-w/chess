@@ -58,6 +58,10 @@ class Board {
     put(piece, rowColumn) {
         this.state[rowColumnToIndex(rowColumn)] = piece;
     }
+
+    remove(rowColumn) {
+        this.put(null, rowColumn);
+    }
 }
 
 export default Board;
