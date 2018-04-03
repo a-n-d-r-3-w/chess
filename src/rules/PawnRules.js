@@ -68,22 +68,22 @@ const getEnemy2Position = function (selection) {
   return { row: row + addend, column: column - 1 };
 };
 
-const getMoves = (pieces, selection) => {
+const getMoves = (board, selection) => {
   const moves = [];
 
-  if (canTakeAStepForward(pieces, selection)) {
+  if (canTakeAStepForward(board, selection)) {
     moves.push(getOneStepForward(selection));
   }
 
-  if (canTakeTwoStepsForward(pieces, selection)) {
+  if (canTakeTwoStepsForward(board, selection)) {
     moves.push(getTwoStepsForward(selection));
   }
 
-  if (canCaptureEnemy1(pieces, selection)) {
+  if (canCaptureEnemy1(board, selection)) {
     moves.push(getEnemy1Position(selection));
   }
 
-  if (canCaptureEnemy2(pieces, selection)) {
+  if (canCaptureEnemy2(board, selection)) {
     moves.push(getEnemy2Position(selection));
   }
 
