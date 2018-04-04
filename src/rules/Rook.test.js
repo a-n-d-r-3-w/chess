@@ -30,7 +30,7 @@ describe('Rook', () => {
         const rookMoves = getRookMoves(board, RowColumn.RC33);
         expect(rookMoves.find((e) => isEqual(e, RowColumn.RC03))).toBeFalsy();
         expect(rookMoves.find((e) => isEqual(e, RowColumn.RC73))).toBeFalsy();
-        // expect(rookMoves.findIndex((e) => isEqual(e, RowColumn.RC30))).toBe(-1);
-        // expect(rookMoves.findIndex((e) => isEqual(e, RowColumn.RC37))).toBe(-1);
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC30))).toBeFalsy();
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC37))).toBeFalsy();
     });
 });

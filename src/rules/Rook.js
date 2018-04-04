@@ -17,33 +17,48 @@ const addUpMoves = (moves, board, startRowColumn) => {
 };
 
 const addDownMoves = (moves, board, startRowColumn) => {
+    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     let currentRow = startRow;
     let reachedBottomOfBoard = currentRow === 7;
     while (!reachedBottomOfBoard) {
         currentRow += 1;
+        const currentPiece = board.get({ row: currentRow, column: startColumn });
+        if (currentPiece !== null && currentPiece.color === piece.color) {
+            break;
+        }
         moves.push({ row: currentRow, column: startColumn });
         reachedBottomOfBoard = currentRow === 7;
     }
 };
 
 const addLeftMoves = (moves, board, startRowColumn) => {
+    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     let currentColumn = startColumn;
     let reachedLeftOfBoard = currentColumn === 0;
     while (!reachedLeftOfBoard) {
         currentColumn -= 1;
+        const currentPiece = board.get({ row: startRow, column: currentColumn });
+        if (currentPiece !== null && currentPiece.color === piece.color) {
+            break;
+        }
         moves.push({ row: startRow, column: currentColumn });
         reachedLeftOfBoard = currentColumn === 0;
     }
 };
 
 const addRightMoves = (moves, board, startRowColumn) => {
+    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     let currentColumn = startColumn;
     let reachedRightOfBoard = currentColumn === 7;
     while (!reachedRightOfBoard) {
         currentColumn += 1;
+        const currentPiece = board.get({ row: startRow, column: currentColumn });
+        if (currentPiece !== null && currentPiece.color === piece.color) {
+            break;
+        }
         moves.push({ row: startRow, column: currentColumn });
         reachedRightOfBoard = currentColumn === 7;
     }
