@@ -33,4 +33,16 @@ describe('Rook', () => {
         expect(rookMoves.find((e) => isEqual(e, RowColumn.RC30))).toBeFalsy();
         expect(rookMoves.find((e) => isEqual(e, RowColumn.RC37))).toBeFalsy();
     });
+
+    it('can take the piece of the opposite color', () => {
+        board.put(Piece.BLACK_PAWN, RowColumn.RC03);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC73);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC30);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC37);
+        const rookMoves = getRookMoves(board, RowColumn.RC33);
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC03))).toBeFalsy();
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC73))).toBeFalsy();
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC30))).toBeFalsy();
+        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC37))).toBeFalsy();
+    });
 });
