@@ -1,6 +1,6 @@
 const Color = Object.freeze({
-  BLACK: 'BLACK',
-  WHITE: 'WHITE',
+  BLACK: 'black',
+  WHITE: 'white',
 });
 
 export default Color;

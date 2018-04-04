@@ -1,10 +1,10 @@
 const Type = Object.freeze({
-  ROOK: 'ROOK',
-  KNIGHT: 'KNIGHT',
-  BISHOP: 'BISHOP',
-  QUEEN: 'QUEEN',
-  KING: 'KING',
-  PAWN: 'PAWN',
+  ROOK: 'rook',
+  KNIGHT: 'knight',
+  BISHOP: 'bishop',
+  QUEEN: 'queen',
+  KING: 'king',
+  PAWN: 'pawn',
 });
 
 export default Type;
