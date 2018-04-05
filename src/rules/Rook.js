@@ -9,6 +9,10 @@ const addUpMoves = (moves, board, startRowColumn) => {
         if (currentPiece !== null && currentPiece.color === piece.color) {
             break;
         }
+        if (currentPiece !== null && currentPiece.color !== piece.color) {
+            moves.push({ row: currentRow, column: startColumn });
+            break;
+        }
         moves.push({ row: currentRow, column: startColumn });
         reachedTopOfBoard = currentRow === 0;
     }
@@ -23,6 +27,10 @@ const addDownMoves = (moves, board, startRowColumn) => {
         currentRow += 1;
         const currentPiece = board.get({ row: currentRow, column: startColumn });
         if (currentPiece !== null && currentPiece.color === piece.color) {
+            break;
+        }
+        if (currentPiece !== null && currentPiece.color !== piece.color) {
+            moves.push({ row: currentRow, column: startColumn });
             break;
         }
         moves.push({ row: currentRow, column: startColumn });
@@ -41,6 +49,10 @@ const addLeftMoves = (moves, board, startRowColumn) => {
         if (currentPiece !== null && currentPiece.color === piece.color) {
             break;
         }
+        if (currentPiece !== null && currentPiece.color !== piece.color) {
+            moves.push({ row: startRow, column: currentColumn });
+            break;
+        }
         moves.push({ row: startRow, column: currentColumn });
         reachedLeftOfBoard = currentColumn === 0;
     }
@@ -55,6 +67,10 @@ const addRightMoves = (moves, board, startRowColumn) => {
         currentColumn += 1;
         const currentPiece = board.get({ row: startRow, column: currentColumn });
         if (currentPiece !== null && currentPiece.color === piece.color) {
+            break;
+        }
+        if (currentPiece !== null && currentPiece.color !== piece.color) {
+            moves.push({ row: startRow, column: currentColumn });
             break;
         }
         moves.push({ row: startRow, column: currentColumn });
