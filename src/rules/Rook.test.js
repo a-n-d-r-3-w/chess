@@ -48,16 +48,19 @@ describe('Rook', () => {
         assertDoesNotContain(rookMoves, RowColumn.RC37);
     });
 
-    xit('can take the piece of the opposite color', () => {
-        board.put(Piece.BLACK_PAWN, RowColumn.RC03);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC73);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC30);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC37);
+    it('can take the piece of the opposite color', () => {
+        board.put(Piece.BLACK_PAWN, RowColumn.RC13);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC63);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC31);
+        board.put(Piece.BLACK_PAWN, RowColumn.RC36);
         const rookMoves = getRookMoves(board, RowColumn.RC33);
-        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC03))).toBeTruthy();
-        expect(rookMoves.find((e) => isEqual(e, RowColumn.RC02))).toBeFalsy();
-        // expect(rookMoves.find((e) => isEqual(e, RowColumn.RC73))).toBeFalsy();
-        // expect(rookMoves.find((e) => isEqual(e, RowColumn.RC30))).toBeFalsy();
-        // expect(rookMoves.find((e) => isEqual(e, RowColumn.RC37))).toBeFalsy();
+        assertContains(rookMoves, RowColumn.RC13);
+        assertContains(rookMoves, RowColumn.RC63);
+        assertContains(rookMoves, RowColumn.RC31);
+        assertContains(rookMoves, RowColumn.RC36);
+        assertDoesNotContain(rookMoves, RowColumn.RC03);
+        assertDoesNotContain(rookMoves, RowColumn.RC73);
+        assertDoesNotContain(rookMoves, RowColumn.RC30);
+        assertDoesNotContain(rookMoves, RowColumn.RC37);
     });
 });

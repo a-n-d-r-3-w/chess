@@ -1,5 +1,3 @@
-import RowColumn from '../RowColumn';
-
 const addUpMoves = (moves, board, startRowColumn) => {
     const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
