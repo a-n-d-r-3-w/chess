@@ -41,7 +41,7 @@ const addDownMoves = (moves, board, startRowColumn) => {
     if (startRow === 7) {
         return;
     }
-    for (let row = startRow + 1; row <= 7; row++) {
+    for (let row = startRow + 1; row < 8; row++) {
         const rowColumn = { row, column: startColumn };
         const square = board.get(rowColumn);
         if (square === null) {
@@ -61,42 +61,46 @@ const addDownMoves = (moves, board, startRowColumn) => {
 const addLeftMoves = (moves, board, startRowColumn) => {
     const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
-    let currentColumn = startColumn;
-    while (true) {
-        if (currentColumn === 0) {
+    if (startColumn === 0) {
+        return;
+    }
+    for (let column = startColumn - 1; column >= 0; column--) {
+        const rowColumn = { row: startRow, column };
+        const square = board.get(rowColumn);
+        if (square === null) {
+            moves.push(rowColumn);
+            continue;
+        }
+        if (isPieceOfSameColor(square, piece)) {
             break;
         }
-        currentColumn -= 1;
-        const currentPiece = board.get({ row: startRow, column: currentColumn });
-        if (isPieceOfSameColor(currentPiece, piece)) {
+        if (isPieceOfDifferentColor(square, piece)) {
+            moves.push(rowColumn);
             break;
         }
-        if (isPieceOfDifferentColor(currentPiece, piece)) {
-            moves.push({ row: startRow, column: currentColumn });
-            break;
-        }
-        moves.push({ row: startRow, column: currentColumn });
     }
 };
 
 const addRightMoves = (moves, board, startRowColumn) => {
     const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
-    let currentColumn = startColumn;
-    while (true) {
-        if (currentColumn === 7) {
+    if (startColumn === 7) {
+        return;
+    }
+    for (let column = startColumn + 1; column < 8; column++) {
+        const rowColumn = { row: startRow, column };
+        const square = board.get(rowColumn);
+        if (square === null) {
+            moves.push(rowColumn);
+            continue;
+        }
+        if (isPieceOfSameColor(square, piece)) {
             break;
         }
-        currentColumn += 1;
-        const currentPiece = board.get({ row: startRow, column: currentColumn });
-        if (isPieceOfSameColor(currentPiece, piece)) {
+        if (isPieceOfDifferentColor(square, piece)) {
+            moves.push(rowColumn);
             break;
         }
-        if (isPieceOfDifferentColor(currentPiece, piece)) {
-            moves.push({ row: startRow, column: currentColumn });
-            break;
-        }
-        moves.push({ row: startRow, column: currentColumn });
     }
 };
 
