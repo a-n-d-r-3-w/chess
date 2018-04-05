@@ -13,11 +13,11 @@ const isPieceOfDifferentColor = (piece1, piece2) => {
 };
 
 const addUpMoves = (moves, board, startRowColumn) => {
-    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     if (startRow === 0) {
         return;
     }
+    const piece = board.get(startRowColumn);
     for (let row = startRow - 1; row >= 0; row--) {
         const rowColumn = { row, column: startColumn };
         const square = board.get(rowColumn);
@@ -36,11 +36,11 @@ const addUpMoves = (moves, board, startRowColumn) => {
 };
 
 const addDownMoves = (moves, board, startRowColumn) => {
-    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     if (startRow === 7) {
         return;
     }
+    const piece = board.get(startRowColumn);
     for (let row = startRow + 1; row < 8; row++) {
         const rowColumn = { row, column: startColumn };
         const square = board.get(rowColumn);
@@ -59,11 +59,11 @@ const addDownMoves = (moves, board, startRowColumn) => {
 };
 
 const addLeftMoves = (moves, board, startRowColumn) => {
-    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     if (startColumn === 0) {
         return;
     }
+    const piece = board.get(startRowColumn);
     for (let column = startColumn - 1; column >= 0; column--) {
         const rowColumn = { row: startRow, column };
         const square = board.get(rowColumn);
@@ -82,11 +82,11 @@ const addLeftMoves = (moves, board, startRowColumn) => {
 };
 
 const addRightMoves = (moves, board, startRowColumn) => {
-    const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
     if (startColumn === 7) {
         return;
     }
+    const piece = board.get(startRowColumn);
     for (let column = startColumn + 1; column < 8; column++) {
         const rowColumn = { row: startRow, column };
         const square = board.get(rowColumn);
