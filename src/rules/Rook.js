@@ -15,21 +15,23 @@ const isPieceOfDifferentColor = (piece1, piece2) => {
 const addUpMoves = (moves, board, startRowColumn) => {
     const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
-    let currentRow = startRow;
-    while (true) {
-        if (currentRow === 0) {
+    if (startRow === 0) {
+        return;
+    }
+    for (let row = startRow - 1; row >= 0; row--) {
+        const rowColumn = { row, column: startColumn };
+        const square = board.get(rowColumn);
+        if (square === null) {
+            moves.push(rowColumn);
+            continue;
+        }
+        if (isPieceOfSameColor(square, piece)) {
             break;
         }
-        currentRow -= 1;
-        const currentPiece = board.get({ row: currentRow, column: startColumn });
-        if (isPieceOfSameColor(currentPiece, piece)) {
+        if (isPieceOfDifferentColor(square, piece)) {
+            moves.push(rowColumn);
             break;
         }
-        if (isPieceOfDifferentColor(currentPiece, piece)) {
-            moves.push({ row: currentRow, column: startColumn });
-            break;
-        }
-        moves.push({ row: currentRow, column: startColumn });
     }
 };
 
