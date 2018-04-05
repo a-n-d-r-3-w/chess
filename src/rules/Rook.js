@@ -1,3 +1,17 @@
+const isPieceOfSameColor = (piece1, piece2) => {
+    if (piece1 === null || piece2 === null) {
+        return false;
+    }
+    return piece1.color === piece2.color;
+};
+
+const isPieceOfDifferentColor = (piece1, piece2) => {
+    if (piece1 === null || piece2 === null) {
+        return false;
+    }
+    return piece1.color !== piece2.color;
+};
+
 const addUpMoves = (moves, board, startRowColumn) => {
     const piece = board.get(startRowColumn);
     const { row: startRow, column: startColumn } = startRowColumn;
@@ -6,10 +20,10 @@ const addUpMoves = (moves, board, startRowColumn) => {
     while (!reachedTopOfBoard) {
         currentRow -= 1;
         const currentPiece = board.get({ row: currentRow, column: startColumn });
-        if (currentPiece !== null && currentPiece.color === piece.color) {
+        if (isPieceOfSameColor(currentPiece, piece)) {
             break;
         }
-        if (currentPiece !== null && currentPiece.color !== piece.color) {
+        if (isPieceOfDifferentColor(currentPiece, piece)) {
             moves.push({ row: currentRow, column: startColumn });
             break;
         }
@@ -26,10 +40,10 @@ const addDownMoves = (moves, board, startRowColumn) => {
     while (!reachedBottomOfBoard) {
         currentRow += 1;
         const currentPiece = board.get({ row: currentRow, column: startColumn });
-        if (currentPiece !== null && currentPiece.color === piece.color) {
+        if (isPieceOfSameColor(currentPiece, piece)) {
             break;
         }
-        if (currentPiece !== null && currentPiece.color !== piece.color) {
+        if (isPieceOfDifferentColor(currentPiece, piece)) {
             moves.push({ row: currentRow, column: startColumn });
             break;
         }
@@ -46,10 +60,10 @@ const addLeftMoves = (moves, board, startRowColumn) => {
     while (!reachedLeftOfBoard) {
         currentColumn -= 1;
         const currentPiece = board.get({ row: startRow, column: currentColumn });
-        if (currentPiece !== null && currentPiece.color === piece.color) {
+        if (isPieceOfSameColor(currentPiece, piece)) {
             break;
         }
-        if (currentPiece !== null && currentPiece.color !== piece.color) {
+        if (isPieceOfDifferentColor(currentPiece, piece)) {
             moves.push({ row: startRow, column: currentColumn });
             break;
         }
@@ -66,10 +80,10 @@ const addRightMoves = (moves, board, startRowColumn) => {
     while (!reachedRightOfBoard) {
         currentColumn += 1;
         const currentPiece = board.get({ row: startRow, column: currentColumn });
-        if (currentPiece !== null && currentPiece.color === piece.color) {
+        if (isPieceOfSameColor(currentPiece, piece)) {
             break;
         }
-        if (currentPiece !== null && currentPiece.color !== piece.color) {
+        if (isPieceOfDifferentColor(currentPiece, piece)) {
             moves.push({ row: startRow, column: currentColumn });
             break;
         }
