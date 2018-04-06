@@ -18,17 +18,16 @@ const Piece = Object.freeze({
 
 export default Piece;
 
-export const isPiece = (object) => {
-  return (object === Piece.BLACK_ROOK) ||
-    (object === Piece.BLACK_KNIGHT) ||
-    (object === Piece.BLACK_BISHOP) ||
-    (object === Piece.BLACK_QUEEN) ||
-    (object === Piece.BLACK_KING) ||
-    (object === Piece.BLACK_PAWN) ||
-    (object === Piece.WHITE_ROOK) ||
-    (object === Piece.WHITE_KNIGHT) ||
-    (object === Piece.WHITE_BISHOP) ||
-    (object === Piece.WHITE_QUEEN) ||
-    (object === Piece.WHITE_KING) ||
-    (object === Piece.WHITE_PAWN);
+export const isPieceOfSameColor = (piece1, piece2) => {
+    if (piece1 === null || piece2 === null) {
+        return false;
+    }
+    return piece1.color === piece2.color;
+};
+
+export const isPieceOfDifferentColor = (piece1, piece2) => {
+    if (piece1 === null || piece2 === null) {
+        return false;
+    }
+    return piece1.color !== piece2.color;
 };

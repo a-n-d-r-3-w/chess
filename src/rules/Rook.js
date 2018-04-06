@@ -1,18 +1,5 @@
 import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
-
-const isPieceOfSameColor = (piece1, piece2) => {
-    if (piece1 === null || piece2 === null) {
-        return false;
-    }
-    return piece1.color === piece2.color;
-};
-
-const isPieceOfDifferentColor = (piece1, piece2) => {
-    if (piece1 === null || piece2 === null) {
-        return false;
-    }
-    return piece1.color !== piece2.color;
-};
+import {isPieceOfDifferentColor, isPieceOfSameColor} from "../Piece";
 
 const addUpMoves = (moves, board, startRowColumn) => {
     if (isAtTopEdge(startRowColumn)) {
