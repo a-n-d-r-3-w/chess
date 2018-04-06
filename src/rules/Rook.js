@@ -1,4 +1,4 @@
-import RowColumn, {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
+import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
 
 const isPieceOfSameColor = (piece1, piece2) => {
     if (piece1 === null || piece2 === null) {
