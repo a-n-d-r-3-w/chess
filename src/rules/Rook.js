@@ -1,5 +1,5 @@
 import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge, getIndicesBetweenHereAndTopEdge} from '../BoardIndex';
-import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor} from "../Util";
+import {isEmpty, containsPieceOfSameColor, containsPieceOfDifferentColor} from "../Space";
 
 const addUpMoves = (moves, board, startingIndex) => {
     if (isAtTopEdge(startingIndex)) {
@@ -13,10 +13,10 @@ const addUpMoves = (moves, board, startingIndex) => {
             moves.push(index);
             continue;
         }
-        if (isPieceOfSameColor(space, piece)) {
+        if (containsPieceOfSameColor(space, piece)) {
             break;
         }
-        if (isPieceOfDifferentColor(space, piece)) {
+        if (containsPieceOfDifferentColor(space, piece)) {
             moves.push(index);
             break;
         }
@@ -36,10 +36,10 @@ const addDownMoves = (moves, board, startingIndex) => {
             moves.push(index);
             continue;
         }
-        if (isPieceOfSameColor(space, piece)) {
+        if (containsPieceOfSameColor(space, piece)) {
             break;
         }
-        if (isPieceOfDifferentColor(space, piece)) {
+        if (containsPieceOfDifferentColor(space, piece)) {
             moves.push(index);
             break;
         }
@@ -59,10 +59,10 @@ const addLeftMoves = (moves, board, startingIndex) => {
             moves.push(index);
             continue;
         }
-        if (isPieceOfSameColor(space, piece)) {
+        if (containsPieceOfSameColor(space, piece)) {
             break;
         }
-        if (isPieceOfDifferentColor(space, piece)) {
+        if (containsPieceOfDifferentColor(space, piece)) {
             moves.push(index);
             break;
         }
@@ -82,10 +82,10 @@ const addRightMoves = (moves, board, startingIndex) => {
             moves.push(index);
             continue;
         }
-        if (isPieceOfSameColor(space, piece)) {
+        if (containsPieceOfSameColor(space, piece)) {
             break;
         }
-        if (isPieceOfDifferentColor(space, piece)) {
+        if (containsPieceOfDifferentColor(space, piece)) {
             moves.push(index);
             break;
         }
