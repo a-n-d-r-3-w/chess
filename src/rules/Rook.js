@@ -4,7 +4,9 @@ import {
     isAtRightEdge,
     isAtTopEdge,
     getIndicesBetweenHereAndTopEdge,
-    getIndicesBetweenHereAndBottomEdge
+    getIndicesBetweenHereAndBottomEdge,
+    getIndicesBetweenHereAndLeftEdge,
+    getIndicesBetweenHereAndRightEdge
 } from '../BoardIndex';
 import {
     isEmpty,
@@ -60,10 +62,9 @@ const addLeftMoves = (moves, board, startingIndex) => {
     if (isAtLeftEdge(startingIndex)) {
         return;
     }
-    const {row: startRow, column: startColumn} = startingIndex;
     const piece = board.get(startingIndex);
-    for (let column = startColumn - 1; column >= 0; column--) {
-        const index = {row: startRow, column};
+    const indices = getIndicesBetweenHereAndLeftEdge(startingIndex);
+    for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
             moves.push(index);
@@ -83,10 +84,9 @@ const addRightMoves = (moves, board, startingIndex) => {
     if (isAtRightEdge(startingIndex)) {
         return;
     }
-    const {row: startRow, column: startColumn} = startingIndex;
     const piece = board.get(startingIndex);
-    for (let column = startColumn + 1; column < 8; column++) {
-        const index = {row: startRow, column};
+    const indices = getIndicesBetweenHereAndRightEdge(startingIndex);
+    for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
             moves.push(index);
