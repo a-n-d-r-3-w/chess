@@ -76,3 +76,12 @@ export const isAtTopEdge = rowColumn => (rowColumn.row === 0);
 export const isAtBottomEdge = rowColumn => (rowColumn.row === 7);
 export const isAtLeftEdge = rowColumn => (rowColumn.column === 0);
 export const isAtRightEdge = rowColumn => (rowColumn.column === 7);
+
+export const getIndicesBetweenHereAndTopEdge = index => {
+    const {row: startRow, column} = index;
+    const indices = [];
+    for (let row = startRow - 1; row >= 0; row--) {
+        indices.push({row, column});
+    }
+    return indices;
+};

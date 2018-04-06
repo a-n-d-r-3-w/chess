@@ -1,7 +1,7 @@
 import getRookMoves from './Rook';
 import Board from '../Board';
 import Piece from '../Piece';
-import RowColumn from '../RowColumn';
+import Index from '../BoardIndex';
 import {isEqual} from 'lodash';
 
 let board;
@@ -20,16 +20,16 @@ const assertDoesNotContain = (moves, rowColumn) => {
 
 beforeEach(() => {
     board = new Board();
-    board.put(Piece.WHITE_ROOK, RowColumn.RC33);
+    board.put(Piece.WHITE_ROOK, Index.RC33);
 });
 
 describe('Rook', () => {
     it('can move up, down, left, and right', () => {
-        const up = [RowColumn.RC03, RowColumn.RC13, RowColumn.RC23];
-        const down = [RowColumn.RC43, RowColumn.RC53, RowColumn.RC63, RowColumn.RC73];
-        const left = [RowColumn.RC30, RowColumn.RC31, RowColumn.RC32];
-        const right = [RowColumn.RC34, RowColumn.RC35, RowColumn.RC36, RowColumn.RC37];
-        const rookMoves = getRookMoves(board, RowColumn.RC33);
+        const up = [Index.RC03, Index.RC13, Index.RC23];
+        const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
+        const left = [Index.RC30, Index.RC31, Index.RC32];
+        const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
+        const rookMoves = getRookMoves(board, Index.RC33);
         assertContains(rookMoves, up);
         assertContains(rookMoves, down);
         assertContains(rookMoves, left);
@@ -37,30 +37,30 @@ describe('Rook', () => {
     });
 
     it('is blocked by a piece of the same color', () => {
-        board.put(Piece.WHITE_PAWN, RowColumn.RC03);
-        board.put(Piece.WHITE_PAWN, RowColumn.RC73);
-        board.put(Piece.WHITE_PAWN, RowColumn.RC30);
-        board.put(Piece.WHITE_PAWN, RowColumn.RC37);
-        const rookMoves = getRookMoves(board, RowColumn.RC33);
-        assertDoesNotContain(rookMoves, RowColumn.RC03);
-        assertDoesNotContain(rookMoves, RowColumn.RC73);
-        assertDoesNotContain(rookMoves, RowColumn.RC30);
-        assertDoesNotContain(rookMoves, RowColumn.RC37);
+        board.put(Piece.WHITE_PAWN, Index.RC03);
+        board.put(Piece.WHITE_PAWN, Index.RC73);
+        board.put(Piece.WHITE_PAWN, Index.RC30);
+        board.put(Piece.WHITE_PAWN, Index.RC37);
+        const rookMoves = getRookMoves(board, Index.RC33);
+        assertDoesNotContain(rookMoves, Index.RC03);
+        assertDoesNotContain(rookMoves, Index.RC73);
+        assertDoesNotContain(rookMoves, Index.RC30);
+        assertDoesNotContain(rookMoves, Index.RC37);
     });
 
     it('can take the piece of the opposite color', () => {
-        board.put(Piece.BLACK_PAWN, RowColumn.RC13);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC63);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC31);
-        board.put(Piece.BLACK_PAWN, RowColumn.RC36);
-        const rookMoves = getRookMoves(board, RowColumn.RC33);
-        assertContains(rookMoves, RowColumn.RC13);
-        assertContains(rookMoves, RowColumn.RC63);
-        assertContains(rookMoves, RowColumn.RC31);
-        assertContains(rookMoves, RowColumn.RC36);
-        assertDoesNotContain(rookMoves, RowColumn.RC03);
-        assertDoesNotContain(rookMoves, RowColumn.RC73);
-        assertDoesNotContain(rookMoves, RowColumn.RC30);
-        assertDoesNotContain(rookMoves, RowColumn.RC37);
+        board.put(Piece.BLACK_PAWN, Index.RC13);
+        board.put(Piece.BLACK_PAWN, Index.RC63);
+        board.put(Piece.BLACK_PAWN, Index.RC31);
+        board.put(Piece.BLACK_PAWN, Index.RC36);
+        const rookMoves = getRookMoves(board, Index.RC33);
+        assertContains(rookMoves, Index.RC13);
+        assertContains(rookMoves, Index.RC63);
+        assertContains(rookMoves, Index.RC31);
+        assertContains(rookMoves, Index.RC36);
+        assertDoesNotContain(rookMoves, Index.RC03);
+        assertDoesNotContain(rookMoves, Index.RC73);
+        assertDoesNotContain(rookMoves, Index.RC30);
+        assertDoesNotContain(rookMoves, Index.RC37);
     });
 });
