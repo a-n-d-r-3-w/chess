@@ -2,7 +2,7 @@ import getRookMoves from './Rook';
 import Board from '../Board';
 import Piece from '../Piece';
 import RowColumn from '../RowColumn';
-import { isEqual } from 'lodash';
+import {isEqual} from 'lodash';
 
 let board;
 
@@ -25,10 +25,10 @@ beforeEach(() => {
 
 describe('Rook', () => {
     it('can move up, down, left, and right', () => {
-        const up = [ RowColumn.RC03, RowColumn.RC13, RowColumn.RC23 ];
-        const down = [ RowColumn.RC43, RowColumn.RC53, RowColumn.RC63, RowColumn.RC73 ];
-        const left = [ RowColumn.RC30, RowColumn.RC31, RowColumn.RC32 ];
-        const right = [ RowColumn.RC34, RowColumn.RC35, RowColumn.RC36, RowColumn.RC37 ];
+        const up = [RowColumn.RC03, RowColumn.RC13, RowColumn.RC23];
+        const down = [RowColumn.RC43, RowColumn.RC53, RowColumn.RC63, RowColumn.RC73];
+        const left = [RowColumn.RC30, RowColumn.RC31, RowColumn.RC32];
+        const right = [RowColumn.RC34, RowColumn.RC35, RowColumn.RC36, RowColumn.RC37];
         const rookMoves = getRookMoves(board, RowColumn.RC33);
         assertContains(rookMoves, up);
         assertContains(rookMoves, down);

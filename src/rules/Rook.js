@@ -5,10 +5,10 @@ const addUpMoves = (moves, board, startRowColumn) => {
     if (isAtTopEdge(startRowColumn)) {
         return;
     }
-    const { row: startRow, column: startColumn } = startRowColumn;
+    const {row: startRow, column: startColumn} = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let row = startRow - 1; row >= 0; row--) {
-        const rowColumn = { row, column: startColumn };
+        const rowColumn = {row, column: startColumn};
         const square = board.get(rowColumn);
         if (isEmpty(square)) {
             moves.push(rowColumn);
@@ -28,10 +28,10 @@ const addDownMoves = (moves, board, startRowColumn) => {
     if (isAtBottomEdge(startRowColumn)) {
         return;
     }
-    const { row: startRow, column: startColumn } = startRowColumn;
+    const {row: startRow, column: startColumn} = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let row = startRow + 1; row < 8; row++) {
-        const rowColumn = { row, column: startColumn };
+        const rowColumn = {row, column: startColumn};
         const square = board.get(rowColumn);
         if (isEmpty(square)) {
             moves.push(rowColumn);
@@ -51,10 +51,10 @@ const addLeftMoves = (moves, board, startRowColumn) => {
     if (isAtLeftEdge(startRowColumn)) {
         return;
     }
-    const { row: startRow, column: startColumn } = startRowColumn;
+    const {row: startRow, column: startColumn} = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let column = startColumn - 1; column >= 0; column--) {
-        const rowColumn = { row: startRow, column };
+        const rowColumn = {row: startRow, column};
         const square = board.get(rowColumn);
         if (isEmpty(square)) {
             moves.push(rowColumn);
@@ -74,10 +74,10 @@ const addRightMoves = (moves, board, startRowColumn) => {
     if (isAtRightEdge(startRowColumn)) {
         return;
     }
-    const { row: startRow, column: startColumn } = startRowColumn;
+    const {row: startRow, column: startColumn} = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let column = startColumn + 1; column < 8; column++) {
-        const rowColumn = { row: startRow, column };
+        const rowColumn = {row: startRow, column};
         const square = board.get(rowColumn);
         if (isEmpty(square)) {
             moves.push(rowColumn);
