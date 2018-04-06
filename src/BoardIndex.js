@@ -78,9 +78,6 @@ const isAtLeftEdge = index => (index.column === 0);
 const isAtRightEdge = index => (index.column === 7);
 
 export const getIndicesBetweenHereAndTopEdge = startingIndex => {
-    if (isAtTopEdge(startingIndex)) {
-        return [];
-    }
     const {row: startRow, column} = startingIndex;
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
@@ -90,9 +87,6 @@ export const getIndicesBetweenHereAndTopEdge = startingIndex => {
 };
 
 export const getIndicesBetweenHereAndBottomEdge = startingIndex => {
-    if (isAtBottomEdge(startingIndex)) {
-        return [];
-    }
     const {row: startRow, column} = startingIndex;
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
@@ -102,9 +96,6 @@ export const getIndicesBetweenHereAndBottomEdge = startingIndex => {
 };
 
 export const getIndicesBetweenHereAndLeftEdge = startingIndex => {
-    if (isAtLeftEdge(startingIndex)) {
-        return [];
-    }
     const {row, column: startColumn} = startingIndex;
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
@@ -114,9 +105,6 @@ export const getIndicesBetweenHereAndLeftEdge = startingIndex => {
 };
 
 export const getIndicesBetweenHereAndRightEdge = startingIndex => {
-    if (isAtRightEdge(startingIndex)) {
-        return [];
-    }
     const {row, column: startColumn} = startingIndex;
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
