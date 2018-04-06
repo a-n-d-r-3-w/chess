@@ -1,15 +1,15 @@
 export const isEmpty = square => square === null;
 
-export const containsPieceOfSameColor = (space1, space2) => {
-    if (isEmpty(space1) || isEmpty(space2)) {
+export const containsPieceOfColor = (space, color) => {
+    if (isEmpty(space)) {
         return false;
     }
-    return space1.color === space2.color;
+    return space.color === color;
 };
 
-export const containsPieceOfDifferentColor = (space1, space2) => {
-    if (isEmpty(space1) || isEmpty(space2)) {
+export const containsPieceOfNotColor = (space, color) => {
+    if (isEmpty(space)) {
         return false;
     }
-    return space1.color !== space2.color;
+    return space.color !== color;
 };

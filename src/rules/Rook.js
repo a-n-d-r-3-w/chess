@@ -6,55 +6,57 @@ import {
 } from '../BoardIndex';
 import {
     isEmpty,
-    containsPieceOfSameColor,
-    containsPieceOfDifferentColor
+    containsPieceOfColor,
+    containsPieceOfNotColor
 } from "../Space";
 
-function addMoves(board, startingIndex, indices, moves) {
-    const piece = board.get(startingIndex);
+function getMoves(board, indices, color) {
+    const moves = [];
     for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
             moves.push(index);
             continue;
         }
-        if (containsPieceOfSameColor(space, piece)) {
+        if (containsPieceOfColor(space, color)) {
             break;
         }
-        if (containsPieceOfDifferentColor(space, piece)) {
+        if (containsPieceOfNotColor(space, color)) {
             moves.push(index);
             break;
         }
     }
+    return moves;
 }
 
-const addUpMoves = (moves, board, startingIndex) => {
+const getUpMoves = (board, startingIndex, color) => {
     const indices = getIndicesBetweenHereAndTopEdge(startingIndex);
-    addMoves(board, startingIndex, indices, moves);
+    return getMoves(board, indices, color);
 };
 
-const addDownMoves = (moves, board, startingIndex) => {
+const getDownMoves = (board, startingIndex, color) => {
     const indices = getIndicesBetweenHereAndBottomEdge(startingIndex);
-    addMoves(board, startingIndex, indices, moves);
+    return getMoves(board, indices, color);
 };
 
-const addLeftMoves = (moves, board, startingIndex) => {
+const getLeftMoves = (board, startingIndex, color) => {
     const indices = getIndicesBetweenHereAndLeftEdge(startingIndex);
-    addMoves(board, startingIndex, indices, moves);
+    return getMoves(board, indices, color);
 };
 
-const addRightMoves = (moves, board, startingIndex) => {
+const getRightMoves = (board, startingIndex, color) => {
     const indices = getIndicesBetweenHereAndRightEdge(startingIndex);
-    addMoves(board, startingIndex, indices, moves);
+    return getMoves(board, indices, color);
 };
 
-const getMoves = (board, startingIndex) => {
+const getRookMoves = (board, startingIndex) => {
+    const { color } = board.get(startingIndex);
     const moves = [];
-    addUpMoves(moves, board, startingIndex);
-    addDownMoves(moves, board, startingIndex);
-    addLeftMoves(moves, board, startingIndex);
-    addRightMoves(moves, board, startingIndex);
+    moves.push(...getUpMoves(board, startingIndex, color));
+    moves.push(...getDownMoves(board, startingIndex, color));
+    moves.push(...getLeftMoves(board, startingIndex, color));
+    moves.push(...getRightMoves(board, startingIndex, color));
     return moves;
 };
 
-export default getMoves;
+export default getRookMoves;
