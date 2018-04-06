@@ -71,3 +71,8 @@ export default Object.freeze({
     RC76: {row: 7, column: 6},
     RC77: {row: 7, column: 7},
 });
+
+export const isAtTopEdge = rowColumn => (rowColumn.row === 0);
+export const isAtBottomEdge = rowColumn => (rowColumn.row === 7);
+export const isAtLeftEdge = rowColumn => (rowColumn.column === 0);
+export const isAtRightEdge = rowColumn => (rowColumn.column === 7);

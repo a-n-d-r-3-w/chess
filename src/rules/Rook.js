@@ -1,3 +1,5 @@
+import RowColumn, {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
+
 const isPieceOfSameColor = (piece1, piece2) => {
     if (piece1 === null || piece2 === null) {
         return false;
@@ -13,10 +15,10 @@ const isPieceOfDifferentColor = (piece1, piece2) => {
 };
 
 const addUpMoves = (moves, board, startRowColumn) => {
-    const { row: startRow, column: startColumn } = startRowColumn;
-    if (startRow === 0) {
+    if (isAtTopEdge(startRowColumn)) {
         return;
     }
+    const { row: startRow, column: startColumn } = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let row = startRow - 1; row >= 0; row--) {
         const rowColumn = { row, column: startColumn };
@@ -36,10 +38,10 @@ const addUpMoves = (moves, board, startRowColumn) => {
 };
 
 const addDownMoves = (moves, board, startRowColumn) => {
-    const { row: startRow, column: startColumn } = startRowColumn;
-    if (startRow === 7) {
+    if (isAtBottomEdge(startRowColumn)) {
         return;
     }
+    const { row: startRow, column: startColumn } = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let row = startRow + 1; row < 8; row++) {
         const rowColumn = { row, column: startColumn };
@@ -59,10 +61,10 @@ const addDownMoves = (moves, board, startRowColumn) => {
 };
 
 const addLeftMoves = (moves, board, startRowColumn) => {
-    const { row: startRow, column: startColumn } = startRowColumn;
-    if (startColumn === 0) {
+    if (isAtLeftEdge(startRowColumn)) {
         return;
     }
+    const { row: startRow, column: startColumn } = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let column = startColumn - 1; column >= 0; column--) {
         const rowColumn = { row: startRow, column };
@@ -82,10 +84,10 @@ const addLeftMoves = (moves, board, startRowColumn) => {
 };
 
 const addRightMoves = (moves, board, startRowColumn) => {
-    const { row: startRow, column: startColumn } = startRowColumn;
-    if (startColumn === 7) {
+    if (isAtRightEdge(startRowColumn)) {
         return;
     }
+    const { row: startRow, column: startColumn } = startRowColumn;
     const piece = board.get(startRowColumn);
     for (let column = startColumn + 1; column < 8; column++) {
         const rowColumn = { row: startRow, column };
