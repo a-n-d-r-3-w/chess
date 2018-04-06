@@ -17,17 +17,3 @@ const Piece = Object.freeze({
 });
 
 export default Piece;
-
-export const isPieceOfSameColor = (piece1, piece2) => {
-    if (piece1 === null || piece2 === null) {
-        return false;
-    }
-    return piece1.color === piece2.color;
-};
-
-export const isPieceOfDifferentColor = (piece1, piece2) => {
-    if (piece1 === null || piece2 === null) {
-        return false;
-    }
-    return piece1.color !== piece2.color;
-};

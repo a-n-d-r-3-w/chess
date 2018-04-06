@@ -1,5 +1,5 @@
 import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
-import {isPieceOfDifferentColor, isPieceOfSameColor} from "../Piece";
+import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor} from "../Square";
 
 const addUpMoves = (moves, board, startRowColumn) => {
     if (isAtTopEdge(startRowColumn)) {
@@ -10,7 +10,7 @@ const addUpMoves = (moves, board, startRowColumn) => {
     for (let row = startRow - 1; row >= 0; row--) {
         const rowColumn = { row, column: startColumn };
         const square = board.get(rowColumn);
-        if (square === null) {
+        if (isEmpty(square)) {
             moves.push(rowColumn);
             continue;
         }
@@ -33,7 +33,7 @@ const addDownMoves = (moves, board, startRowColumn) => {
     for (let row = startRow + 1; row < 8; row++) {
         const rowColumn = { row, column: startColumn };
         const square = board.get(rowColumn);
-        if (square === null) {
+        if (isEmpty(square)) {
             moves.push(rowColumn);
             continue;
         }
@@ -56,7 +56,7 @@ const addLeftMoves = (moves, board, startRowColumn) => {
     for (let column = startColumn - 1; column >= 0; column--) {
         const rowColumn = { row: startRow, column };
         const square = board.get(rowColumn);
-        if (square === null) {
+        if (isEmpty(square)) {
             moves.push(rowColumn);
             continue;
         }
@@ -79,7 +79,7 @@ const addRightMoves = (moves, board, startRowColumn) => {
     for (let column = startColumn + 1; column < 8; column++) {
         const rowColumn = { row: startRow, column };
         const square = board.get(rowColumn);
-        if (square === null) {
+        if (isEmpty(square)) {
             moves.push(rowColumn);
             continue;
         }
