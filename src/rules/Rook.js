@@ -1,5 +1,5 @@
 import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
-import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor, getRowColumnsBetweenHereAndTopEdge} from "../Square";
+import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor, getRowColumnsBetweenHereAndTopEdge} from "../Util";
 
 const addUpMoves = (moves, board, startRowColumn) => {
     if (isAtTopEdge(startRowColumn)) {
