@@ -1,23 +1,22 @@
 import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge} from '../RowColumn';
-import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor} from "../Square";
+import {isEmpty, isPieceOfSameColor, isPieceOfDifferentColor, getRowColumnsBetweenHereAndTopEdge} from "../Square";
 
 const addUpMoves = (moves, board, startRowColumn) => {
     if (isAtTopEdge(startRowColumn)) {
         return;
     }
-    const {row: startRow, column: startColumn} = startRowColumn;
     const piece = board.get(startRowColumn);
-    for (let row = startRow - 1; row >= 0; row--) {
-        const rowColumn = {row, column: startColumn};
-        const square = board.get(rowColumn);
-        if (isEmpty(square)) {
+    const rowColumns = getRowColumnsBetweenHereAndTopEdge(startRowColumn);
+    for (let rowColumn of rowColumns) {
+        const space = board.get(rowColumn);
+        if (isEmpty(space)) {
             moves.push(rowColumn);
             continue;
         }
-        if (isPieceOfSameColor(square, piece)) {
+        if (isPieceOfSameColor(space, piece)) {
             break;
         }
-        if (isPieceOfDifferentColor(square, piece)) {
+        if (isPieceOfDifferentColor(space, piece)) {
             moves.push(rowColumn);
             break;
         }
