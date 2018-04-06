@@ -85,3 +85,12 @@ export const getIndicesBetweenHereAndTopEdge = index => {
     }
     return indices;
 };
+
+export const getIndicesBetweenHereAndBottomEdge = index => {
+    const {row: startRow, column} = index;
+    const indices = [];
+    for (let row = startRow + 1; row < 8; row++) {
+        indices.push({row, column});
+    }
+    return indices;
+};

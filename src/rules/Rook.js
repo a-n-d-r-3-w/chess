@@ -1,5 +1,16 @@
-import {isAtBottomEdge, isAtLeftEdge, isAtRightEdge, isAtTopEdge, getIndicesBetweenHereAndTopEdge} from '../BoardIndex';
-import {isEmpty, containsPieceOfSameColor, containsPieceOfDifferentColor} from "../Space";
+import {
+    isAtBottomEdge,
+    isAtLeftEdge,
+    isAtRightEdge,
+    isAtTopEdge,
+    getIndicesBetweenHereAndTopEdge,
+    getIndicesBetweenHereAndBottomEdge
+} from '../BoardIndex';
+import {
+    isEmpty,
+    containsPieceOfSameColor,
+    containsPieceOfDifferentColor
+} from "../Space";
 
 const addUpMoves = (moves, board, startingIndex) => {
     if (isAtTopEdge(startingIndex)) {
@@ -27,10 +38,9 @@ const addDownMoves = (moves, board, startingIndex) => {
     if (isAtBottomEdge(startingIndex)) {
         return;
     }
-    const {row: startRow, column: startColumn} = startingIndex;
     const piece = board.get(startingIndex);
-    for (let row = startRow + 1; row < 8; row++) {
-        const index = {row, column: startColumn};
+    const indices = getIndicesBetweenHereAndBottomEdge(startingIndex);
+    for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
             moves.push(index);
