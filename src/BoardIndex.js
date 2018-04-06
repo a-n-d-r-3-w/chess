@@ -72,12 +72,16 @@ export default Object.freeze({
     RC77: {row: 7, column: 7},
 });
 
-export const isAtTopEdge = rowColumn => (rowColumn.row === 0);
-export const isAtBottomEdge = rowColumn => (rowColumn.row === 7);
-export const isAtLeftEdge = rowColumn => (rowColumn.column === 0);
-export const isAtRightEdge = rowColumn => (rowColumn.column === 7);
+const isAtTopEdge = index => (index.row === 0);
+const isAtBottomEdge = index => (index.row === 7);
+const isAtLeftEdge = index => (index.column === 0);
+const isAtRightEdge = index => (index.column === 7);
 
-export const getIndicesBetweenHereAndTopEdge = ({row: startRow, column}) => {
+export const getIndicesBetweenHereAndTopEdge = startingIndex => {
+    if (isAtTopEdge(startingIndex)) {
+        return [];
+    }
+    const {row: startRow, column} = startingIndex;
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
         indices.push({row, column});
@@ -85,7 +89,11 @@ export const getIndicesBetweenHereAndTopEdge = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesBetweenHereAndBottomEdge = ({row: startRow, column}) => {
+export const getIndicesBetweenHereAndBottomEdge = startingIndex => {
+    if (isAtBottomEdge(startingIndex)) {
+        return [];
+    }
+    const {row: startRow, column} = startingIndex;
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
         indices.push({row, column});
@@ -93,7 +101,11 @@ export const getIndicesBetweenHereAndBottomEdge = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesBetweenHereAndLeftEdge = ({row, column: startColumn}) => {
+export const getIndicesBetweenHereAndLeftEdge = startingIndex => {
+    if (isAtLeftEdge(startingIndex)) {
+        return [];
+    }
+    const {row, column: startColumn} = startingIndex;
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
         indices.push({row, column});
@@ -101,7 +113,11 @@ export const getIndicesBetweenHereAndLeftEdge = ({row, column: startColumn}) => 
     return indices;
 };
 
-export const getIndicesBetweenHereAndRightEdge = ({row, column: startColumn}) => {
+export const getIndicesBetweenHereAndRightEdge = startingIndex => {
+    if (isAtRightEdge(startingIndex)) {
+        return [];
+    }
+    const {row, column: startColumn} = startingIndex;
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
         indices.push({row, column});

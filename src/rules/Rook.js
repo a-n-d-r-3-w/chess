@@ -1,8 +1,4 @@
 import {
-    isAtBottomEdge,
-    isAtLeftEdge,
-    isAtRightEdge,
-    isAtTopEdge,
     getIndicesBetweenHereAndTopEdge,
     getIndicesBetweenHereAndBottomEdge,
     getIndicesBetweenHereAndLeftEdge,
@@ -15,9 +11,6 @@ import {
 } from "../Space";
 
 const addUpMoves = (moves, board, startingIndex) => {
-    if (isAtTopEdge(startingIndex)) {
-        return;
-    }
     const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndTopEdge(startingIndex);
     for (let index of indices) {
@@ -37,9 +30,6 @@ const addUpMoves = (moves, board, startingIndex) => {
 };
 
 const addDownMoves = (moves, board, startingIndex) => {
-    if (isAtBottomEdge(startingIndex)) {
-        return;
-    }
     const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndBottomEdge(startingIndex);
     for (let index of indices) {
@@ -59,9 +49,6 @@ const addDownMoves = (moves, board, startingIndex) => {
 };
 
 const addLeftMoves = (moves, board, startingIndex) => {
-    if (isAtLeftEdge(startingIndex)) {
-        return;
-    }
     const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndLeftEdge(startingIndex);
     for (let index of indices) {
@@ -81,9 +68,6 @@ const addLeftMoves = (moves, board, startingIndex) => {
 };
 
 const addRightMoves = (moves, board, startingIndex) => {
-    if (isAtRightEdge(startingIndex)) {
-        return;
-    }
     const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndRightEdge(startingIndex);
     for (let index of indices) {
