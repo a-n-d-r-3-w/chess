@@ -72,11 +72,6 @@ export default Object.freeze({
     RC77: {row: 7, column: 7},
 });
 
-const isAtTopEdge = index => (index.row === 0);
-const isAtBottomEdge = index => (index.row === 7);
-const isAtLeftEdge = index => (index.column === 0);
-const isAtRightEdge = index => (index.column === 7);
-
 export const getIndicesBetweenHereAndTopEdge = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
