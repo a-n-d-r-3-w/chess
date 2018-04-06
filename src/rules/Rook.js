@@ -10,9 +10,8 @@ import {
     containsPieceOfDifferentColor
 } from "../Space";
 
-const addUpMoves = (moves, board, startingIndex) => {
+function addMoves(board, startingIndex, indices, moves) {
     const piece = board.get(startingIndex);
-    const indices = getIndicesBetweenHereAndTopEdge(startingIndex);
     for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
@@ -27,63 +26,26 @@ const addUpMoves = (moves, board, startingIndex) => {
             break;
         }
     }
+}
+
+const addUpMoves = (moves, board, startingIndex) => {
+    const indices = getIndicesBetweenHereAndTopEdge(startingIndex);
+    addMoves(board, startingIndex, indices, moves);
 };
 
 const addDownMoves = (moves, board, startingIndex) => {
-    const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndBottomEdge(startingIndex);
-    for (let index of indices) {
-        const space = board.get(index);
-        if (isEmpty(space)) {
-            moves.push(index);
-            continue;
-        }
-        if (containsPieceOfSameColor(space, piece)) {
-            break;
-        }
-        if (containsPieceOfDifferentColor(space, piece)) {
-            moves.push(index);
-            break;
-        }
-    }
+    addMoves(board, startingIndex, indices, moves);
 };
 
 const addLeftMoves = (moves, board, startingIndex) => {
-    const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndLeftEdge(startingIndex);
-    for (let index of indices) {
-        const space = board.get(index);
-        if (isEmpty(space)) {
-            moves.push(index);
-            continue;
-        }
-        if (containsPieceOfSameColor(space, piece)) {
-            break;
-        }
-        if (containsPieceOfDifferentColor(space, piece)) {
-            moves.push(index);
-            break;
-        }
-    }
+    addMoves(board, startingIndex, indices, moves);
 };
 
 const addRightMoves = (moves, board, startingIndex) => {
-    const piece = board.get(startingIndex);
     const indices = getIndicesBetweenHereAndRightEdge(startingIndex);
-    for (let index of indices) {
-        const space = board.get(index);
-        if (isEmpty(space)) {
-            moves.push(index);
-            continue;
-        }
-        if (containsPieceOfSameColor(space, piece)) {
-            break;
-        }
-        if (containsPieceOfDifferentColor(space, piece)) {
-            moves.push(index);
-            break;
-        }
-    }
+    addMoves(board, startingIndex, indices, moves);
 };
 
 const getMoves = (board, startingIndex) => {
