@@ -1,10 +1,5 @@
 import Direction from '../Direction';
-import {getIndices, validIndices} from "./Util";
-
-const temp = (board, startingIndex, color, direction) => {
-    const indices = getIndices(startingIndex, direction);
-    return validIndices(board, indices, color);
-};
+import {temp} from "./Util";
 
 const rookMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);

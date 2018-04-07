@@ -1,10 +1,5 @@
-import {getIndices, validIndices} from "./Util";
+import {temp} from "./Util";
 import Direction from "../Direction";
-
-const temp = (board, startingIndex, color, direction) => {
-    const indices = getIndices(startingIndex, direction);
-    return validIndices(board, indices, color);
-};
 
 const bishopMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);

@@ -4,7 +4,7 @@ const isOutOfBounds = ({row, column}) => {
     return row < 0 || row >= 8 || column < 0 || column >= 8;
 };
 
-export const getIndices = ({row: startRow, column: startColumn}, direction) => {
+const getIndices = ({row: startRow, column: startColumn}, direction) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {
@@ -19,7 +19,7 @@ export const getIndices = ({row: startRow, column: startColumn}, direction) => {
     return indices;
 };
 
-export const validIndices = (board, indices, color) => {
+const validIndices = (board, indices, color) => {
     const validIndices = [];
     for (let index of indices) {
         const space = board.get(index);
@@ -36,4 +36,9 @@ export const validIndices = (board, indices, color) => {
         }
     }
     return validIndices;
+};
+
+export const temp = (board, startingIndex, color, direction) => {
+    const indices = getIndices(startingIndex, direction);
+    return validIndices(board, indices, color);
 };
