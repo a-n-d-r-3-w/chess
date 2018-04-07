@@ -1,7 +1,7 @@
 import Board, { rowColumnToIndex, indexToRowColumn } from './Board';
 
 describe('rowColumnToIndex', () => {
-    it('converts row and column indices to a single index', () => {
+    it('converts row and column getIndices to a single index', () => {
         expect(rowColumnToIndex({ row: 0, column: 0 })).toEqual(0);
         expect(rowColumnToIndex({ row: 1, column: 0 })).toEqual(8);
         expect(rowColumnToIndex({ row: 0, column: 1 })).toEqual(1);
@@ -10,7 +10,7 @@ describe('rowColumnToIndex', () => {
 });
 
 describe('indexToRowColumn', () => {
-    it('converts a single index into row and column indices', () => {
+    it('converts a single index into row and column getIndices', () => {
         expect(indexToRowColumn(0)).toEqual({ row: 0, column: 0 });
         expect(indexToRowColumn(63)).toEqual({ row: 7, column: 7 });
         expect(indexToRowColumn(1)).toEqual({ row: 0, column: 1 });
