@@ -4,30 +4,7 @@ import {
     getSouthwestwardIndices,
     getNorthwestwardIndices
 } from '../BoardIndex';
-import {
-    isEmpty,
-    containsPieceOfColor,
-    containsPieceOfNotColor
-} from "../Space";
-
-function getValidIndices(board, indices, color) {
-    const validIndices = [];
-    for (let index of indices) {
-        const space = board.get(index);
-        if (isEmpty(space)) {
-            validIndices.push(index);
-            continue;
-        }
-        if (containsPieceOfColor(space, color)) {
-            break;
-        }
-        if (containsPieceOfNotColor(space, color)) {
-            validIndices.push(index);
-            break;
-        }
-    }
-    return validIndices;
-}
+import {getValidIndices} from "./Util";
 
 const getNortheastwardMoves = (board, startingIndex, color) => {
     const indices = getNortheastwardIndices(startingIndex);
