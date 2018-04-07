@@ -10,46 +10,46 @@ import {
     containsPieceOfNotColor
 } from "../Space";
 
-function getMoves(board, indices, color) {
-    const moves = [];
+function getValidIndices(board, indices, color) {
+    const validIndices = [];
     for (let index of indices) {
         const space = board.get(index);
         if (isEmpty(space)) {
-            moves.push(index);
+            validIndices.push(index);
             continue;
         }
         if (containsPieceOfColor(space, color)) {
             break;
         }
         if (containsPieceOfNotColor(space, color)) {
-            moves.push(index);
+            validIndices.push(index);
             break;
         }
     }
-    return moves;
+    return validIndices;
 }
 
 const getNorthwardMoves = (board, startingIndex, color) => {
     const indices = getNorthwardIndices(startingIndex);
-    return getMoves(board, indices, color);
+    return getValidIndices(board, indices, color);
 };
 
 const getSouthwardMoves = (board, startingIndex, color) => {
     const indices = getSouthwardIndices(startingIndex);
-    return getMoves(board, indices, color);
+    return getValidIndices(board, indices, color);
 };
 
 const getWestwardMoves = (board, startingIndex, color) => {
     const indices = getWestwardIndices(startingIndex);
-    return getMoves(board, indices, color);
+    return getValidIndices(board, indices, color);
 };
 
 const getEastwardMoves = (board, startingIndex, color) => {
     const indices = getEastwardIndices(startingIndex);
-    return getMoves(board, indices, color);
+    return getValidIndices(board, indices, color);
 };
 
-const getRookMoves = (board, startingIndex) => {
+const getMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
     moves.push(...getNorthwardMoves(board, startingIndex, color));
@@ -59,4 +59,4 @@ const getRookMoves = (board, startingIndex) => {
     return moves;
 };
 
-export default getRookMoves;
+export default getMoves;
