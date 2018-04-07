@@ -25,16 +25,16 @@ describe('Bishop', () => {
         assertContains(moves, northwest);
     });
 
-    xit('is blocked by a piece of the same color', () => {
-        board.put(Piece.WHITE_PAWN, Index.RC03);
-        board.put(Piece.WHITE_PAWN, Index.RC73);
-        board.put(Piece.WHITE_PAWN, Index.RC30);
-        board.put(Piece.WHITE_PAWN, Index.RC37);
-        const rookMoves = getMoves(board, Index.RC33);
-        assertDoesNotContain(rookMoves, Index.RC03);
-        assertDoesNotContain(rookMoves, Index.RC73);
-        assertDoesNotContain(rookMoves, Index.RC30);
-        assertDoesNotContain(rookMoves, Index.RC37);
+    it('is blocked by a piece of the same color', () => {
+        board.put(Piece.WHITE_PAWN, Index.RC15);
+        board.put(Piece.WHITE_PAWN, Index.RC55);
+        board.put(Piece.WHITE_PAWN, Index.RC51);
+        board.put(Piece.WHITE_PAWN, Index.RC11);
+        const moves = getMoves(board, Index.RC33);
+        assertDoesNotContain(moves, Index.RC15);
+        assertDoesNotContain(moves, Index.RC55);
+        assertDoesNotContain(moves, Index.RC51);
+        assertDoesNotContain(moves, Index.RC11);
     });
 
     xit('can take the piece of the opposite color', () => {
