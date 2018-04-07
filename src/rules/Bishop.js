@@ -1,5 +1,4 @@
-import {getIndices} from '../BoardIndex';
-import {validIndices} from "./Util";
+import {getIndices, validIndices} from "./Util";
 import Direction from "../Direction";
 
 const temp = (board, startingIndex, color, direction) => {

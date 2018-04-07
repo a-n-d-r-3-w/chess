@@ -1,5 +1,3 @@
-import Direction from './Direction';
-
 export default Object.freeze({
     RC00: {row: 0, column: 0},
     RC01: {row: 0, column: 1},
@@ -73,22 +71,3 @@ export default Object.freeze({
     RC76: {row: 7, column: 6},
     RC77: {row: 7, column: 7},
 });
-
-const isOutOfBounds = ({row, column}) => {
-    return row < 0 || row >= 8 || column < 0 || column >= 8;
-};
-
-export const getIndices = ({row: startRow, column: startColumn}, direction) => {
-    const indices = [];
-    for (let i = 1; i < 8; i++) {
-        const index = {
-            row: startRow + i * direction.rowMultiplier,
-            column: startColumn + i * direction.columnMultiplier
-        };
-        if (isOutOfBounds(index)) {
-            break;
-        }
-        indices.push(index);
-    }
-    return indices;
-};
