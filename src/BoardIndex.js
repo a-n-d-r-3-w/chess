@@ -76,7 +76,7 @@ const isOutOfBounds = ({row, column}) => {
     return row < 0 || row >= 8 || column < 0 || column >= 8;
 };
 
-export const getNorthIndices = ({row: startRow, column}) => {
+export const northIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
         indices.push({row, column});
@@ -84,7 +84,7 @@ export const getNorthIndices = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getNortheastIndices = ({row: startRow, column: startColumn}) => {
+export const northeastIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {row: startRow - i, column: startColumn + i};
@@ -96,7 +96,7 @@ export const getNortheastIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const getEastIndices = ({row, column: startColumn}) => {
+export const eastIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
         indices.push({row, column});
@@ -104,7 +104,7 @@ export const getEastIndices = ({row, column: startColumn}) => {
     return indices;
 };
 
-export const getSoutheastIndices = ({row: startRow, column: startColumn}) => {
+export const southeastIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {row: startRow + i, column: startColumn + i};
@@ -116,7 +116,7 @@ export const getSoutheastIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const getSouthIndices = ({row: startRow, column}) => {
+export const southIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
         indices.push({row, column});
@@ -124,7 +124,7 @@ export const getSouthIndices = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getSouthwestIndices = ({row: startRow, column: startColumn}) => {
+export const southwestIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {row: startRow + i, column: startColumn - i};
@@ -136,7 +136,7 @@ export const getSouthwestIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const getWestIndices = ({row, column: startColumn}) => {
+export const westIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
         indices.push({row, column});
@@ -144,7 +144,7 @@ export const getWestIndices = ({row, column: startColumn}) => {
     return indices;
 };
 
-export const getNorthwestIndices = ({row: startRow, column: startColumn}) => {
+export const northwestIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {row: startRow - i, column: startColumn - i};

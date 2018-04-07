@@ -1,6 +1,6 @@
 import {containsPieceOfColor, containsPieceOfNotColor, isEmpty} from "../Space";
 
-export const getValidIndices = (board, indices, color) => {
+export const validIndices = (board, indices, color) => {
     const validIndices = [];
     for (let index of indices) {
         const space = board.get(index);

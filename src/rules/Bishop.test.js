@@ -1,4 +1,4 @@
-import getMoves from './Bishop';
+import bishopMoves from './Bishop';
 import Board from '../Board';
 import Piece from '../Piece';
 import Index from '../BoardIndex';
@@ -18,7 +18,7 @@ describe('Bishop', () => {
         const southeast = [Index.RC44, Index.RC55, Index.RC66, Index.RC77];
         const southwest = [Index.RC42, Index.RC51, Index.RC60];
         const northwest = [Index.RC22, Index.RC11, Index.RC00];
-        const moves = getMoves(board, Index.RC33);
+        const moves = bishopMoves(board, Index.RC33);
         assertContains(moves, northeast);
         assertContains(moves, southeast);
         assertContains(moves, southwest);
@@ -30,7 +30,7 @@ describe('Bishop', () => {
         board.put(Piece.WHITE_PAWN, Index.RC55);
         board.put(Piece.WHITE_PAWN, Index.RC51);
         board.put(Piece.WHITE_PAWN, Index.RC11);
-        const moves = getMoves(board, Index.RC33);
+        const moves = bishopMoves(board, Index.RC33);
         assertDoesNotContain(moves, Index.RC15);
         assertDoesNotContain(moves, Index.RC55);
         assertDoesNotContain(moves, Index.RC51);
@@ -42,7 +42,7 @@ describe('Bishop', () => {
         board.put(Piece.BLACK_PAWN, Index.RC55);
         board.put(Piece.BLACK_PAWN, Index.RC51);
         board.put(Piece.BLACK_PAWN, Index.RC11);
-        const moves = getMoves(board, Index.RC33);
+        const moves = bishopMoves(board, Index.RC33);
         assertContains(moves, Index.RC15);
         assertContains(moves, Index.RC55);
         assertContains(moves, Index.RC51);

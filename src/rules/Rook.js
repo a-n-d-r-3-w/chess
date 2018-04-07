@@ -1,39 +1,39 @@
 import {
-    getNorthIndices,
-    getSouthIndices,
-    getWestIndices,
-    getEastIndices
+    northIndices,
+    southIndices,
+    westIndices,
+    eastIndices
 } from '../BoardIndex';
-import {getValidIndices} from "./Util";
+import {validIndices} from "./Util";
 
-const getNorthMoves = (board, startingIndex, color) => {
-    const indices = getNorthIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const northMoves = (board, startingIndex, color) => {
+    const indices = northIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getSouthMoves = (board, startingIndex, color) => {
-    const indices = getSouthIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const southMoves = (board, startingIndex, color) => {
+    const indices = southIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getWestMoves = (board, startingIndex, color) => {
-    const indices = getWestIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const westMoves = (board, startingIndex, color) => {
+    const indices = westIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getEastMoves = (board, startingIndex, color) => {
-    const indices = getEastIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const eastMoves = (board, startingIndex, color) => {
+    const indices = eastIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getMoves = (board, startingIndex) => {
+const rookMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...getNorthMoves(board, startingIndex, color));
-    moves.push(...getSouthMoves(board, startingIndex, color));
-    moves.push(...getWestMoves(board, startingIndex, color));
-    moves.push(...getEastMoves(board, startingIndex, color));
+    moves.push(...northMoves(board, startingIndex, color));
+    moves.push(...southMoves(board, startingIndex, color));
+    moves.push(...westMoves(board, startingIndex, color));
+    moves.push(...eastMoves(board, startingIndex, color));
     return moves;
 };
 
-export default getMoves;
+export default rookMoves;

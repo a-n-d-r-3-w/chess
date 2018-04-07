@@ -1,39 +1,39 @@
 import {
-    getNortheastIndices,
-    getSoutheastIndices,
-    getSouthwestIndices,
-    getNorthwestIndices
+    northeastIndices,
+    southeastIndices,
+    southwestIndices,
+    northwestIndices
 } from '../BoardIndex';
-import {getValidIndices} from "./Util";
+import {validIndices} from "./Util";
 
-const getNortheastMoves = (board, startingIndex, color) => {
-    const indices = getNortheastIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const northeastMoves = (board, startingIndex, color) => {
+    const indices = northeastIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getSoutheastMoves = (board, startingIndex, color) => {
-    const indices = getSoutheastIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const southeastMoves = (board, startingIndex, color) => {
+    const indices = southeastIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getSouthwestMoves = (board, startingIndex, color) => {
-    const indices = getSouthwestIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const southwestMoves = (board, startingIndex, color) => {
+    const indices = southwestIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getNorthwestMoves = (board, startingIndex, color) => {
-    const indices = getNorthwestIndices(startingIndex);
-    return getValidIndices(board, indices, color);
+const northwestMoves = (board, startingIndex, color) => {
+    const indices = northwestIndices(startingIndex);
+    return validIndices(board, indices, color);
 };
 
-const getMoves = (board, startingIndex) => {
+const bishopMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...getNortheastMoves(board, startingIndex, color));
-    moves.push(...getSoutheastMoves(board, startingIndex, color));
-    moves.push(...getSouthwestMoves(board, startingIndex, color));
-    moves.push(...getNorthwestMoves(board, startingIndex, color));
+    moves.push(...northeastMoves(board, startingIndex, color));
+    moves.push(...southeastMoves(board, startingIndex, color));
+    moves.push(...southwestMoves(board, startingIndex, color));
+    moves.push(...northwestMoves(board, startingIndex, color));
     return moves;
 };
 
-export default getMoves;
+export default bishopMoves;
