@@ -78,10 +78,17 @@ const isOutOfBounds = ({row, column}) => {
     return row < 0 || row >= 8 || column < 0 || column >= 8;
 };
 
-export const northIndices = ({row: startRow, column}) => {
+export const northIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
-    for (let row = startRow - 1; row >= 0; row--) {
-        indices.push({row, column});
+    for (let i = 1; i < 8; i++) {
+        const index = {
+            row: startRow + i * Direction.NORTH.rowMultiplier,
+            column: startColumn + i * Direction.NORTH.columnMultiplier
+        };
+        if (isOutOfBounds(index)) {
+            break;
+        }
+        indices.push(index);
     }
     return indices;
 };
@@ -101,10 +108,17 @@ export const northeastIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const eastIndices = ({row, column: startColumn}) => {
+export const eastIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
-    for (let column = startColumn + 1; column < 8; column++) {
-        indices.push({row, column});
+    for (let i = 1; i < 8; i++) {
+        const index = {
+            row: startRow + i * Direction.EAST.rowMultiplier,
+            column: startColumn + i * Direction.EAST.columnMultiplier
+        };
+        if (isOutOfBounds(index)) {
+            break;
+        }
+        indices.push(index);
     }
     return indices;
 };
@@ -124,10 +138,17 @@ export const southeastIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const southIndices = ({row: startRow, column}) => {
+export const southIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
-    for (let row = startRow + 1; row < 8; row++) {
-        indices.push({row, column});
+    for (let i = 1; i < 8; i++) {
+        const index = {
+            row: startRow + i * Direction.SOUTH.rowMultiplier,
+            column: startColumn + i * Direction.SOUTH.columnMultiplier
+        };
+        if (isOutOfBounds(index)) {
+            break;
+        }
+        indices.push(index);
     }
     return indices;
 };
@@ -147,10 +168,17 @@ export const southwestIndices = ({row: startRow, column: startColumn}) => {
     return indices;
 };
 
-export const westIndices = ({row, column: startColumn}) => {
+export const westIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
-    for (let column = startColumn - 1; column >= 0; column--) {
-        indices.push({row, column});
+    for (let i = 1; i < 8; i++) {
+        const index = {
+            row: startRow + i * Direction.WEST.rowMultiplier,
+            column: startColumn + i * Direction.WEST.columnMultiplier
+        };
+        if (isOutOfBounds(index)) {
+            break;
+        }
+        indices.push(index);
     }
     return indices;
 };
