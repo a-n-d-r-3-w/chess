@@ -72,6 +72,10 @@ export default Object.freeze({
     RC77: {row: 7, column: 7},
 });
 
+const isOutOfBounds = ({row, column}) => {
+    return row < 0 || row >= 8 || column < 0 || column >= 8;
+};
+
 export const getNorthwardIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
@@ -83,12 +87,11 @@ export const getNorthwardIndices = ({row: startRow, column}) => {
 export const getNortheastwardIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const row = startRow - i;
-        const column = startColumn + i;
-        if (row < 0 || column >= 8) {
+        const index = {row: startRow - i, column: startColumn + i};
+        if (isOutOfBounds(index)) {
             break;
         }
-        indices.push({row, column});
+        indices.push(index);
     }
     return indices;
 };
@@ -104,12 +107,11 @@ export const getEastwardIndices = ({row, column: startColumn}) => {
 export const getSoutheastwardIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const row = startRow + i;
-        const column = startColumn + i;
-        if (row >= 8 || column >= 8) {
+        const index = {row: startRow + i, column: startColumn + i};
+        if (isOutOfBounds(index)) {
             break;
         }
-        indices.push({row, column});
+        indices.push(index);
     }
     return indices;
 };
@@ -125,12 +127,11 @@ export const getSouthwardIndices = ({row: startRow, column}) => {
 export const getSouthwestwardIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const row = startRow + i;
-        const column = startColumn - i;
-        if (row >= 8 || column < 0) {
+        const index = {row: startRow + i, column: startColumn - i};
+        if (isOutOfBounds(index)) {
             break;
         }
-        indices.push({row, column});
+        indices.push(index);
     }
     return indices;
 };
@@ -146,12 +147,11 @@ export const getWestwardIndices = ({row, column: startColumn}) => {
 export const getNorthwestwardIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const row = startRow - i;
-        const column = startColumn - i;
-        if (row < 0 || column < 0) {
+        const index = {row: startRow - i, column: startColumn - i};
+        if (isOutOfBounds(index)) {
             break;
         }
-        indices.push({row, column});
+        indices.push(index);
     }
     return indices;
 };
