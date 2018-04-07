@@ -1,38 +1,38 @@
 import {
-    getNorthwardIndices,
-    getSouthwardIndices,
-    getWestwardIndices,
-    getEastwardIndices
+    getNorthIndices,
+    getSouthIndices,
+    getWestIndices,
+    getEastIndices
 } from '../BoardIndex';
 import {getValidIndices} from "./Util";
 
-const getNorthwardMoves = (board, startingIndex, color) => {
-    const indices = getNorthwardIndices(startingIndex);
+const getNorthMoves = (board, startingIndex, color) => {
+    const indices = getNorthIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getSouthwardMoves = (board, startingIndex, color) => {
-    const indices = getSouthwardIndices(startingIndex);
+const getSouthMoves = (board, startingIndex, color) => {
+    const indices = getSouthIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getWestwardMoves = (board, startingIndex, color) => {
-    const indices = getWestwardIndices(startingIndex);
+const getWestMoves = (board, startingIndex, color) => {
+    const indices = getWestIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getEastwardMoves = (board, startingIndex, color) => {
-    const indices = getEastwardIndices(startingIndex);
+const getEastMoves = (board, startingIndex, color) => {
+    const indices = getEastIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
 const getMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...getNorthwardMoves(board, startingIndex, color));
-    moves.push(...getSouthwardMoves(board, startingIndex, color));
-    moves.push(...getWestwardMoves(board, startingIndex, color));
-    moves.push(...getEastwardMoves(board, startingIndex, color));
+    moves.push(...getNorthMoves(board, startingIndex, color));
+    moves.push(...getSouthMoves(board, startingIndex, color));
+    moves.push(...getWestMoves(board, startingIndex, color));
+    moves.push(...getEastMoves(board, startingIndex, color));
     return moves;
 };
 

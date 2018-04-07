@@ -1,38 +1,38 @@
 import {
-    getNortheastwardIndices,
-    getSoutheastwardIndices,
-    getSouthwestwardIndices,
-    getNorthwestwardIndices
+    getNortheastIndices,
+    getSoutheastIndices,
+    getSouthwestIndices,
+    getNorthwestIndices
 } from '../BoardIndex';
 import {getValidIndices} from "./Util";
 
-const getNortheastwardMoves = (board, startingIndex, color) => {
-    const indices = getNortheastwardIndices(startingIndex);
+const getNortheastMoves = (board, startingIndex, color) => {
+    const indices = getNortheastIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getSoutheastwardMoves = (board, startingIndex, color) => {
-    const indices = getSoutheastwardIndices(startingIndex);
+const getSoutheastMoves = (board, startingIndex, color) => {
+    const indices = getSoutheastIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getSouthwestwardMoves = (board, startingIndex, color) => {
-    const indices = getSouthwestwardIndices(startingIndex);
+const getSouthwestMoves = (board, startingIndex, color) => {
+    const indices = getSouthwestIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
-const getNorthwestwardMoves = (board, startingIndex, color) => {
-    const indices = getNorthwestwardIndices(startingIndex);
+const getNorthwestMoves = (board, startingIndex, color) => {
+    const indices = getNorthwestIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
 const getMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...getNortheastwardMoves(board, startingIndex, color));
-    moves.push(...getSoutheastwardMoves(board, startingIndex, color));
-    moves.push(...getSouthwestwardMoves(board, startingIndex, color));
-    moves.push(...getNorthwestwardMoves(board, startingIndex, color));
+    moves.push(...getNortheastMoves(board, startingIndex, color));
+    moves.push(...getSoutheastMoves(board, startingIndex, color));
+    moves.push(...getSouthwestMoves(board, startingIndex, color));
+    moves.push(...getNorthwestMoves(board, startingIndex, color));
     return moves;
 };
 
