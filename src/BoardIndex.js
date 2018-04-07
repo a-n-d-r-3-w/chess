@@ -72,7 +72,7 @@ export default Object.freeze({
     RC77: {row: 7, column: 7},
 });
 
-export const getIndicesTowardsNorth = ({row: startRow, column}) => {
+export const getNorthwardIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
         indices.push({row, column});
@@ -80,7 +80,7 @@ export const getIndicesTowardsNorth = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesTowardsSouth = ({row: startRow, column}) => {
+export const getSouthwardIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
         indices.push({row, column});
@@ -88,7 +88,7 @@ export const getIndicesTowardsSouth = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesTowardsWest = ({row, column: startColumn}) => {
+export const getWestwardIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
         indices.push({row, column});
@@ -96,7 +96,7 @@ export const getIndicesTowardsWest = ({row, column: startColumn}) => {
     return indices;
 };
 
-export const getIndicesTowardsEast = ({row, column: startColumn}) => {
+export const getEastwardIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
         indices.push({row, column});

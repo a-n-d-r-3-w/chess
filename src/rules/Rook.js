@@ -1,8 +1,8 @@
 import {
-    getIndicesTowardsNorth,
-    getIndicesTowardsSouth,
-    getIndicesTowardsWest,
-    getIndicesTowardsEast
+    getNorthwardIndices,
+    getSouthwardIndices,
+    getWestwardIndices,
+    getEastwardIndices
 } from '../BoardIndex';
 import {
     isEmpty,
@@ -29,33 +29,33 @@ function getMoves(board, indices, color) {
     return moves;
 }
 
-const getUpMoves = (board, startingIndex, color) => {
-    const indices = getIndicesTowardsNorth(startingIndex);
+const getNorthwardMoves = (board, startingIndex, color) => {
+    const indices = getNorthwardIndices(startingIndex);
     return getMoves(board, indices, color);
 };
 
-const getDownMoves = (board, startingIndex, color) => {
-    const indices = getIndicesTowardsSouth(startingIndex);
+const getSouthwardMoves = (board, startingIndex, color) => {
+    const indices = getSouthwardIndices(startingIndex);
     return getMoves(board, indices, color);
 };
 
-const getLeftMoves = (board, startingIndex, color) => {
-    const indices = getIndicesTowardsWest(startingIndex);
+const getWestwardMoves = (board, startingIndex, color) => {
+    const indices = getWestwardIndices(startingIndex);
     return getMoves(board, indices, color);
 };
 
-const getRightMoves = (board, startingIndex, color) => {
-    const indices = getIndicesTowardsEast(startingIndex);
+const getEastwardMoves = (board, startingIndex, color) => {
+    const indices = getEastwardIndices(startingIndex);
     return getMoves(board, indices, color);
 };
 
 const getRookMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...getUpMoves(board, startingIndex, color));
-    moves.push(...getDownMoves(board, startingIndex, color));
-    moves.push(...getLeftMoves(board, startingIndex, color));
-    moves.push(...getRightMoves(board, startingIndex, color));
+    moves.push(...getNorthwardMoves(board, startingIndex, color));
+    moves.push(...getSouthwardMoves(board, startingIndex, color));
+    moves.push(...getWestwardMoves(board, startingIndex, color));
+    moves.push(...getEastwardMoves(board, startingIndex, color));
     return moves;
 };
 
