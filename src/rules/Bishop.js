@@ -1,38 +1,19 @@
-import {
-    northeastIndices,
-    southeastIndices,
-    southwestIndices,
-    northwestIndices
-} from '../BoardIndex';
+import {getIndices} from '../BoardIndex';
 import {validIndices} from "./Util";
+import Direction from "../Direction";
 
-const northeastMoves = (board, startingIndex, color) => {
-    const indices = northeastIndices(startingIndex);
-    return validIndices(board, indices, color);
-};
-
-const southeastMoves = (board, startingIndex, color) => {
-    const indices = southeastIndices(startingIndex);
-    return validIndices(board, indices, color);
-};
-
-const southwestMoves = (board, startingIndex, color) => {
-    const indices = southwestIndices(startingIndex);
-    return validIndices(board, indices, color);
-};
-
-const northwestMoves = (board, startingIndex, color) => {
-    const indices = northwestIndices(startingIndex);
+const temp = (board, startingIndex, color, direction) => {
+    const indices = getIndices(startingIndex, direction);
     return validIndices(board, indices, color);
 };
 
 const bishopMoves = (board, startingIndex) => {
     const { color } = board.get(startingIndex);
     const moves = [];
-    moves.push(...northeastMoves(board, startingIndex, color));
-    moves.push(...southeastMoves(board, startingIndex, color));
-    moves.push(...southwestMoves(board, startingIndex, color));
-    moves.push(...northwestMoves(board, startingIndex, color));
+    moves.push(...temp(board, startingIndex, color, Direction.NORTHEAST));
+    moves.push(...temp(board, startingIndex, color, Direction.SOUTHEAST));
+    moves.push(...temp(board, startingIndex, color, Direction.SOUTHWEST));
+    moves.push(...temp(board, startingIndex, color, Direction.NORTHWEST));
     return moves;
 };
 
