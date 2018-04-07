@@ -80,6 +80,14 @@ export const getNorthwardIndices = ({row: startRow, column}) => {
     return indices;
 };
 
+export const getEastwardIndices = ({row, column: startColumn}) => {
+    const indices = [];
+    for (let column = startColumn + 1; column < 8; column++) {
+        indices.push({row, column});
+    }
+    return indices;
+};
+
 export const getSouthwardIndices = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
@@ -91,14 +99,6 @@ export const getSouthwardIndices = ({row: startRow, column}) => {
 export const getWestwardIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
-        indices.push({row, column});
-    }
-    return indices;
-};
-
-export const getEastwardIndices = ({row, column: startColumn}) => {
-    const indices = [];
-    for (let column = startColumn + 1; column < 8; column++) {
         indices.push({row, column});
     }
     return indices;

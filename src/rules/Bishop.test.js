@@ -13,19 +13,19 @@ beforeEach(() => {
 });
 
 describe('Bishop', () => {
-    it('can move up, down, left, and right', () => {
-        const up = [Index.RC03, Index.RC13, Index.RC23];
-        const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
-        const left = [Index.RC30, Index.RC31, Index.RC32];
-        const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
+    it('can move northeast, southeast, southwest, or northwest', () => {
+        const northeast = [Index.RC24, Index.RC15, Index.RC06];
+        // const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
+        // const left = [Index.RC30, Index.RC31, Index.RC32];
+        // const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
         const rookMoves = getMoves(board, Index.RC33);
-        assertContains(rookMoves, up);
-        assertContains(rookMoves, down);
-        assertContains(rookMoves, left);
-        assertContains(rookMoves, right);
+        assertContains(rookMoves, northeast);
+        // assertContains(rookMoves, down);
+        // assertContains(rookMoves, left);
+        // assertContains(rookMoves, right);
     });
 
-    it('is blocked by a piece of the same color', () => {
+    xit('is blocked by a piece of the same color', () => {
         board.put(Piece.WHITE_PAWN, Index.RC03);
         board.put(Piece.WHITE_PAWN, Index.RC73);
         board.put(Piece.WHITE_PAWN, Index.RC30);
@@ -37,7 +37,7 @@ describe('Bishop', () => {
         assertDoesNotContain(rookMoves, Index.RC37);
     });
 
-    it('can take the piece of the opposite color', () => {
+    xit('can take the piece of the opposite color', () => {
         board.put(Piece.BLACK_PAWN, Index.RC13);
         board.put(Piece.BLACK_PAWN, Index.RC63);
         board.put(Piece.BLACK_PAWN, Index.RC31);
