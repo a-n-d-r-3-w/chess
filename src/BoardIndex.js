@@ -1,3 +1,5 @@
+import Direction from './Direction';
+
 export default Object.freeze({
     RC00: {row: 0, column: 0},
     RC01: {row: 0, column: 1},
@@ -87,7 +89,10 @@ export const northIndices = ({row: startRow, column}) => {
 export const northeastIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const index = {row: startRow - i, column: startColumn + i};
+        const index = {
+            row: startRow + i * Direction.NORTHEAST.rowMultiplier,
+            column: startColumn + i * Direction.NORTHEAST.columnMultiplier
+        };
         if (isOutOfBounds(index)) {
             break;
         }
@@ -107,7 +112,10 @@ export const eastIndices = ({row, column: startColumn}) => {
 export const southeastIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const index = {row: startRow + i, column: startColumn + i};
+        const index = {
+            row: startRow + i * Direction.SOUTHEAST.rowMultiplier,
+            column: startColumn + i * Direction.SOUTHEAST.columnMultiplier
+        };
         if (isOutOfBounds(index)) {
             break;
         }
@@ -127,7 +135,10 @@ export const southIndices = ({row: startRow, column}) => {
 export const southwestIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const index = {row: startRow + i, column: startColumn - i};
+        const index = {
+            row: startRow + i * Direction.SOUTHWEST.rowMultiplier,
+            column: startColumn + i * Direction.SOUTHWEST.columnMultiplier
+        };
         if (isOutOfBounds(index)) {
             break;
         }
@@ -147,7 +158,10 @@ export const westIndices = ({row, column: startColumn}) => {
 export const northwestIndices = ({row: startRow, column: startColumn}) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
-        const index = {row: startRow - i, column: startColumn - i};
+        const index = {
+            row: startRow + i * Direction.NORTHWEST.rowMultiplier,
+            column: startColumn + i * Direction.NORTHWEST.columnMultiplier
+        };
         if (isOutOfBounds(index)) {
             break;
         }
