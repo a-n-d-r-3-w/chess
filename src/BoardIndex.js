@@ -72,7 +72,7 @@ export default Object.freeze({
     RC77: {row: 7, column: 7},
 });
 
-export const getIndicesBetweenHereAndTopEdge = ({row: startRow, column}) => {
+export const getIndicesTowardsNorth = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow - 1; row >= 0; row--) {
         indices.push({row, column});
@@ -80,7 +80,7 @@ export const getIndicesBetweenHereAndTopEdge = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesBetweenHereAndBottomEdge = ({row: startRow, column}) => {
+export const getIndicesTowardsSouth = ({row: startRow, column}) => {
     const indices = [];
     for (let row = startRow + 1; row < 8; row++) {
         indices.push({row, column});
@@ -88,7 +88,7 @@ export const getIndicesBetweenHereAndBottomEdge = ({row: startRow, column}) => {
     return indices;
 };
 
-export const getIndicesBetweenHereAndLeftEdge = ({row, column: startColumn}) => {
+export const getIndicesTowardsWest = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn - 1; column >= 0; column--) {
         indices.push({row, column});
@@ -96,7 +96,7 @@ export const getIndicesBetweenHereAndLeftEdge = ({row, column: startColumn}) => 
     return indices;
 };
 
-export const getIndicesBetweenHereAndRightEdge = ({row, column: startColumn}) => {
+export const getIndicesTowardsEast = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
         indices.push({row, column});

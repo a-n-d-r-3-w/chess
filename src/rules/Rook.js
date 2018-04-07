@@ -1,8 +1,8 @@
 import {
-    getIndicesBetweenHereAndTopEdge,
-    getIndicesBetweenHereAndBottomEdge,
-    getIndicesBetweenHereAndLeftEdge,
-    getIndicesBetweenHereAndRightEdge
+    getIndicesTowardsNorth,
+    getIndicesTowardsSouth,
+    getIndicesTowardsWest,
+    getIndicesTowardsEast
 } from '../BoardIndex';
 import {
     isEmpty,
@@ -30,22 +30,22 @@ function getMoves(board, indices, color) {
 }
 
 const getUpMoves = (board, startingIndex, color) => {
-    const indices = getIndicesBetweenHereAndTopEdge(startingIndex);
+    const indices = getIndicesTowardsNorth(startingIndex);
     return getMoves(board, indices, color);
 };
 
 const getDownMoves = (board, startingIndex, color) => {
-    const indices = getIndicesBetweenHereAndBottomEdge(startingIndex);
+    const indices = getIndicesTowardsSouth(startingIndex);
     return getMoves(board, indices, color);
 };
 
 const getLeftMoves = (board, startingIndex, color) => {
-    const indices = getIndicesBetweenHereAndLeftEdge(startingIndex);
+    const indices = getIndicesTowardsWest(startingIndex);
     return getMoves(board, indices, color);
 };
 
 const getRightMoves = (board, startingIndex, color) => {
-    const indices = getIndicesBetweenHereAndRightEdge(startingIndex);
+    const indices = getIndicesTowardsEast(startingIndex);
     return getMoves(board, indices, color);
 };
 
