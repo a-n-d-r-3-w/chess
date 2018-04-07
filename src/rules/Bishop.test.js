@@ -15,12 +15,12 @@ beforeEach(() => {
 describe('Bishop', () => {
     it('can move northeast, southeast, southwest, or northwest', () => {
         const northeast = [Index.RC24, Index.RC15, Index.RC06];
-        // const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
+        const southeast = [Index.RC44, Index.RC55, Index.RC66, Index.RC77];
         // const left = [Index.RC30, Index.RC31, Index.RC32];
         // const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
         const rookMoves = getMoves(board, Index.RC33);
         assertContains(rookMoves, northeast);
-        // assertContains(rookMoves, down);
+        assertContains(rookMoves, southeast);
         // assertContains(rookMoves, left);
         // assertContains(rookMoves, right);
     });

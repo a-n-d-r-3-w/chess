@@ -80,9 +80,35 @@ export const getNorthwardIndices = ({row: startRow, column}) => {
     return indices;
 };
 
+export const getNortheastwardIndices = ({row: startRow, column: startColumn}) => {
+    const indices = [];
+    for (let i = 1; i < 8; i++) {
+        const row = startRow - i;
+        const column = startColumn + i;
+        if (row < 0 || column >= 8) {
+            break;
+        }
+        indices.push({row, column});
+    }
+    return indices;
+};
+
 export const getEastwardIndices = ({row, column: startColumn}) => {
     const indices = [];
     for (let column = startColumn + 1; column < 8; column++) {
+        indices.push({row, column});
+    }
+    return indices;
+};
+
+export const getSoutheastwardIndices = ({row: startRow, column: startColumn}) => {
+    const indices = [];
+    for (let i = 1; i < 8; i++) {
+        const row = startRow + i;
+        const column = startColumn + i;
+        if (row < 0 || column >= 8) {
+            break;
+        }
         indices.push({row, column});
     }
     return indices;
