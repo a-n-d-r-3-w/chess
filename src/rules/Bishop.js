@@ -1,5 +1,5 @@
 import {directionalMoves} from "./Util";
-import Direction from "../Direction";
+import Direction from "./Direction";
 
 const bishopMoves = (board, startingIndex) => {
     const moves = [];
