@@ -1,7 +1,7 @@
 import {
     getNortheastwardIndices,
     getSoutheastwardIndices,
-    getWestwardIndices,
+    getSouthwestwardIndices,
     getEastwardIndices
 } from '../BoardIndex';
 import {
@@ -39,8 +39,8 @@ const getSoutheastwardMoves = (board, startingIndex, color) => {
     return getValidIndices(board, indices, color);
 };
 
-const getWestwardMoves = (board, startingIndex, color) => {
-    const indices = getWestwardIndices(startingIndex);
+const getSouthwestwardMoves = (board, startingIndex, color) => {
+    const indices = getSouthwestwardIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
@@ -54,7 +54,7 @@ const getMoves = (board, startingIndex) => {
     const moves = [];
     moves.push(...getNortheastwardMoves(board, startingIndex, color));
     moves.push(...getSoutheastwardMoves(board, startingIndex, color));
-    moves.push(...getWestwardMoves(board, startingIndex, color));
+    moves.push(...getSouthwestwardMoves(board, startingIndex, color));
     moves.push(...getEastwardMoves(board, startingIndex, color));
     return moves;
 };

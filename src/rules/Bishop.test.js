@@ -9,19 +9,19 @@ let board;
 
 beforeEach(() => {
     board = new Board();
-    board.put(Piece.WHITE_ROOK, Index.RC33);
+    board.put(Piece.WHITE_BISHOP, Index.RC33);
 });
 
 describe('Bishop', () => {
     it('can move northeast, southeast, southwest, or northwest', () => {
         const northeast = [Index.RC24, Index.RC15, Index.RC06];
         const southeast = [Index.RC44, Index.RC55, Index.RC66, Index.RC77];
-        // const left = [Index.RC30, Index.RC31, Index.RC32];
+        const southwest = [Index.RC42, Index.RC51, Index.RC60];
         // const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
-        const rookMoves = getMoves(board, Index.RC33);
-        assertContains(rookMoves, northeast);
-        assertContains(rookMoves, southeast);
-        // assertContains(rookMoves, left);
+        const moves = getMoves(board, Index.RC33);
+        assertContains(moves, northeast);
+        assertContains(moves, southeast);
+        assertContains(moves, southwest);
         // assertContains(rookMoves, right);
     });
 
