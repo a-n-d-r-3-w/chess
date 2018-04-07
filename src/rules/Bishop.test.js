@@ -37,19 +37,19 @@ describe('Bishop', () => {
         assertDoesNotContain(moves, Index.RC11);
     });
 
-    xit('can take the piece of the opposite color', () => {
-        board.put(Piece.BLACK_PAWN, Index.RC13);
-        board.put(Piece.BLACK_PAWN, Index.RC63);
-        board.put(Piece.BLACK_PAWN, Index.RC31);
-        board.put(Piece.BLACK_PAWN, Index.RC36);
-        const rookMoves = getMoves(board, Index.RC33);
-        assertContains(rookMoves, Index.RC13);
-        assertContains(rookMoves, Index.RC63);
-        assertContains(rookMoves, Index.RC31);
-        assertContains(rookMoves, Index.RC36);
-        assertDoesNotContain(rookMoves, Index.RC03);
-        assertDoesNotContain(rookMoves, Index.RC73);
-        assertDoesNotContain(rookMoves, Index.RC30);
-        assertDoesNotContain(rookMoves, Index.RC37);
+    it('can take the piece of the opposite color', () => {
+        board.put(Piece.BLACK_PAWN, Index.RC15);
+        board.put(Piece.BLACK_PAWN, Index.RC55);
+        board.put(Piece.BLACK_PAWN, Index.RC51);
+        board.put(Piece.BLACK_PAWN, Index.RC11);
+        const moves = getMoves(board, Index.RC33);
+        assertContains(moves, Index.RC15);
+        assertContains(moves, Index.RC55);
+        assertContains(moves, Index.RC51);
+        assertContains(moves, Index.RC11);
+        assertDoesNotContain(moves, Index.RC06);
+        assertDoesNotContain(moves, Index.RC66);
+        assertDoesNotContain(moves, Index.RC60);
+        assertDoesNotContain(moves, Index.RC00);
     });
 });
