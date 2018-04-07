@@ -17,12 +17,12 @@ describe('Bishop', () => {
         const northeast = [Index.RC24, Index.RC15, Index.RC06];
         const southeast = [Index.RC44, Index.RC55, Index.RC66, Index.RC77];
         const southwest = [Index.RC42, Index.RC51, Index.RC60];
-        // const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
+        const northwest = [Index.RC22, Index.RC11, Index.RC00];
         const moves = getMoves(board, Index.RC33);
         assertContains(moves, northeast);
         assertContains(moves, southeast);
         assertContains(moves, southwest);
-        // assertContains(rookMoves, right);
+        assertContains(moves, northwest);
     });
 
     xit('is blocked by a piece of the same color', () => {

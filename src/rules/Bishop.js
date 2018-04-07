@@ -2,7 +2,7 @@ import {
     getNortheastwardIndices,
     getSoutheastwardIndices,
     getSouthwestwardIndices,
-    getEastwardIndices
+    getNorthwestwardIndices
 } from '../BoardIndex';
 import {
     isEmpty,
@@ -44,8 +44,8 @@ const getSouthwestwardMoves = (board, startingIndex, color) => {
     return getValidIndices(board, indices, color);
 };
 
-const getEastwardMoves = (board, startingIndex, color) => {
-    const indices = getEastwardIndices(startingIndex);
+const getNorthwestwardMoves = (board, startingIndex, color) => {
+    const indices = getNorthwestwardIndices(startingIndex);
     return getValidIndices(board, indices, color);
 };
 
@@ -55,7 +55,7 @@ const getMoves = (board, startingIndex) => {
     moves.push(...getNortheastwardMoves(board, startingIndex, color));
     moves.push(...getSoutheastwardMoves(board, startingIndex, color));
     moves.push(...getSouthwestwardMoves(board, startingIndex, color));
-    moves.push(...getEastwardMoves(board, startingIndex, color));
+    moves.push(...getNorthwestwardMoves(board, startingIndex, color));
     return moves;
 };
 
