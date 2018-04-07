@@ -19,7 +19,7 @@ const getIndices = ({row: startRow, column: startColumn}, direction) => {
     return indices;
 };
 
-const validIndices = (board, indices, color) => {
+const getValidIndices = (board, indices, color) => {
     const validIndices = [];
     for (let index of indices) {
         const space = board.get(index);
@@ -40,5 +40,5 @@ const validIndices = (board, indices, color) => {
 
 export const directionalMoves = (board, startingIndex, color, direction) => {
     const indices = getIndices(startingIndex, direction);
-    return validIndices(board, indices, color);
+    return getValidIndices(board, indices, color);
 };
