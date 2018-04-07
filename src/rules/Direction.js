@@ -1,10 +1,10 @@
 export default Object.freeze({
-    NORTH: {rowMultiplier: -1, columnMultiplier: 0},
-    NORTHEAST: {rowMultiplier: -1, columnMultiplier: 1},
-    EAST: {rowMultiplier: 0, columnMultiplier: 1},
-    SOUTHEAST: {rowMultiplier: 1, columnMultiplier: 1},
-    SOUTH: {rowMultiplier: 1, columnMultiplier: 0},
-    SOUTHWEST: {rowMultiplier: 1, columnMultiplier: -1},
-    WEST: {rowMultiplier: 0, columnMultiplier: -1},
-    NORTHWEST: {rowMultiplier: -1, columnMultiplier: -1},
+    N: {rowMultiplier: -1, columnMultiplier: 0},
+    NE: {rowMultiplier: -1, columnMultiplier: 1},
+    E: {rowMultiplier: 0, columnMultiplier: 1},
+    SE: {rowMultiplier: 1, columnMultiplier: 1},
+    S: {rowMultiplier: 1, columnMultiplier: 0},
+    SW: {rowMultiplier: 1, columnMultiplier: -1},
+    W: {rowMultiplier: 0, columnMultiplier: -1},
+    NW: {rowMultiplier: -1, columnMultiplier: -1},
 });
