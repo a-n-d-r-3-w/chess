@@ -18,11 +18,11 @@ describe('Rook', () => {
         const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
         const left = [Index.RC30, Index.RC31, Index.RC32];
         const right = [Index.RC34, Index.RC35, Index.RC36, Index.RC37];
-        const rookMoves = getMoves(board, Index.RC33);
-        assertContains(rookMoves, up);
-        assertContains(rookMoves, down);
-        assertContains(rookMoves, left);
-        assertContains(rookMoves, right);
+        const moves = getMoves(board, Index.RC33);
+        assertContains(moves, up);
+        assertContains(moves, down);
+        assertContains(moves, left);
+        assertContains(moves, right);
     });
 
     it('is blocked by a piece of the same color', () => {
@@ -30,11 +30,11 @@ describe('Rook', () => {
         board.put(Piece.WHITE_PAWN, Index.RC73);
         board.put(Piece.WHITE_PAWN, Index.RC30);
         board.put(Piece.WHITE_PAWN, Index.RC37);
-        const rookMoves = getMoves(board, Index.RC33);
-        assertDoesNotContain(rookMoves, Index.RC03);
-        assertDoesNotContain(rookMoves, Index.RC73);
-        assertDoesNotContain(rookMoves, Index.RC30);
-        assertDoesNotContain(rookMoves, Index.RC37);
+        const moves = getMoves(board, Index.RC33);
+        assertDoesNotContain(moves, Index.RC03);
+        assertDoesNotContain(moves, Index.RC73);
+        assertDoesNotContain(moves, Index.RC30);
+        assertDoesNotContain(moves, Index.RC37);
     });
 
     it('can take the piece of the opposite color', () => {
@@ -42,14 +42,14 @@ describe('Rook', () => {
         board.put(Piece.BLACK_PAWN, Index.RC63);
         board.put(Piece.BLACK_PAWN, Index.RC31);
         board.put(Piece.BLACK_PAWN, Index.RC36);
-        const rookMoves = getMoves(board, Index.RC33);
-        assertContains(rookMoves, Index.RC13);
-        assertContains(rookMoves, Index.RC63);
-        assertContains(rookMoves, Index.RC31);
-        assertContains(rookMoves, Index.RC36);
-        assertDoesNotContain(rookMoves, Index.RC03);
-        assertDoesNotContain(rookMoves, Index.RC73);
-        assertDoesNotContain(rookMoves, Index.RC30);
-        assertDoesNotContain(rookMoves, Index.RC37);
+        const moves = getMoves(board, Index.RC33);
+        assertContains(moves, Index.RC13);
+        assertContains(moves, Index.RC63);
+        assertContains(moves, Index.RC31);
+        assertContains(moves, Index.RC36);
+        assertDoesNotContain(moves, Index.RC03);
+        assertDoesNotContain(moves, Index.RC73);
+        assertDoesNotContain(moves, Index.RC30);
+        assertDoesNotContain(moves, Index.RC37);
     });
 });
