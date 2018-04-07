@@ -1,4 +1,4 @@
-import getMoves from './Rook';
+import getMoves from './Bishop';
 import Board from '../Board';
 import Piece from '../Piece';
 import Index from '../BoardIndex';
@@ -12,7 +12,7 @@ beforeEach(() => {
     board.put(Piece.WHITE_ROOK, Index.RC33);
 });
 
-describe('Rook', () => {
+describe('Bishop', () => {
     it('can move up, down, left, and right', () => {
         const up = [Index.RC03, Index.RC13, Index.RC23];
         const down = [Index.RC43, Index.RC53, Index.RC63, Index.RC73];
