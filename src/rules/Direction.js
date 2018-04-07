@@ -1,10 +1,18 @@
 export default Object.freeze({
     N: {rowMultiplier: -1, columnMultiplier: 0},
+    NNE: {rowMultiplier: -2, columnMultiplier: 1},
     NE: {rowMultiplier: -1, columnMultiplier: 1},
+    ENE: {rowMultiplier: -1, columnMultiplier: 2},
     E: {rowMultiplier: 0, columnMultiplier: 1},
+    ESE: {rowMultiplier: 1, columnMultiplier: 2},
     SE: {rowMultiplier: 1, columnMultiplier: 1},
+    SSE: {rowMultiplier: 2, columnMultiplier: 1},
     S: {rowMultiplier: 1, columnMultiplier: 0},
+    SSW: {rowMultiplier: 2, columnMultiplier: -1},
     SW: {rowMultiplier: 1, columnMultiplier: -1},
+    WSW: {rowMultiplier: 1, columnMultiplier: -2},
     W: {rowMultiplier: 0, columnMultiplier: -1},
+    WNW: {rowMultiplier: -1, columnMultiplier: -2},
     NW: {rowMultiplier: -1, columnMultiplier: -1},
+    NNW: {rowMultiplier: -2, columnMultiplier: -1},
 });
