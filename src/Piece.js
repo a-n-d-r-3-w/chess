@@ -17,3 +17,5 @@ const Piece = Object.freeze({
 });
 
 export default Piece;
+
+export const isKnight = ({type}) => type === Type.KNIGHT;

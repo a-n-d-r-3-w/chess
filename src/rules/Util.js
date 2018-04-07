@@ -1,10 +1,11 @@
 import {containsPieceOfColor, containsPieceOfNotColor, isEmpty} from "../Space";
+import {isKnight} from "../Piece";
 
 const isOutOfBounds = ({row, column}) => {
     return row < 0 || row >= 8 || column < 0 || column >= 8;
 };
 
-const candidateMoves = ({row: startRow, column: startColumn}, direction) => {
+const candidateMoves = ({row: startRow, column: startColumn}, direction, singleStepOnly) => {
     const indices = [];
     for (let i = 1; i < 8; i++) {
         const index = {
@@ -15,6 +16,9 @@ const candidateMoves = ({row: startRow, column: startColumn}, direction) => {
             break;
         }
         indices.push(index);
+        if (singleStepOnly) {
+            break;
+        }
     }
     return indices;
 };
@@ -39,7 +43,9 @@ const validMoves = (board, indices, color) => {
 };
 
 export const directionalMoves = (board, startingIndex, direction) => {
-    const tempMoves = candidateMoves(startingIndex, direction);
-    const { color } = board.get(startingIndex);
+    const piece = board.get(startingIndex);
+    const singleStepOnly = isKnight(piece);
+    const tempMoves = candidateMoves(startingIndex, direction, singleStepOnly);
+    const { color } = piece;
     return validMoves(board, tempMoves, color);
 };
