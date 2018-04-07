@@ -38,7 +38,8 @@ const validMoves = (board, indices, color) => {
     return validIndices;
 };
 
-export const directionalMoves = (board, startingIndex, color, direction) => {
+export const directionalMoves = (board, startingIndex, direction) => {
     const tempMoves = candidateMoves(startingIndex, direction);
+    const { color } = board.get(startingIndex);
     return validMoves(board, tempMoves, color);
 };
