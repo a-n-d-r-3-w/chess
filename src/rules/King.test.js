@@ -25,6 +25,18 @@ describe('King', () => {
         assertDoesNotContain(moves, Index.RC35);
     });
 
+    it('can move diagonally', () => {
+        const moves = kingMoves(board, Index.RC33);
+        assertContains(moves, Index.RC22);
+        assertDoesNotContain(moves, Index.RC11);
+        assertContains(moves, Index.RC44);
+        assertDoesNotContain(moves, Index.RC55);
+        assertContains(moves, Index.RC24);
+        assertDoesNotContain(moves, Index.RC15);
+        assertContains(moves, Index.RC42);
+        assertDoesNotContain(moves, Index.RC51);
+    });
+
     it('is blocked by a piece of the same color', () => {
         board.put(Piece.WHITE_PAWN, Index.RC23);
         board.put(Piece.WHITE_PAWN, Index.RC43);
