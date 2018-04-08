@@ -69,7 +69,7 @@ describe('Queen', () => {
         board.put(Piece.BLACK_PAWN, Index.RC11);
 
         const moves = queenMoves(board, Index.RC33);
-        
+
         assertContains(moves, Index.RC13);
         assertContains(moves, Index.RC63);
         assertContains(moves, Index.RC31);
