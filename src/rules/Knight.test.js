@@ -28,16 +28,24 @@ describe('Knight', () => {
         ])
     });
 
-    xit('is blocked by a piece of the same color', () => {
-        board.put(Piece.WHITE_PAWN, Index.RC15);
-        board.put(Piece.WHITE_PAWN, Index.RC55);
-        board.put(Piece.WHITE_PAWN, Index.RC51);
-        board.put(Piece.WHITE_PAWN, Index.RC11);
+    it('is blocked by a piece of the same color', () => {
+        board.put(Piece.WHITE_PAWN, Index.RC14);
+        board.put(Piece.WHITE_PAWN, Index.RC25);
+        board.put(Piece.WHITE_PAWN, Index.RC45);
+        board.put(Piece.WHITE_PAWN, Index.RC54);
+        board.put(Piece.WHITE_PAWN, Index.RC52);
+        board.put(Piece.WHITE_PAWN, Index.RC41);
+        board.put(Piece.WHITE_PAWN, Index.RC21);
+        board.put(Piece.WHITE_PAWN, Index.RC12);
         const moves = knightMoves(board, Index.RC33);
-        assertDoesNotContain(moves, Index.RC15);
-        assertDoesNotContain(moves, Index.RC55);
-        assertDoesNotContain(moves, Index.RC51);
-        assertDoesNotContain(moves, Index.RC11);
+        assertDoesNotContain(moves, Index.RC14);
+        assertDoesNotContain(moves, Index.RC25);
+        assertDoesNotContain(moves, Index.RC45);
+        assertDoesNotContain(moves, Index.RC54);
+        assertDoesNotContain(moves, Index.RC52);
+        assertDoesNotContain(moves, Index.RC41);
+        assertDoesNotContain(moves, Index.RC21);
+        assertDoesNotContain(moves, Index.RC12);
     });
 
     xit('can take the piece of the opposite color', () => {
