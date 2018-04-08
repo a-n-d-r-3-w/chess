@@ -60,4 +60,6 @@ describe('King', () => {
         assertContains(moves, Index.RC32);
         assertContains(moves, Index.RC34);
     });
+
+    // TODO: King cannot move into a check position.
 });
