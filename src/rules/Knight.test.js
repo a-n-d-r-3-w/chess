@@ -48,19 +48,23 @@ describe('Knight', () => {
         assertDoesNotContain(moves, Index.RC12);
     });
 
-    xit('can take the piece of the opposite color', () => {
-        board.put(Piece.BLACK_PAWN, Index.RC15);
-        board.put(Piece.BLACK_PAWN, Index.RC55);
-        board.put(Piece.BLACK_PAWN, Index.RC51);
-        board.put(Piece.BLACK_PAWN, Index.RC11);
+    it('can take the piece of the opposite color', () => {
+        board.put(Piece.BLACK_PAWN, Index.RC14);
+        board.put(Piece.BLACK_PAWN, Index.RC25);
+        board.put(Piece.BLACK_PAWN, Index.RC45);
+        board.put(Piece.BLACK_PAWN, Index.RC54);
+        board.put(Piece.BLACK_PAWN, Index.RC52);
+        board.put(Piece.BLACK_PAWN, Index.RC41);
+        board.put(Piece.BLACK_PAWN, Index.RC21);
+        board.put(Piece.BLACK_PAWN, Index.RC12);
         const moves = knightMoves(board, Index.RC33);
-        assertContains(moves, Index.RC15);
-        assertContains(moves, Index.RC55);
-        assertContains(moves, Index.RC51);
-        assertContains(moves, Index.RC11);
-        assertDoesNotContain(moves, Index.RC06);
-        assertDoesNotContain(moves, Index.RC66);
-        assertDoesNotContain(moves, Index.RC60);
-        assertDoesNotContain(moves, Index.RC00);
+        assertContains(moves, Index.RC14);
+        assertContains(moves, Index.RC25);
+        assertContains(moves, Index.RC45);
+        assertContains(moves, Index.RC54);
+        assertContains(moves, Index.RC52);
+        assertContains(moves, Index.RC41);
+        assertContains(moves, Index.RC21);
+        assertContains(moves, Index.RC12);
     });
 });
