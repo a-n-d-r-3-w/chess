@@ -19,3 +19,4 @@ const Piece = Object.freeze({
 export default Piece;
 
 export const isKnight = ({type}) => type === Type.KNIGHT;
+export const isKing = ({type}) => type === Type.KING;
