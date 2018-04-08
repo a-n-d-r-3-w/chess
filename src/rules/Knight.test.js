@@ -21,6 +21,11 @@ describe('Knight', () => {
             Index.RC52, Index.RC41,
             Index.RC21, Index.RC12
         ]);
+        assertDoesNotContain(moves, [
+            Index.RC06, Index.RC17,
+            Index.RC57, Index.RC75,
+            Index.RC71
+        ])
     });
 
     xit('is blocked by a piece of the same color', () => {
