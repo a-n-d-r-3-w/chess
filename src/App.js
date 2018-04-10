@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Color from './Color';
-import Board from './Board';
+import Board, {indexToRowColumn} from './Board';
 
 class App extends React.Component {
     constructor(props) {
@@ -11,14 +11,19 @@ class App extends React.Component {
         this.state = {
             board,
             player: Color.WHITE,
+            selectedIndex: null
         };
         this.onClick = this.onClick.bind(this);
     }
 
     onClick(index) {
         return (event) => {
-            console.log(index);
-            console.log(event.target);
+            if (this.state.board.isEmptyAt(indexToRowColumn(index))) {
+                return;
+            }
+            this.setState({ selectedIndex: index }, () => {
+                console.log(this.state.selectedIndex);
+            });
         }
     }
 
