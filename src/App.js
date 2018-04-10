@@ -65,7 +65,7 @@ class App extends Component {
                         {/*))*/}
                     {/*}*/}
                 {/*</div>*/}
-                <div className="pieces">
+                <div className="board">
                     {
                         this.state.board.getAll().map((square, index) => {
                             // const selectable = piece.color === this.state.player;
@@ -86,7 +86,7 @@ class App extends Component {
                                 return <div className="square" />
                             }
                             return <div
-                                className={`${square.color} ${square.type} PIECE square`}
+                                className={`${square.color} ${square.type} piece square`}
                                 key={index}
                             />;
                         })
