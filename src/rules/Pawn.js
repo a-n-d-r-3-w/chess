@@ -1,5 +1,4 @@
 import {get, isEmpty} from 'lodash';
-import {isPiece} from '../Piece';
 import {isBlack} from "../Color";
 
 const isBlackPieceSelected = (selection) => isBlack(selection.piece.color);
@@ -40,7 +39,7 @@ const canCaptureEnemy1 = function (board, selection) {
     const {row, column} = selection.position;
     const addend = isBlackPieceSelected(selection) ? 1 : -1;
     const target = board.get({row: row + addend, column: column + 1});
-    if (!isPiece(target)) {
+    if (target === null) {
         return false;
     }
     return target.color !== selection.piece.color;
@@ -50,7 +49,7 @@ const canCaptureEnemy2 = function (board, selection) {
     const {row, column} = selection.position;
     const addend = isBlackPieceSelected(selection) ? 1 : -1;
     const target = board.get({row: row + addend, column: column - 1});
-    if (!isPiece(target)) {
+    if (target === null) {
         return false;
     }
     return target.color !== selection.piece.color;

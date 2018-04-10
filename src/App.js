@@ -3,6 +3,8 @@ import './App.css';
 import Color from './Color';
 import Board, {indexToRowColumn} from './Board';
 import queenMoves from './rules/Queen';
+import pawnMoves from './rules/Pawn';
+import Type from './Type';
 
 class App extends React.Component {
     constructor(props) {
@@ -22,14 +24,26 @@ class App extends React.Component {
     onClick(index) {
         return (event) => {
             const rowColumn = indexToRowColumn(index);
+            const { board } = this.state;
             if (
-                this.state.board.isEmptyAt(rowColumn) ||
-                this.state.board.get(rowColumn).color !== this.state.player
+                board.isEmptyAt(rowColumn) ||
+                board.get(rowColumn).color !== this.state.player
             ) {
                 return;
             }
             this.setState({ selectedIndex: index }, () => {
-                const moves = queenMoves(this.state.board, rowColumn);
+                const { selectedIndex } = this.state;
+                if (selectedIndex === null) {
+                    return;
+                }
+                const { board } = this.state;
+                const selectedPiece = board.get(indexToRowColumn(selectedIndex));
+                const { type } = selectedPiece;
+                let moves = [];
+                switch (type) {
+                    default:
+                        moves = queenMoves(this.state.board, rowColumn);
+                }
                 this.setState({ moves });
             });
         }
