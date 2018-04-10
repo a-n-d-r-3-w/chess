@@ -12,6 +12,14 @@ class App extends React.Component {
             board,
             player: Color.WHITE,
         };
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(index) {
+        return (event) => {
+            console.log(index);
+            console.log(event.target);
+        }
     }
 
     render() {
@@ -24,7 +32,13 @@ class App extends React.Component {
                             if (square !== null) {
                                 className += ` piece ${square.color} ${square.type}`;
                             }
-                            return <div className={className} key={index} />;
+                            return (
+                                <div
+                                    key={index}
+                                    className={className}
+                                    onClick={this.onClick(index)}
+                                />
+                            );
                         })
                     }
                 </div>
