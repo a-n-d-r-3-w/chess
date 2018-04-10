@@ -27,6 +27,10 @@
     background-color: darkgreen;
 }
 
+.move {
+    background-color: royalblue;
+}
+
 .selectable:hover {
     background-color: cornflowerblue;
 }

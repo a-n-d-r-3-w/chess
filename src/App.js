@@ -2,6 +2,14 @@ import React from 'react';
 import './App.css';
 import Color from './Color';
 import Board, {indexToRowColumn} from './Board';
+import queenMoves from './rules/Queen';
+
+const movesContain = (moves, rowColumn) => {
+    if (moves === null) {
+        return false;
+    }
+    return moves.find(move => move.row === rowColumn.row && move.column === rowColumn.column);
+};
 
 class App extends React.Component {
     constructor(props) {
@@ -11,7 +19,8 @@ class App extends React.Component {
         this.state = {
             board,
             player: Color.WHITE,
-            selectedIndex: null
+            selectedIndex: null,
+            moves: null,
         };
         this.onClick = this.onClick.bind(this);
     }
@@ -26,7 +35,8 @@ class App extends React.Component {
                 return;
             }
             this.setState({ selectedIndex: index }, () => {
-                console.log(this.state.selectedIndex);
+                const moves = queenMoves(this.state.board, rowColumn);
+                this.setState({ moves });
             });
         }
     }
@@ -43,6 +53,9 @@ class App extends React.Component {
                             }
                             if (index === this.state.selectedIndex) {
                                 className += ' selected';
+                            }
+                            if (movesContain(this.state.moves, indexToRowColumn(index))) {
+                                className += ' move';
                             }
                             return (
                                 <div
