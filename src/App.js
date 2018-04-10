@@ -4,13 +4,6 @@ import Color from './Color';
 import Board, {indexToRowColumn} from './Board';
 import queenMoves from './rules/Queen';
 
-const movesContain = (moves, rowColumn) => {
-    if (moves === null) {
-        return false;
-    }
-    return moves.find(move => move.row === rowColumn.row && move.column === rowColumn.column);
-};
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +16,7 @@ class App extends React.Component {
             moves: null,
         };
         this.onClick = this.onClick.bind(this);
+        this.movesContain = this.movesContain.bind(this);
     }
 
     onClick(index) {
@@ -41,6 +35,15 @@ class App extends React.Component {
         }
     }
 
+    movesContain(index) {
+        const { moves } = this.state;
+        if (moves === null) {
+            return false;
+        }
+        const rowColumn = indexToRowColumn(index);
+        return moves.findIndex(move => move.row === rowColumn.row && move.column === rowColumn.column) !== -1;
+    }
+
     render() {
         return (
             <div className="game-container">
@@ -54,7 +57,7 @@ class App extends React.Component {
                             if (index === this.state.selectedIndex) {
                                 className += ' selected';
                             }
-                            if (movesContain(this.state.moves, indexToRowColumn(index))) {
+                            if (this.movesContain(index)) {
                                 className += ' move';
                             }
                             return (
