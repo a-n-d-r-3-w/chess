@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Color from './Color';
 import Board from './Board';
 
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         const board = new Board();
