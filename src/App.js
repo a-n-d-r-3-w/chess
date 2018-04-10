@@ -18,7 +18,11 @@ class App extends React.Component {
 
     onClick(index) {
         return (event) => {
-            if (this.state.board.isEmptyAt(indexToRowColumn(index))) {
+            const rowColumn = indexToRowColumn(index);
+            if (
+                this.state.board.isEmptyAt(rowColumn) ||
+                this.state.board.get(rowColumn).color !== this.state.player
+            ) {
                 return;
             }
             this.setState({ selectedIndex: index }, () => {
