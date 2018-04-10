@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Color from './Color';
-import Piece from './Piece';
+import Board from './Board';
 
 const NUM_ROWS = 8;
 const NUM_COLS = 8;
@@ -28,43 +28,14 @@ const createHighlights = () => {
     return array;
 };
 
-const initializePiecesMatrix = () => {
-    const pieces = [];
-    pieces.push([
-        Piece.BLACK_ROOK,
-        Piece.BLACK_KNIGHT,
-        Piece.BLACK_BISHOP,
-        Piece.BLACK_QUEEN,
-        Piece.BLACK_KING,
-        Piece.BLACK_BISHOP,
-        Piece.BLACK_KNIGHT,
-        Piece.BLACK_ROOK,
-    ]);
-    pieces.push((new Array(NUM_COLS)).fill(Piece.BLACK_PAWN));
-    pieces.push((new Array(NUM_COLS)).fill({}));
-    pieces.push((new Array(NUM_COLS)).fill({}));
-    pieces.push((new Array(NUM_COLS)).fill({}));
-    pieces.push((new Array(NUM_COLS)).fill({}));
-    pieces.push((new Array(NUM_COLS)).fill(Piece.WHITE_PAWN));
-    pieces.push([
-        Piece.WHITE_ROOK,
-        Piece.WHITE_KNIGHT,
-        Piece.WHITE_BISHOP,
-        Piece.WHITE_QUEEN,
-        Piece.WHITE_KING,
-        Piece.WHITE_BISHOP,
-        Piece.WHITE_KNIGHT,
-        Piece.WHITE_ROOK,
-    ]);
-    return pieces;
-};
-
 class App extends Component {
     constructor(props) {
         super(props);
+        const board = new Board();
+        board.initialize();
         this.state = {
             squaresMatrix: createBoard(),
-            piecesMatrix: initializePiecesMatrix(),
+            board,
             highlightsMatrix: createHighlights(),
             selection: {},
             player: Color.WHITE,
@@ -85,52 +56,52 @@ class App extends Component {
     render() {
         return (
             <div className="game-container">
-                <div className="board">
-                    {
-                        this.state.squaresMatrix.map((row, rowIndex) => (
-                            row.map((cell, columnIndex) => {
-                                return <div className={`${cell.color} SQUARE`} key={`${rowIndex},${columnIndex}`}/>;
-                            })
-                        ))
-                    }
-                </div>
+                {/*<div className="board">*/}
+                    {/*{*/}
+                        {/*this.state.squaresMatrix.map((row, rowIndex) => (*/}
+                            {/*row.map((cell, columnIndex) => {*/}
+                                {/*return <div className={`${cell.color} SQUARE`} key={`${rowIndex},${columnIndex}`}/>;*/}
+                            {/*})*/}
+                        {/*))*/}
+                    {/*}*/}
+                {/*</div>*/}
                 <div className="pieces">
                     {
-                        this.state.piecesMatrix.map((row, rowIndex) => (
-                            row.map((piece, columnIndex) => {
-                                const selectable = piece.color === this.state.player;
-                                const onClick = () => {
-                                    if (!selectable) {
-                                        return;
-                                    }
-                                    const selection = {
-                                        piece,
-                                        position: {
-                                            row: rowIndex,
-                                            column: columnIndex,
-                                        },
-                                    };
-                                    this.select(selection);
-                                };
-                                return <div
-                                    className={`${piece.color} ${piece.type} PIECE ${selectable ? 'selectable' : ''}`}
-                                    onClick={onClick}
-                                    key={`${rowIndex},${columnIndex}`}
-                                />;
-                            })
-                        ))
+                        this.state.board.getAll().map((square, index) => {
+                            // const selectable = piece.color === this.state.player;
+                            // const onClick = () => {
+                            //     if (!selectable) {
+                            //         return;
+                            //     }
+                            //     const selection = {
+                            //         piece,
+                            //         position: {
+                            //             row: rowIndex,
+                            //             column: columnIndex,
+                            //         },
+                            //     };
+                            //     this.select(selection);
+                            // };
+                            if (square === null) {
+                                return <div className="square" />
+                            }
+                            return <div
+                                className={`${square.color} ${square.type} PIECE square`}
+                                key={index}
+                            />;
+                        })
                     }
                 </div>
-                <div className="highlights">
-                    {
-                        this.state.highlightsMatrix.map((row, rowIndex) => (
-                            row.map((square, columnIndex) => {
-                                return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''}
-                                            key={`${rowIndex},${columnIndex}`}/>;
-                            })
-                        ))
-                    }
-                </div>
+                {/*<div className="highlights">*/}
+                    {/*{*/}
+                        {/*this.state.highlightsMatrix.map((row, rowIndex) => (*/}
+                            {/*row.map((square, columnIndex) => {*/}
+                                {/*return <div className={square.isHighlighted ? 'HIGHLIGHT' : ''}*/}
+                                            {/*key={`${rowIndex},${columnIndex}`}/>;*/}
+                            {/*})*/}
+                        {/*))*/}
+                    {/*}*/}
+                {/*</div>*/}
             </div>
         );
     }
