@@ -37,6 +37,9 @@ class App extends React.Component {
                             if (square !== null) {
                                 className += ` piece ${square.color} ${square.type}`;
                             }
+                            if (index === this.state.selectedIndex) {
+                                className += ' selected';
+                            }
                             return (
                                 <div
                                     key={index}
