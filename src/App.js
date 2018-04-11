@@ -24,7 +24,14 @@ class App extends React.Component {
             moves: null,
         };
         this.pickUp = this.pickUp.bind(this);
+        this.putDown = this.putDown.bind(this);
         this.movesContain = this.movesContain.bind(this);
+    }
+
+    putDown(index) {
+        return (event) => {
+            console.log('putDown ' + index);
+        };
     }
 
     pickUp(index) {
@@ -70,7 +77,7 @@ class App extends React.Component {
                 }
                 this.setState({ moves, mode: Mode.PUT_DOWN });
             });
-        }
+        };
     }
 
     movesContain(index) {
@@ -102,7 +109,11 @@ class App extends React.Component {
                                 <div
                                     key={index}
                                     className={className}
-                                    onClick={this.state.mode === Mode.PICK_UP ? this.pickUp(index) : () => {}}
+                                    onClick={
+                                        this.state.mode === Mode.PICK_UP ?
+                                            this.pickUp(index) :
+                                            this.putDown(index)
+                                    }
                                 />
                             );
                         })
