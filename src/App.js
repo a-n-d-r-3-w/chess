@@ -20,7 +20,7 @@ class App extends React.Component {
             board,
             player: Color.WHITE,
             mode: Mode.PICK_UP,
-            selectedIndex: null,
+            pickUpIndex: null,
             moves: null,
         };
         this.pickUp = this.pickUp.bind(this);
@@ -30,6 +30,11 @@ class App extends React.Component {
 
     putDown(index) {
         return (event) => {
+            if (index === this.state.pickUpIndex) {
+                this.setState({ pickUpIndex: null, moves: null, mode: Mode.PICK_UP });
+            }
+            const rowColumn = indexToRowColumn(index);
+
             console.log('putDown ' + index);
         };
     }
@@ -44,13 +49,13 @@ class App extends React.Component {
             ) {
                 return;
             }
-            this.setState({ selectedIndex: index }, () => {
-                const { selectedIndex } = this.state;
-                if (selectedIndex === null) {
+            this.setState({ pickUpIndex: index }, () => {
+                const { pickUpIndex } = this.state;
+                if (pickUpIndex === null) {
                     return;
                 }
                 const { board } = this.state;
-                const selectedPiece = board.get(indexToRowColumn(selectedIndex));
+                const selectedPiece = board.get(indexToRowColumn(pickUpIndex));
                 const { type } = selectedPiece;
                 let moves = [];
                 switch (type) {
@@ -99,7 +104,7 @@ class App extends React.Component {
                             if (square !== null) {
                                 className += ` piece ${square.color} ${square.type}`;
                             }
-                            if (index === this.state.selectedIndex) {
+                            if (index === this.state.pickUpIndex) {
                                 className += ' selected';
                             }
                             if (this.movesContain(index)) {
