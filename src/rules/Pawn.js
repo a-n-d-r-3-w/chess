@@ -1,4 +1,4 @@
-import {get, isEmpty} from 'lodash';
+import {isEmpty} from 'lodash';
 import Color from '../Color';
 
 const canTakeAStepForward = (board, {row, column}) => {

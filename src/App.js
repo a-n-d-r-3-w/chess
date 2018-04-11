@@ -41,6 +41,9 @@ class App extends React.Component {
                 const { type } = selectedPiece;
                 let moves = [];
                 switch (type) {
+                    case Type.PAWN:
+                        moves = pawnMoves(this.state.board, rowColumn);
+                        break;
                     default:
                         moves = queenMoves(this.state.board, rowColumn);
                 }
