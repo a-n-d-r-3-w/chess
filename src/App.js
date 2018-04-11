@@ -33,9 +33,10 @@ class App extends React.Component {
             if (index === this.state.pickUpIndex) {
                 this.setState({ pickUpIndex: null, moves: null, mode: Mode.PICK_UP });
             }
-            const rowColumn = indexToRowColumn(index);
-
-            console.log('putDown ' + index);
+            if (!this.movesContain(index)) {
+                return;
+            }
+            console.log('valid move');
         };
     }
 
