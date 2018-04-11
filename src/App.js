@@ -5,6 +5,7 @@ import Board, {indexToRowColumn} from './Board';
 import queenMoves from './rules/Queen';
 import pawnMoves from './rules/Pawn';
 import Type from './Type';
+import knightMoves from "./rules/Knight";
 
 class App extends React.Component {
     constructor(props) {
@@ -42,10 +43,13 @@ class App extends React.Component {
                 let moves = [];
                 switch (type) {
                     case Type.PAWN:
-                        moves = pawnMoves(this.state.board, rowColumn);
+                        moves = pawnMoves(board, rowColumn);
+                        break;
+                    case Type.KNIGHT:
+                        moves = knightMoves(board, rowColumn);
                         break;
                     default:
-                        moves = queenMoves(this.state.board, rowColumn);
+                        moves = queenMoves(board, rowColumn);
                 }
                 this.setState({ moves });
             });
