@@ -4,8 +4,11 @@ import Color from './Color';
 import Board, {indexToRowColumn} from './Board';
 import queenMoves from './rules/Queen';
 import pawnMoves from './rules/Pawn';
+import rookMoves from './rules/Rook';
 import Type from './Type';
 import knightMoves from "./rules/Knight";
+import bishopMoves from "./rules/Bishop";
+import kingMoves from "./rules/King";
 
 class App extends React.Component {
     constructor(props) {
@@ -45,11 +48,23 @@ class App extends React.Component {
                     case Type.PAWN:
                         moves = pawnMoves(board, rowColumn);
                         break;
+                    case Type.ROOK:
+                        moves = rookMoves(board, rowColumn);
+                        break;
                     case Type.KNIGHT:
                         moves = knightMoves(board, rowColumn);
                         break;
-                    default:
+                    case Type.BISHOP:
+                        moves = bishopMoves(board, rowColumn);
+                        break;
+                    case Type.QUEEN:
                         moves = queenMoves(board, rowColumn);
+                        break;
+                    case Type.KING:
+                        moves = kingMoves(board, rowColumn);
+                        break;
+                    default:
+                        console.error('Type not recognized: ' + type);
                 }
                 this.setState({ moves });
             });
