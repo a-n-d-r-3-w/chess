@@ -28,15 +28,20 @@ class App extends React.Component {
         this.movesContain = this.movesContain.bind(this);
     }
 
-    putDown(index) {
+    putDown(putDownIndex) {
         return (event) => {
-            if (index === this.state.pickUpIndex) {
+            if (putDownIndex === this.state.pickUpIndex) {
                 this.setState({ pickUpIndex: null, moves: null, mode: Mode.PICK_UP });
             }
-            if (!this.movesContain(index)) {
+            if (!this.movesContain(putDownIndex)) {
                 return;
             }
             console.log('valid move');
+            this.setState(prevState => {
+                const {board} = prevState;
+                board.move(indexToRowColumn(this.state.pickUpIndex, indexToRowColumn(putDownIndex)));
+                return { board };
+            });
         };
     }
 
