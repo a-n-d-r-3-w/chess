@@ -9,6 +9,7 @@ import Type from './Type';
 import knightMoves from "./rules/Knight";
 import bishopMoves from "./rules/Bishop";
 import kingMoves from "./rules/King";
+import Mode from './Mode';
 
 class App extends React.Component {
     constructor(props) {
@@ -18,14 +19,15 @@ class App extends React.Component {
         this.state = {
             board,
             player: Color.WHITE,
+            mode: Mode.PICK_UP,
             selectedIndex: null,
             moves: null,
         };
-        this.onClick = this.onClick.bind(this);
+        this.pickUp = this.pickUp.bind(this);
         this.movesContain = this.movesContain.bind(this);
     }
 
-    onClick(index) {
+    pickUp(index) {
         return (event) => {
             const rowColumn = indexToRowColumn(index);
             const { board } = this.state;
@@ -66,7 +68,7 @@ class App extends React.Component {
                     default:
                         console.error('Type not recognized: ' + type);
                 }
-                this.setState({ moves });
+                this.setState({ moves, mode: Mode.PUT_DOWN });
             });
         }
     }
@@ -100,7 +102,7 @@ class App extends React.Component {
                                 <div
                                     key={index}
                                     className={className}
-                                    onClick={this.onClick(index)}
+                                    onClick={this.state.mode === Mode.PICK_UP ? this.pickUp(index) : () => {}}
                                 />
                             );
                         })
