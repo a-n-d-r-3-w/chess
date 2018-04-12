@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './App.css';
 import Color from './Color';
 import Board, {indexToRowColumn} from './Board';
@@ -107,41 +107,43 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="game-container">
+            <Fragment>
                 {/*BEGIN parallax star background copied from https://codepen.io/saransh/pen/BKJun*/}
                 <div id='stars'/>
                 <div id='stars2'/>
                 <div id='stars3ß'/>
                 {/*END parallax star background copied from https://codepen.io/saransh/pen/BKJun*/}
-                <h1 className="which-players-turn">{this.state.player}'s turn</h1>
-                <div className="board">
-                    {
-                        this.state.board.getAll().map((square, index) => {
-                            let className = 'square';
-                            if (square !== null) {
-                                className += ` piece ${square.color} ${square.type}`;
-                            }
-                            if (index === this.state.pickUpIndex) {
-                                className += ' selected';
-                            }
-                            if (this.movesContain(index)) {
-                                className += ' move';
-                            }
-                            return (
-                                <div
-                                    key={index}
-                                    className={className}
-                                    onClick={
-                                        this.state.mode === Mode.PICK_UP ?
-                                            this.pickUp(index) :
-                                            this.putDown(index)
-                                    }
-                                />
-                            );
-                        })
-                    }
+                <div className="game-container">
+                    <h1 className="which-players-turn">{this.state.player}'s turn</h1>
+                    <div className="board">
+                        {
+                            this.state.board.getAll().map((square, index) => {
+                                let className = 'square';
+                                if (square !== null) {
+                                    className += ` piece ${square.color} ${square.type}`;
+                                }
+                                if (index === this.state.pickUpIndex) {
+                                    className += ' selected';
+                                }
+                                if (this.movesContain(index)) {
+                                    className += ' move';
+                                }
+                                return (
+                                    <div
+                                        key={index}
+                                        className={className}
+                                        onClick={
+                                            this.state.mode === Mode.PICK_UP ?
+                                                this.pickUp(index) :
+                                                this.putDown(index)
+                                        }
+                                    />
+                                );
+                            })
+                        }
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }
