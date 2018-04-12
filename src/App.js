@@ -39,7 +39,13 @@ class App extends React.Component {
             this.setState(prevState => {
                 const {board} = prevState;
                 board.move(indexToRowColumn(this.state.pickUpIndex), indexToRowColumn(putDownIndex));
-                return {board};
+                return {
+                    board,
+                    pickUpIndex: null,
+                    moves: null,
+                    mode: Mode.PICK_UP,
+                    player: prevState.player === Color.WHITE ? Color.BLACK : Color.WHITE
+                };
             });
         };
     }
