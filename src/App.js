@@ -31,16 +31,15 @@ class App extends React.Component {
     putDown(putDownIndex) {
         return (event) => {
             if (putDownIndex === this.state.pickUpIndex) {
-                this.setState({ pickUpIndex: null, moves: null, mode: Mode.PICK_UP });
+                this.setState({pickUpIndex: null, moves: null, mode: Mode.PICK_UP});
             }
             if (!this.movesContain(putDownIndex)) {
                 return;
             }
-            console.log('valid move');
             this.setState(prevState => {
                 const {board} = prevState;
                 board.move(indexToRowColumn(this.state.pickUpIndex), indexToRowColumn(putDownIndex));
-                return { board };
+                return {board};
             });
         };
     }
@@ -48,21 +47,21 @@ class App extends React.Component {
     pickUp(index) {
         return (event) => {
             const rowColumn = indexToRowColumn(index);
-            const { board } = this.state;
+            const {board} = this.state;
             if (
                 board.isEmptyAt(rowColumn) ||
                 board.get(rowColumn).color !== this.state.player
             ) {
                 return;
             }
-            this.setState({ pickUpIndex: index }, () => {
-                const { pickUpIndex } = this.state;
+            this.setState({pickUpIndex: index}, () => {
+                const {pickUpIndex} = this.state;
                 if (pickUpIndex === null) {
                     return;
                 }
-                const { board } = this.state;
+                const {board} = this.state;
                 const selectedPiece = board.get(indexToRowColumn(pickUpIndex));
-                const { type } = selectedPiece;
+                const {type} = selectedPiece;
                 let moves = [];
                 switch (type) {
                     case Type.PAWN:
@@ -86,13 +85,13 @@ class App extends React.Component {
                     default:
                         console.error('Type not recognized: ' + type);
                 }
-                this.setState({ moves, mode: Mode.PUT_DOWN });
+                this.setState({moves, mode: Mode.PUT_DOWN});
             });
         };
     }
 
     movesContain(index) {
-        const { moves } = this.state;
+        const {moves} = this.state;
         if (moves === null) {
             return false;
         }
