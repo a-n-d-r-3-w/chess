@@ -4,6 +4,7 @@
 }
 
 .board {
+    border: 8px solid sandybrown;
     display: grid;
     grid-template-columns: repeat(8, 48px);
     grid-template-rows: repeat(8, 48px);
@@ -13,8 +14,12 @@
 }
 
 .square {
-    border: 1px solid sandybrown;
+    border: 2px solid sandybrown;
     background: saddlebrown;
+}
+
+.square:hover {
+    border: 2px solid darkgreen;
 }
 
 .piece {
