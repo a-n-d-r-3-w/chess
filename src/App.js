@@ -108,6 +108,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="game-container">
+                <h1 className="which-players-turn">{this.state.player}'s turn</h1>
                 <div className="board">
                     {
                         this.state.board.getAll().map((square, index) => {
