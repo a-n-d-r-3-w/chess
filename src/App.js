@@ -108,6 +108,11 @@ class App extends React.Component {
     render() {
         return (
             <div className="game-container">
+                {/*BEGIN parallax star background copied from https://codepen.io/saransh/pen/BKJun*/}
+                <div id='stars'/>
+                <div id='stars2'/>
+                <div id='stars3ß'/>
+                {/*END parallax star background copied from https://codepen.io/saransh/pen/BKJun*/}
                 <h1 className="which-players-turn">{this.state.player}'s turn</h1>
                 <div className="board">
                     {
