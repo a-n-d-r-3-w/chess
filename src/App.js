@@ -39,7 +39,7 @@ class App extends React.Component {
             console.log('valid move');
             this.setState(prevState => {
                 const {board} = prevState;
-                board.move(indexToRowColumn(this.state.pickUpIndex, indexToRowColumn(putDownIndex)));
+                board.move(indexToRowColumn(this.state.pickUpIndex), indexToRowColumn(putDownIndex));
                 return { board };
             });
         };
